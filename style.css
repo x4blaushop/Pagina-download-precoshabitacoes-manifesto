@@ -273,3 +273,258 @@ body {
         gap: 28px;
     }
 }
+/* ==========================================================
+   CSS — DNA BRASIL · C3X4.1
+   REAJUSTE DE EIXO · ALINHAMENTO ABSOLUTO · SEM RUÍDO
+   ========================================================== */
+
+/* =========================
+   PARTE 1/5 — FUNDAÇÃO
+   EIXO GLOBAL
+   ========================= */
+
+:root {
+    --eixo-max: 1080px;           /* eixo único da nação */
+    --gap-massivo: 12vh;
+
+    --capital-gold: #ffd700;
+    --saneamento-green: #00ff9c;
+
+    --texto-primario: #ffffff;
+    --texto-secundario: #a0a0a0;
+
+    --linha-divisora: rgba(255,255,255,0.12);
+    --borda-soberana: 1px solid rgba(255,255,255,0.2);
+
+    --bg-base: #000;
+    --bg-suave: #050505;
+    --bg-profundo: #020202;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #000, #010101, #000);
+    color: var(--texto-primario);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+/* contêiner-matriz: tudo obedece */
+.eixo-central {
+    max-width: var(--eixo-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   PARTE 2/5 — AUTORIDADE
+   ========================= */
+
+#camada-autoridade,
+#camada-protecao,
+#camada-regras {
+    padding: var(--gap-massivo) 0;
+    border-bottom: var(--borda-soberana);
+}
+
+#camada-autoridade {
+    background: var(--bg-base);
+}
+
+#camada-protecao {
+    background: var(--bg-suave);
+}
+
+#camada-regras {
+    background: var(--bg-base);
+}
+
+#camada-autoridade p,
+#camada-protecao p {
+    max-width: 820px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--texto-secundario);
+}
+
+/* listas seguem o eixo */
+.lista-regras {
+    list-style: none;
+    margin-top: 48px;
+    max-width: 760px;
+}
+
+.lista-regras li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    color: var(--texto-secundario);
+}
+
+.lista-regras li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    font-size: 0.6rem;
+    color: var(--capital-gold);
+}
+
+/* =========================
+   PARTE 3/5 — TERRITÓRIO
+   ========================= */
+
+.bloco-territorial {
+    padding: var(--gap-massivo) 0;
+    border-bottom: var(--borda-soberana);
+    background: var(--bg-base);
+}
+
+.descricao-territorio {
+    max-width: 860px;
+    font-size: 1.15rem;
+    color: var(--texto-secundundario);
+    margin-bottom: 64px;
+}
+
+.matriz-estados {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* eixo estável desktop */
+    gap: 40px;
+}
+
+.unidade-habitacional {
+    padding: 40px;
+    border: 1px solid var(--linha-divisora);
+    background: rgba(255,255,255,0.015);
+    transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.unidade-habitacional:hover {
+    transform: translateY(-6px);
+    border-color: var(--capital-gold);
+}
+
+.matriz-estados h3 {
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+}
+
+.valor {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--capital-gold);
+}
+
+.perfil {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--texto-secundario);
+}
+
+/* =========================
+   PARTE 4/5 — DIAGNÓSTICO
+   ========================= */
+
+#diagnostico-sistema {
+    padding: var(--gap-massivo) 0;
+    background: var(--bg-suave);
+    border-top: 1px solid var(--saneamento-green);
+}
+
+.lista-diagnostico {
+    list-style: none;
+    margin-top: 48px;
+    max-width: 760px;
+}
+
+.lista-diagnostico li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--linha-divisora);
+    font-family: monospace;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: var(--saneamento-green);
+}
+
+/* =========================
+   PARTE 5/5 — ENCERRAMENTO
+   ========================= */
+
+#encerramento-manifesto {
+    padding: var(--gap-massivo) 0;
+    background: var(--bg-profundo);
+    font-size: 1.35rem;
+    font-weight: 200;
+}
+
+#encerramento-manifesto p {
+    max-width: 740px;
+    margin-bottom: 28px;
+}
+
+.fechamento-soberano {
+    padding: 70px 0;
+    background: #000;
+    border-top: 1px solid var(--linha-divisora);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.assinatura-arquiteto {
+    font-size: 1.1rem;
+    letter-spacing: 9px;
+    color: var(--capital-gold);
+}
+
+.status-final {
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--saneamento-green);
+}
+
+.localizacao {
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    color: var(--texto-secundario);
+}
+
+/* =========================
+   RESPONSIVO — SEM RUÍDO
+   ========================= */
+
+@media (max-width: 1024px) {
+    .matriz-estados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .matriz-estados {
+        grid-template-columns: 1fr;
+    }
+
+    #camada-autoridade,
+    #camada-protecao,
+    #camada-regras,
+    .bloco-territorial,
+    #diagnostico-sistema,
+    #encerramento-manifesto,
+    .fechamento-soberano {
+        padding: 8vh 0;
+    }
+}
