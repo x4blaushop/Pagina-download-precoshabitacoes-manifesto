@@ -1,16 +1,29 @@
 /* ==========================================================
-   CSS — PARTE 1/5
-   FUNDAÇÃO · VARIÁVEIS · BASE GLOBAL
+   CSS — DNA BRASIL · C3X4.0
+   VISUAL MODERNO · SOBERANIA · NAÇÃO DIGITAL
    ========================================================== */
+
+/* =========================
+   PARTE 1/5 — FUNDAÇÃO
+   ========================= */
 
 :root {
     --gap-massivo: 12vh;
+
     --capital-gold: #ffd700;
+    --saneamento-green: #00ff9c;
+
     --texto-primario: #ffffff;
     --texto-secundario: #a0a0a0;
-    --linha-divisora: rgba(255,255,255,0.15);
+
+    --linha-divisora: rgba(255,255,255,0.12);
     --borda-soberana: 1px solid rgba(255,255,255,0.2);
-    --saneamento-green: #00ff9c;
+
+    --bg-base: #000000;
+    --bg-suave: #050505;
+    --bg-profundo: #020202;
+
+    --blur-sutil: blur(6px);
 }
 
 * {
@@ -20,202 +33,230 @@
 }
 
 body {
-    background: #000;
+    background:
+        radial-gradient(circle at top, rgba(255,215,0,0.05), transparent 60%),
+        linear-gradient(to bottom, #000, #010101, #000);
     color: var(--texto-primario);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
+    line-height: 1.65;
+    overflow-x: hidden;
 }
 
-/* ==========================================================
-   CSS — PARTE 2/5
-   AUTORIDADE · PROTEÇÃO · REGRAS
-   ========================================================== */
+/* =========================
+   PARTE 2/5 — AUTORIDADE
+   ========================= */
 
 #camada-autoridade {
     padding: var(--gap-massivo) 10%;
     border-bottom: var(--borda-soberana);
-    background: linear-gradient(to bottom, #050505, #000);
+    background:
+        linear-gradient(to bottom, rgba(255,215,0,0.04), transparent 40%),
+        var(--bg-base);
 }
 
 #camada-autoridade p {
-    max-width: 800px;
-    font-size: 1.2rem;
+    max-width: 820px;
+    font-size: 1.25rem;
     font-weight: 300;
-    margin-bottom: 25px;
     color: var(--texto-secundario);
 }
 
 #camada-protecao {
     padding: var(--gap-massivo) 10%;
     border-bottom: var(--borda-soberana);
-    background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+    background:
+        radial-gradient(circle at center, rgba(0,255,156,0.06), transparent 65%),
+        var(--bg-suave);
 }
 
 #camada-protecao p {
-    max-width: 800px;
+    max-width: 820px;
     font-size: 1.15rem;
-    margin-bottom: 25px;
     color: var(--texto-secundario);
 }
 
 #camada-regras {
     padding: var(--gap-massivo) 10%;
     border-bottom: var(--borda-soberana);
+    background: var(--bg-base);
 }
 
 .lista-regras {
     list-style: none;
-    margin-top: 40px;
-    max-width: 700px;
+    margin-top: 50px;
+    max-width: 760px;
 }
 
 .lista-regras li {
     position: relative;
-    padding-left: 25px;
-    margin-bottom: 15px;
+    padding-left: 28px;
+    margin-bottom: 18px;
     font-size: 1rem;
     color: var(--texto-secundario);
 }
 
 .lista-regras li::before {
-    content: "■";
+    content: "◆";
     position: absolute;
     left: 0;
     top: 6px;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: var(--capital-gold);
 }
 
-/* ==========================================================
-   CSS — PARTE 3/5
-   TERRITÓRIO DIGITAL · MATRIZ DE ESTADOS
-   ========================================================== */
+/* =========================
+   PARTE 3/5 — TERRITÓRIO
+   ========================= */
 
 .bloco-territorial {
     padding: var(--gap-massivo) 10%;
     border-bottom: var(--borda-soberana);
+    background:
+        linear-gradient(to bottom, transparent, rgba(255,255,255,0.02), transparent),
+        var(--bg-base);
 }
 
 .descricao-territorio {
-    max-width: 800px;
-    font-size: 1.1rem;
+    max-width: 860px;
+    font-size: 1.15rem;
     color: var(--texto-secundario);
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 }
 
 .matriz-estados {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 40px;
+    gap: 45px;
 }
 
-.matriz-estados .unidade-habitacional {
-    padding: 40px;
+.unidade-habitacional {
+    position: relative;
+    padding: 42px;
     border: 1px solid var(--linha-divisora);
-    background: rgba(255,255,255,0.015);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background:
+        linear-gradient(to bottom right, rgba(255,255,255,0.02), transparent),
+        rgba(0,0,0,0.6);
+    backdrop-filter: var(--blur-sutil);
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.matriz-estados .unidade-habitacional:hover {
-    transform: translateY(-6px);
+.unidade-habitacional::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    pointer-events: none;
+    transition: border-color 0.45s;
+}
+
+.unidade-habitacional:hover {
+    transform: translateY(-8px) scale(1.01);
+    background: rgba(255,223,0,0.04);
+}
+
+.unidade-habitacional:hover::after {
     border-color: var(--capital-gold);
-    background: rgba(255,223,0,0.03);
 }
 
 .matriz-estados h3 {
-    font-size: 0.9rem;
-    letter-spacing: 6px;
-    margin-bottom: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 7px;
+    margin-bottom: 22px;
+    color: var(--texto-primario);
 }
 
 .matriz-estados .valor {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 700;
     letter-spacing: -1px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     color: var(--capital-gold);
 }
 
 .matriz-estados .perfil {
     font-size: 0.85rem;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--texto-secundario);
 }
 
-/* ==========================================================
-   CSS — PARTE 4/5
-   DIAGNÓSTICO · ESTADO DO SISTEMA
-   ========================================================== */
+/* =========================
+   PARTE 4/5 — DIAGNÓSTICO
+   ========================= */
 
 #diagnostico-sistema {
     padding: var(--gap-massivo) 10%;
-    background: #050505;
+    background:
+        linear-gradient(to bottom, rgba(0,255,156,0.04), transparent),
+        var(--bg-suave);
     border-top: 1px solid var(--saneamento-green);
 }
 
 .lista-diagnostico {
     list-style: none;
-    margin-top: 40px;
-    max-width: 700px;
+    margin-top: 50px;
+    max-width: 760px;
 }
 
 .lista-diagnostico li {
-    padding: 12px 0;
+    padding: 14px 0;
     border-bottom: 1px solid var(--linha-divisora);
     font-family: monospace;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
     color: var(--saneamento-green);
 }
 
-/* ==========================================================
-   CSS — PARTE 5/5
-   ENCERRAMENTO · RODAPÉ · MOBILE
-   ========================================================== */
+/* =========================
+   PARTE 5/5 — ENCERRAMENTO
+   ========================= */
 
 #encerramento-manifesto {
     padding: var(--gap-massivo) 10%;
-    background: linear-gradient(to bottom, #000, #020202);
-    font-size: 1.3rem;
+    background:
+        radial-gradient(circle at bottom, rgba(255,215,0,0.06), transparent 60%),
+        var(--bg-profundo);
+    font-size: 1.35rem;
     font-weight: 200;
 }
 
 #encerramento-manifesto p {
-    max-width: 700px;
-    margin-bottom: 25px;
+    max-width: 740px;
+    margin-bottom: 28px;
 }
 
 .fechamento-soberano {
-    padding: 60px 10%;
+    padding: 70px 10%;
     background: #000;
     border-top: 1px solid var(--linha-divisora);
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 22px;
 }
 
-.fechamento-soberano .assinatura-arquiteto {
+.assinatura-arquiteto {
     font-size: 1.1rem;
-    letter-spacing: 8px;
+    letter-spacing: 9px;
     color: var(--capital-gold);
 }
 
-.fechamento-soberano .status-final {
+.status-final {
     font-family: monospace;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
     color: var(--saneamento-green);
 }
 
-.fechamento-soberano .localizacao {
-    font-size: 0.7rem;
+.localizacao {
+    font-size: 0.65rem;
     letter-spacing: 4px;
     color: var(--texto-secundario);
 }
+
+/* =========================
+   RESPONSIVO
+   ========================= */
 
 @media (max-width: 768px) {
     #camada-autoridade,
@@ -226,5 +267,9 @@ body {
     #encerramento-manifesto,
     .fechamento-soberano {
         padding: 8vh 6%;
+    }
+
+    .matriz-estados {
+        gap: 28px;
     }
 }
