@@ -1,15 +1,14 @@
-/**
- * ==========================================================
- * CSS — DNA C3X4.0 COMPLETO
- * IDENTIDADE, MATRIZ, VALORES E RESPONSIVIDADE
- * ==========================================================
- */
+/* ==========================================================
+   CSS — DNA BRASIL · C3X4.0 MESCLADO
+   VISUAL MODERNO · SOBERANIA · NAÇÃO DIGITAL
+   ========================================================== */
 
 /* =========================
-   PARTE 1/5 — FUNDAÇÃO E EIXO CENTRAL
+   PARTE 1/5 — FUNDAÇÃO
    ========================= */
+
 :root {
-    --eixo-max: 1080px;             /* eixo único da nação */
+    --eixo-max: 1080px;           /* eixo único da nação */
     --gap-massivo: 12vh;
 
     --capital-gold: #ffd700;
@@ -35,14 +34,16 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #000, #010101, #000);
+    background:
+        radial-gradient(circle at top, rgba(255,215,0,0.05), transparent 60%),
+        linear-gradient(to bottom, #000, #010101, #000);
     color: var(--texto-primario);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.65;
     overflow-x: hidden;
 }
 
-/* Eixo central: todo conteúdo segue */
+/* contêiner-matriz: tudo obedece */
 .eixo-central {
     max-width: var(--eixo-max);
     margin: 0 auto;
@@ -51,30 +52,48 @@ body {
 }
 
 /* =========================
-   PARTE 2/5 — AUTORIDADE E PROTEÇÃO
+   PARTE 2/5 — AUTORIDADE
    ========================= */
+
 #camada-autoridade,
 #camada-protecao,
 #camada-regras {
-    padding: var(--gap-massivo) 0;
+    padding: var(--gap-massivo) 10%;
     border-bottom: var(--borda-soberana);
 }
 
-#camada-autoridade { background: var(--bg-base); }
-#camada-protecao { background: var(--bg-suave); }
-#camada-regras { background: var(--bg-base); }
+#camada-autoridade {
+    background:
+        linear-gradient(to bottom, rgba(255,215,0,0.04), transparent 40%),
+        var(--bg-base);
+}
 
-#camada-autoridade p,
-#camada-protecao p {
+#camada-autoridade p {
     max-width: 820px;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 300;
     color: var(--texto-secundario);
 }
 
+#camada-protecao {
+    background:
+        radial-gradient(circle at center, rgba(0,255,156,0.06), transparent 65%),
+        var(--bg-suave);
+}
+
+#camada-protecao p {
+    max-width: 820px;
+    font-size: 1.15rem;
+    color: var(--texto-secundario);
+}
+
+#camada-regras {
+    background: var(--bg-base);
+}
+
 .lista-regras {
     list-style: none;
-    margin-top: 48px;
+    margin-top: 50px;
     max-width: 760px;
 }
 
@@ -87,82 +106,105 @@ body {
 }
 
 .lista-regras li::before {
-    content: "■";
+    content: "◆";
     position: absolute;
     left: 0;
-    top: 7px;
-    font-size: 0.6rem;
+    top: 6px;
+    font-size: 0.7rem;
     color: var(--capital-gold);
 }
 
 /* =========================
-   PARTE 3/5 — TERRITÓRIO E MATRIZ DE ESTADOS
+   PARTE 3/5 — TERRITÓRIO
    ========================= */
+
 .bloco-territorial {
-    padding: var(--gap-massivo) 0;
+    padding: var(--gap-massivo) 10%;
     border-bottom: var(--borda-soberana);
-    background: var(--bg-base);
+    background:
+        linear-gradient(to bottom, transparent, rgba(255,255,255,0.02), transparent),
+        var(--bg-base);
 }
 
 .descricao-territorio {
     max-width: 860px;
     font-size: 1.15rem;
     color: var(--texto-secundario);
-    margin-bottom: 64px;
+    margin-bottom: 70px;
 }
 
 .matriz-estados {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 45px;
 }
 
 .unidade-habitacional {
-    padding: 40px;
+    position: relative;
+    padding: 42px;
     border: 1px solid var(--linha-divisora);
-    background: rgba(255,255,255,0.015);
+    background:
+        linear-gradient(to bottom right, rgba(255,255,255,0.02), transparent),
+        rgba(0,0,0,0.6);
     backdrop-filter: var(--blur-sutil);
-    transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.unidade-habitacional::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    pointer-events: none;
+    transition: border-color 0.45s;
 }
 
 .unidade-habitacional:hover {
-    transform: translateY(-6px);
-    border-color: var(--capital-gold);
+    transform: translateY(-8px) scale(1.01);
     background: rgba(255,223,0,0.04);
+}
+
+.unidade-habitacional:hover::after {
+    border-color: var(--capital-gold);
 }
 
 .matriz-estados h3 {
     font-size: 0.85rem;
-    letter-spacing: 6px;
-    margin-bottom: 20px;
+    letter-spacing: 7px;
+    margin-bottom: 22px;
+    color: var(--texto-primario);
 }
 
-.valor {
+.matriz-estados .valor {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
     color: var(--capital-gold);
 }
 
-.perfil {
+.matriz-estados .perfil {
     font-size: 0.85rem;
     line-height: 1.7;
     color: var(--texto-secundario);
 }
 
 /* =========================
-   PARTE 4/5 — DIAGNÓSTICO VISUAL
+   PARTE 4/5 — DIAGNÓSTICO
    ========================= */
+
 #diagnostico-sistema {
-    padding: var(--gap-massivo) 0;
-    background: var(--bg-suave);
+    padding: var(--gap-massivo) 10%;
+    background:
+        linear-gradient(to bottom, rgba(0,255,156,0.04), transparent),
+        var(--bg-suave);
     border-top: 1px solid var(--saneamento-green);
 }
 
 .lista-diagnostico {
     list-style: none;
-    margin-top: 48px;
+    margin-top: 50px;
     max-width: 760px;
 }
 
@@ -176,11 +218,14 @@ body {
 }
 
 /* =========================
-   PARTE 5/5 — ENCERRAMENTO E FECHAMENTO
+   PARTE 5/5 — ENCERRAMENTO
    ========================= */
+
 #encerramento-manifesto {
-    padding: var(--gap-massivo) 0;
-    background: var(--bg-profundo);
+    padding: var(--gap-massivo) 10%;
+    background:
+        radial-gradient(circle at bottom, rgba(255,215,0,0.06), transparent 60%),
+        var(--bg-profundo);
     font-size: 1.35rem;
     font-weight: 200;
 }
@@ -191,7 +236,7 @@ body {
 }
 
 .fechamento-soberano {
-    padding: 70px 0;
+    padding: 70px 10%;
     background: #000;
     border-top: 1px solid var(--linha-divisora);
     text-align: center;
@@ -220,15 +265,16 @@ body {
 }
 
 /* =========================
-   RESPONSIVO — SEM RUÍDO
+   RESPONSIVO — MESCLADO
    ========================= */
+
 @media (max-width: 1024px) {
-    .matriz-estados { grid-template-columns: repeat(2, 1fr); }
+    .matriz-estados {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media (max-width: 640px) {
-    .matriz-estados { grid-template-columns: 1fr; }
-
+@media (max-width: 768px) {
     #camada-autoridade,
     #camada-protecao,
     #camada-regras,
@@ -236,6 +282,16 @@ body {
     #diagnostico-sistema,
     #encerramento-manifesto,
     .fechamento-soberano {
-        padding: 8vh 0;
+        padding: 8vh 6%;
+    }
+
+    .matriz-estados {
+        gap: 28px;
+    }
+}
+
+@media (max-width: 640px) {
+    .matriz-estados {
+        grid-template-columns: 1fr;
     }
 }
