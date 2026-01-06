@@ -1,10 +1,14 @@
 /**
  * =========================================================
- * JS — PARTE 1/5
- * MOTOR DE IDENTIDADE · SILÊNCIO DE CONSOLE
+ * JS — DNA C3X4.0 COMPLETO
+ * MOTOR DE SOBERANIA, MATRIZ, VALORES E ESTABILIZAÇÃO
  * =========================================================
  */
 
+/* =========================
+   PARTE 1/5 — MOTOR DE IDENTIDADE
+   SILÊNCIO DE CONSOLE E POSSE
+   ========================= */
 const DNAMatriz = {
     versao: "C3X4.0",
     ano: 2026,
@@ -18,7 +22,6 @@ const DNAMatriz = {
 
     saneamentoConsole() {
         console.clear();
-
         const silence = () => {};
         console.warn = silence;
         console.info = silence;
@@ -43,13 +46,9 @@ const DNAMatriz = {
 
 DNAMatriz.init();
 
-/**
- * =========================================================
- * JS — PARTE 2/5
- * SANEAMENTO ESTRUTURAL · DOM
- * =========================================================
- */
-
+/* =========================
+   PARTE 2/5 — SANEAMENTO ESTRUTURAL
+   ========================= */
 const SaneadorEstrutural = {
     init() {
         this.verificarLimpezaDOM();
@@ -61,9 +60,7 @@ const SaneadorEstrutural = {
         const lixo = document.querySelectorAll(
             'script:not([src="script.js"]), style:not([id])'
         );
-
         lixo.forEach(el => el.remove());
-
         if (lixo.length > 0) {
             window.logSoberano(`RUÍDO REMOVIDO: ${lixo.length} ELEMENTOS.`);
         }
@@ -94,13 +91,9 @@ const SaneadorEstrutural = {
 
 SaneadorEstrutural.init();
 
-/**
- * =========================================================
- * JS — PARTE 3/5
- * INDEPENDÊNCIA · NETWORK · TELEMETRIA
- * =========================================================
- */
-
+/* =========================
+   PARTE 3/5 — INDEPENDÊNCIA E NETWORK
+   ========================= */
 const AlfandegaDigital = {
     init() {
         this.bloquearFetch();
@@ -110,10 +103,8 @@ const AlfandegaDigital = {
 
     bloquearFetch() {
         const originalFetch = window.fetch;
-
         window.fetch = (...args) => {
             const url = String(args[0]);
-
             if (
                 url.includes("google-analytics") ||
                 url.includes("facebook") ||
@@ -124,17 +115,13 @@ const AlfandegaDigital = {
                     new Error("Bloqueado por soberania C3X4.0")
                 );
             }
-
             return originalFetch(...args);
         };
     },
 
     diagnosticoRecursos() {
         const recursos = performance.getEntriesByType("resource");
-        const externos = recursos.filter(
-            r => !r.name.includes(location.hostname)
-        );
-
+        const externos = recursos.filter(r => !r.name.includes(location.hostname));
         if (externos.length === 0) {
             window.logSoberano("NETWORK LIMPA. 100% INDEPENDENTE.");
         } else {
@@ -145,18 +132,22 @@ const AlfandegaDigital = {
 
 AlfandegaDigital.init();
 
-/**
- * =========================================================
- * JS — PARTE 4/5
- * DIAGNÓSTICO VISUAL · MATERIALIZAÇÃO
- * =========================================================
- */
-
+/* =========================
+   PARTE 4/5 — DIAGNÓSTICO VISUAL E MATRIZ DE VALORES
+   ========================= */
 const PainelSoberano = {
+    valoresCapital: [
+        { descricao: "Básico", valor: "R$ 1.000,00" },
+        { descricao: "Intermediário", valor: "R$ 5.000,00" },
+        { descricao: "Avançado", valor: "R$ 150.000,00" },
+        { descricao: "Corporativo", valor: "R$ 500.000,00" }
+    ],
+
     init() {
         window.addEventListener("load", () => {
             this.atualizarDiagnostico();
             this.materializarCapital();
+            this.preencherMatrizEstados();
         });
     },
 
@@ -166,7 +157,6 @@ const PainelSoberano = {
             "status-network": "INDEPENDENTE",
             "status-console": "SILÊNCIO ABSOLUTO"
         };
-
         Object.entries(mapa).forEach(([id, texto]) => {
             const el = document.getElementById(id);
             if (el) {
@@ -177,7 +167,6 @@ const PainelSoberano = {
                 }
             }
         });
-
         window.logSoberano("DIAGNÓSTICO MATERIALIZADO.");
     },
 
@@ -190,18 +179,46 @@ const PainelSoberano = {
                 Object.freeze(span);
             }
         }
+    },
+
+    preencherMatrizEstados() {
+        const matriz = document.querySelector(".matriz-estados");
+        if (!matriz) return;
+
+        const estados = [
+            { sigla: "SP", tecnologia: "Alta", dependencia: "Baixa" },
+            { sigla: "RJ", tecnologia: "Média", dependencia: "Média" },
+            { sigla: "MG", tecnologia: "Alta", dependencia: "Baixa" },
+            { sigla: "RS", tecnologia: "Média", dependencia: "Média" },
+            { sigla: "BA", tecnologia: "Baixa", dependencia: "Alta" },
+            { sigla: "PR", tecnologia: "Alta", dependencia: "Baixa" },
+            { sigla: "SC", tecnologia: "Alta", dependencia: "Baixa" },
+            { sigla: "DF", tecnologia: "Alta", dependencia: "Média" }
+        ];
+
+        estados.forEach(estado => {
+            const bloco = document.createElement("div");
+            bloco.classList.add("unidade-habitacional");
+            bloco.innerHTML = `
+                <h3>${estado.sigla}</h3>
+                <span class="valor">${this.valoresCapital[Math.floor(Math.random() * this.valoresCapital.length)].valor}</span>
+                <p class="perfil">
+                    Tecnologia: ${estado.tecnologia}<br>
+                    Dependência externa: ${estado.dependencia}
+                </p>
+            `;
+            matriz.appendChild(bloco);
+        });
+
+        window.logSoberano("MATRIZ DE ESTADOS MATERIALIZADA COM VALORES.");
     }
 };
 
 PainelSoberano.init();
 
-/**
- * =========================================================
- * JS — PARTE 5/5
- * ESTABILIZAÇÃO · SELO FINAL · CICLO 2026
- * =========================================================
- */
-
+/* =========================
+   PARTE 5/5 — ESTABILIZAÇÃO FINAL
+   ========================= */
 const EstabilizadorDNA = {
     init() {
         this.selar();
@@ -216,7 +233,6 @@ const EstabilizadorDNA = {
         Object.freeze(AlfandegaDigital);
         Object.freeze(PainelSoberano);
         Object.freeze(this);
-
         window.logSoberano("ARQUITETURA SELADA.");
     },
 
@@ -228,12 +244,8 @@ const EstabilizadorDNA = {
 
     protegerAssinatura() {
         const assinatura = document.querySelector(".assinatura-arquiteto");
-        if (
-            assinatura &&
-            !assinatura.textContent.includes("JOSÉ PATRICK")
-        ) {
-            document.body.innerHTML =
-                "<h1>ERRO DE SOBERANIA — ACESSO NEGADO</h1>";
+        if (assinatura && !assinatura.textContent.includes("JOSÉ PATRICK")) {
+            document.body.innerHTML = "<h1>ERRO DE SOBERANIA — ACESSO NEGADO</h1>";
             console.error("USURPAÇÃO DETECTADA.");
         }
     },
