@@ -1,165 +1,217 @@
-/* ARQUIVO: style.css | VERSÃO: 2.0 (EXPANSÃO)
-   SISTEMA: C3X4.0_Brasil_Independente
-   CONEXÃO: Raiz Imutável (Index 147 Linhas)
-   DESIGN: Glassmorphism Soberano & UI Incorruptível
+/* ARQUIVO: style.css | VERSÃO: MATERIALIZAÇÃO SOBERANA 4.0
+   SISTEMA: C3X4.0_BRASIL_INDEPENDENTE
+   ARQUITETO: JOSÉ PATRICK CASTRO SOARES
+   PRINCÍPIO: BELEZA, HARMONIA E CATEGORIZAÇÃO (NÃO DIMINUIR, SEMPRE EXPANDIR)
 */
 
-/* [1. DNA DE CORES E IDENTIDADE] */
+/* [CAMADA 1: O DNA DAS VARIÁVEIS - DEFINIÇÃO DA PALETA SOBERANA] */
 :root {
-    --bg-soberano: #020609;       /* Profundidade de núcleo de servidor */
-    --dna-green: #00f5a0;         /* Integridade Vital (Elements) */
-    --dna-blue: #00d9ff;          /* Independência de Rede (Network) */
-    --dna-white: #f8f9fa;         /* Silêncio Operacional (Console) */
-    --glass-fill: rgba(255, 255, 255, 0.03);
-    --glass-stroke: rgba(255, 255, 255, 0.08);
-    --blur-intensity: 20px;
-    --font-header: 'Inter', system-ui, -apple-system, sans-serif;
-    --shadow-glow: 0 0 30px rgba(0, 245, 160, 0.15);
+    --fundo-vazio: #010409;          /* O preto absoluto do espaço entre planetas */
+    --fundo-planeta: #0d1117;        /* O tom dos repositórios GitHub do arquiteto */
+    --vibracao-verde: #00ff88;       /* Aba Elements: A casa está limpa */
+    --vibracao-azul: #00d4ff;        /* Aba Network: O sistema é independente */
+    --vibracao-branco: #f0f6fc;      /* Aba Console: O sistema está em silêncio */
+    --vidro-blindado: rgba(255, 255, 255, 0.05);
+    --borda-soberana: rgba(255, 255, 255, 0.1);
+    --sombra-dna: 0 0 50px rgba(0, 212, 255, 0.15);
+    --fonte-principal: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --transicao-suave: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* [2. SANEAMENTO E FLUXO - A CASA ESTÁ LIMPA] */
+/* [CAMADA 2: SANEAMENTO DO AMBIENTE - A CASA ESTÁ LIMPA] */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
     -webkit-font-smoothing: antialiased;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--fundo-vazio);
+}
+
 body {
-    background: var(--bg-soberano);
-    color: var(--dna-white);
-    font-family: var(--font-header);
+    font-family: var(--fonte-principal);
+    color: var(--vibracao-branco);
+    background: radial-gradient(circle at center, #0d1117 0%, #010409 100%);
+    line-height: 1.8;
+    min-height: 100vh;
     overflow-x: hidden;
-    line-height: 1.7;
 }
 
-/* [3. HEADER: O COMANDO CENTRAL] */
-.soberania-header {
-    height: 90px;
-    background: rgba(2, 6, 9, 0.8);
-    backdrop-filter: blur(var(--blur-intensity));
-    border-bottom: 1px solid var(--glass-stroke);
-    position: fixed;
-    top: 0;
+/* [CAMADA 3: CABEÇALHO SOBERANO - IDENTIFICAÇÃO DO PROPRIETÁRIO] */
+header#sistema-cabecalho {
     width: 100%;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    padding: 0 5%;
-}
-
-.brand-identity {
+    padding: 2rem 5%;
+    background: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--borda-soberana);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 }
 
-.brand-identity h1 {
-    font-size: 1.2rem;
-    letter-spacing: 4px;
-    color: var(--dna-blue);
+.identidade-dna h1 {
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+    color: var(--vibracao-azul);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
     text-transform: uppercase;
 }
 
-/* [4. STATUS DINÂMICO - PULSAÇÃO DO DNA] */
-.system-status {
-    margin-left: auto;
+#subtitulo-arquiteto {
+    font-size: 0.9rem;
+    color: var(--vibracao-verde);
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+/* [CAMADA 4: NAVEGAÇÃO E STATUS - CATEGORIZAÇÃO DE FLUXO] */
+#menu-navegacao-soberana ul {
     display: flex;
+    list-style: none;
     gap: 25px;
+    flex-wrap: wrap;
 }
 
-.status-item {
+#menu-navegacao-soberana a {
+    text-decoration: none;
+    color: var(--vibracao-branco);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: var(--transicao-suave);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+#menu-navegacao-soberana a:hover {
+    color: var(--vibracao-azul);
+    background: var(--vidro-blindado);
+}
+
+#status-imunologico {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 1px;
+    gap: 20px;
+    margin-top: 10px;
 }
 
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 5px currentColor);
-}
-
-.pulse-green { color: var(--dna-green); background: var(--dna-green); animation: pulse 1.5s infinite; }
-.pulse-blue { color: var(--dna-blue); background: var(--dna-blue); animation: pulse 1.5s infinite 0.5s; }
-.pulse-white { color: var(--dna-white); background: var(--dna-white); animation: pulse 1.5s infinite 1s; }
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.3); opacity: 0.4; }
-}
-
-/* [5. SEÇÕES DE MATERIALIZAÇÃO - O CORPO DO CÓDIGO] */
-section {
-    padding: 140px 10% 80px;
-    border-bottom: 1px solid var(--glass-stroke);
-}
-
-.glass-container {
-    background: var(--glass-fill);
-    border: 1px solid var(--glass-stroke);
-    border-radius: 32px;
-    padding: 4rem;
-    box-shadow: var(--shadow-glow);
-    transition: transform 0.4s ease;
-}
-
-.glass-container:hover {
-    transform: translateY(-10px);
-    border-color: rgba(0, 245, 160, 0.3);
-}
-
-/* [6. TIPOGRAFIA E CATEGORIZAÇÃO] */
-h2.reveal-text {
-    font-size: 3.5rem;
+#status-elements, #status-network, #status-console {
+    font-size: 0.7rem;
     font-weight: 900;
-    line-height: 1.1;
+    padding: 5px 12px;
+    border-radius: 50px;
+    border: 1px solid currentColor;
+    text-transform: uppercase;
+}
+
+#status-elements { color: var(--vibracao-verde); }
+#status-network { color: var(--vibracao-azul); }
+#status-console { color: var(--vibracao-branco); }
+
+/* [CAMADA 5: SEÇÕES DE MATERIALIZAÇÃO - O CORPO ESTRUTURAL] */
+section {
+    padding: 8rem 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--borda-soberana);
+}
+
+h2, h3 {
     margin-bottom: 2rem;
-    background: linear-gradient(to right, #fff, var(--dna-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
-.grid-specs {
+h2 { font-size: 3rem; color: var(--vibracao-branco); }
+h3 { font-size: 1.8rem; color: var(--vibracao-azul); }
+
+/* [CAMADA 6: HARDWARE E DNA - SINCRONIZAÇÃO POCO X6 PRO] */
+#camadas-hardware {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 3rem;
 }
 
-.spec-item {
-    padding: 30px;
-    background: rgba(255,255,255,0.01);
+#camada-processamento, #camada-biometrica, #camada-geografica {
+    background: var(--vidro-blindado);
+    padding: 2.5rem;
     border-radius: 20px;
-    border-top: 2px solid var(--dna-blue);
+    border: 1px solid var(--borda-soberana);
+    transition: var(--transicao-suave);
+    text-align: center;
 }
 
-/* [7. MARKET LAYER: A CÉLULA VIVA] */
-.cta-download {
-    display: inline-block;
-    background: var(--dna-green);
-    color: var(--bg-soberano);
-    padding: 20px 50px;
+#camadas-hardware div:hover {
+    border-color: var(--vibracao-azul);
+    transform: translateY(-10px);
+    box-shadow: var(--sombra-dna);
+}
+
+/* [CAMADA 7: O MERCADO DA CÉLULA - COMPATIBILIDADE E CONVERSÃO] */
+#box-venda {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 212, 255, 0.05) 100%);
+    padding: 5rem;
+    border-radius: 40px;
+    border: 1px solid var(--vibracao-verde);
+    text-align: center;
+}
+
+#btn-gerar-dna {
+    margin-top: 2rem;
+    padding: 1.5rem 4rem;
+    background: var(--vibracao-verde);
+    color: var(--fundo-vazio);
+    border: none;
     border-radius: 100px;
     font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.3s;
-    cursor: pointer;
+    transition: var(--transicao-suave);
 }
 
-.cta-download:hover {
-    background: var(--dna-white);
-    box-shadow: 0 10px 40px rgba(255,255,255,0.2);
+#btn-gerar-dna:hover {
+    box-shadow: 0 0 40px var(--vibracao-verde);
+    transform: scale(1.05);
 }
 
-/* [8. ADAPTAÇÃO POCO X6 PRO / MOBILE PLANET] */
-@media (max-width: 1080px) {
-    .grid-specs { grid-template-columns: 1fr; }
-    h2.reveal-text { font-size: 2.2rem; }
-    section { padding: 100px 5% 40px; }
+/* [CAMADA 8: BLINDAGEM E RODAPÉ - ASSINATURA DO ARQUITETO] */
+#rodape-arquiteto {
+    padding: 5rem 10%;
+    text-align: center;
+    background: var(--fundo-planeta);
 }
 
+#assinatura-digital {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-family: monospace;
+    color: var(--vibracao-verde);
+    font-size: 0.8rem;
+}
+
+/* [CAMADA 9: RESPONSIVIDADE - ADAPTAÇÃO AO MOBILE PLANET] */
+@media (max-width: 1024px) {
+    section { padding: 4rem 5%; }
+    h2 { font-size: 2.2rem; }
+    #box-venda { padding: 2rem; }
+    header#sistema-cabecalho { padding: 1.5rem 5%; }
+}
+
+/* [EXPANSÃO ADICIONAL PARA MANTER A HARMONIA COM 200 LINHAS DE INDEX] */
+/* Estilização de elementos secundários para garantir que nada seja ignorado */
+address { font-style: normal; margin-bottom: 1rem; }
+p { margin-bottom: 1.5rem; opacity: 0.9; }
+ol { list-style-position: inside; margin-top: 2rem; }
+li { margin-bottom: 1rem; padding: 10px; border-bottom: 1px dashed var(--borda-soberana); }
