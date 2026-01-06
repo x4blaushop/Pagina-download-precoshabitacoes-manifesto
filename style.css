@@ -1,421 +1,230 @@
 /* ==========================================================
-   CAMADA 1 — DNA VISUAL (IDENTIDADE E FUNDAÇÃO)
-   Lógica: Definição da "Capa de Ozônio" do sistema.
-   Função: Eliminar o ruído visual e estabelecer o padrão de luxo técnico.
+   CSS — PARTE 1/5
+   FUNDAÇÃO · VARIÁVEIS · BASE GLOBAL
    ========================================================== */
 
 :root {
-    /* Paleta de Soberania */
-    --fundo-soberano: #000000;       /* O silêncio absoluto */
-    --capital-gold: #FFDF00;         /* R$ 268B materializados */
-    --saneamento-green: #00FF41;     /* A cor da saúde do sistema */
-    --texto-primario: #FFFFFF;       /* Pureza da informação */
-    --texto-secundario: #888888;     /* Ruído controlado */
-    --linha-divisora: rgba(255, 255, 255, 0.1);
-    
-    /* Espaçamento e Harmonia (Arquitetura Consciente) */
     --gap-massivo: 12vh;
-    --borda-soberana: 1px solid var(--linha-divisora);
+    --capital-gold: #ffd700;
+    --texto-primario: #ffffff;
+    --texto-secundario: #a0a0a0;
+    --linha-divisora: rgba(255,255,255,0.15);
+    --borda-soberana: 1px solid rgba(255,255,255,0.2);
+    --saneamento-green: #00ff9c;
 }
 
-/* 1.1 - RESET E SANEAMENTO DE BASE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-    background-color: var(--fundo-soberano);
+    background: #000;
     color: var(--texto-primario);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased; /* Saneamento de fontes */
 }
 
-/* 1.2 - TIPOGRAFIA DE AUTORIDADE */
-h1, h2, h3 {
-    text-transform: uppercase;
-    letter-spacing: 8px;
-    font-weight: 200;
+/* ==========================================================
+   CSS — PARTE 2/5
+   AUTORIDADE · PROTEÇÃO · REGRAS
+   ========================================================== */
+
+#camada-autoridade {
+    padding: var(--gap-massivo) 10%;
+    border-bottom: var(--borda-soberana);
+    background: linear-gradient(to bottom, #050505, #000);
 }
 
-h1 {
-    font-size: clamp(2rem, 8vw, 5rem);
-    margin-bottom: 20px;
-}
-
-h2 {
+#camada-autoridade p {
+    max-width: 800px;
     font-size: 1.2rem;
-    color: var(--capital-gold);
-    margin-bottom: 40px;
+    font-weight: 300;
+    margin-bottom: 25px;
+    color: var(--texto-secundario);
 }
 
-/* 1.3 - COMPONENTES RAIZ (O CARTÓRIO VISUAL) */
-.bloco-massivo-limpo {
+#camada-protecao {
+    padding: var(--gap-massivo) 10%;
+    border-bottom: var(--borda-soberana);
+    background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+}
+
+#camada-protecao p {
+    max-width: 800px;
+    font-size: 1.15rem;
+    margin-bottom: 25px;
+    color: var(--texto-secundario);
+}
+
+#camada-regras {
     padding: var(--gap-massivo) 10%;
     border-bottom: var(--borda-soberana);
 }
 
-.valor-global {
-    font-family: monospace;
-    font-size: 0.9rem;
-    color: var(--saneamento-green);
-    letter-spacing: 3px;
-    margin-top: 10px;
-}
-
-/* 1.4 - ESTILIZAÇÃO DO MANIFESTO (CAMADA 1 HUMANA) */
-.bloco-contexto {
-    background: linear-gradient(to bottom, #050505, #000);
-    padding: var(--gap-massivo) 10%;
-    font-size: 1.4rem;
-    font-weight: 300;
-}
-
-.bloco-contexto p {
-    max-width: 800px;
-    margin-bottom: 20px;
-}
-/* ==========================================================
-   CAMADA 2 — ESTRUTURA GLOBAL E FLUXO DE VALOR
-   Lógica: Organização dos estados e categorização econômica.
-   Função: Criar a distinção entre Operar, Existir e Instituir.
-   ========================================================== */
-
-/* 2.1 - O ORGANISMO NACIONAL (CONTAINER) */
-main#organismo-nacional {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-/* 2.2 - A UNIDADE HABITACIONAL (ESTADOS) */
-.unidade-habitacional {
-    padding: 8vh 10%;
-    border-bottom: 1px solid var(--linha-divisora);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.unidade-habitacional:hover {
-    background: rgba(255, 255, 255, 0.02);
-    padding-left: 12%; /* Movimento de expansão harmônica */
-}
-
-/* 2.3 - PREÇO SOBERANO (A VOZ DO CAPITAL) */
-.preco-soberano {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    letter-spacing: -4px;
-    color: var(--texto-primario);
-    margin: 20px 0;
-    line-height: 1;
-}
-
-/* 2.4 - DESCRIÇÃO HUMANA (TRADUÇÃO POR ESTADO) */
-.descricao-humana p {
-    color: var(--texto-secundario);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin-bottom: 15px;
-}
-
-.descricao-humana strong {
-    color: var(--capital-gold);
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* 2.5 - STATUS DO SISTEMA (A CONFIRMAÇÃO DO DNA) */
-.status-sistema {
-    display: inline-block;
-    font-family: monospace;
-    font-size: 0.7rem;
-    color: var(--saneamento-green);
-    border: 1px solid var(--saneamento-green);
-    padding: 5px 12px;
-    margin-top: 20px;
-    letter-spacing: 2px;
-}
-
-/* 2.6 - ADAPTAÇÃO PARA DISPOSITIVOS (MÓVEL/POCO X6 PRO) */
-@media (max-width: 768px) {
-    .unidade-habitacional {
-        padding: 6vh 5%;
-    }
-    
-    .preco-soberano {
-        font-size: 3rem;
-        letter-spacing: -2px;
-    }
-}
-/* ==========================================================
-   CAMADA 3 — HIERARQUIA E PROTEÇÃO (ESCUDO E MATRIZ)
-   Lógica: Onde o sistema se defende e o Arquiteto se manifesta.
-   Função: Criar a barreira visual contra a extração de dados.
-   ========================================================== */
-
-/* 3.1 - O ESCUDO SOBERANO (DEFESA ATIVA) */
-.bloco-defesa-ativa {
-    background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
-    border-top: 2px solid var(--linha-divisora);
-    padding: var(--gap-massivo) 10%;
-}
-
-.bloco-defesa {
-    border: 1px double var(--linha-divisora);
-    padding: 60px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.01);
-    margin-bottom: var(--gap-massivo);
-}
-
-.alerta-seguranca {
-    color: #ff0000; /* O único ponto de urgência: Proteção */
-    font-family: monospace;
-    font-size: 0.8rem;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-}
-
-/* 3.2 - O SANEAMENTO ESTATAL (GOVERNANÇA) */
-.bloco-governanca {
-    border-left: 2px solid var(--saneamento-green);
-    padding: 40px;
-    margin-bottom: var(--gap-massivo);
-    background: linear-gradient(90deg, rgba(0, 255, 65, 0.03) 0%, transparent 100%);
-}
-
-/* 3.3 - A MATRIZ SOBERANA (NÚCLEO DO ARQUITETO) */
-.bloco-arquiteto {
-    background: #000;
-    border: 1px solid var(--capital-gold);
-    padding: 80px 10%;
-    text-align: center;
-    box-shadow: inset 0 0 100px rgba(255, 223, 0, 0.05);
-    position: relative;
-}
-
-.identidade-arquiteto {
-    font-size: 1.5rem;
-    color: var(--capital-gold);
-    letter-spacing: 12px;
-    margin: 30px 0;
-    font-weight: 100;
-    text-shadow: 0 0 20px rgba(255, 223, 0, 0.3);
-}
-
-.status-estabilidade {
-    font-family: monospace;
-    font-size: 0.7rem;
-    color: var(--texto-secundario);
-    letter-spacing: 4px;
+.lista-regras {
+    list-style: none;
     margin-top: 40px;
-    border-top: 1px solid var(--linha-divisora);
-    padding-top: 20px;
-    display: inline-block;
+    max-width: 700px;
 }
 
-/* 3.4 - EFEITOS DE TRANSMUTAÇÃO (DOR -> SOLUÇÃO) */
-.descricao-humana p em {
-    display: block;
-    margin-top: 20px;
-    color: var(--saneamento-green);
-    font-style: normal;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+.lista-regras li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--texto-secundario);
 }
+
+.lista-regras li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    font-size: 0.6rem;
+    color: var(--capital-gold);
+}
+
 /* ==========================================================
-   CAMADA 4 — ECONOMIA DO SISTEMA (TRANSPARÊNCIA E VALOR)
-   Lógica: Diferenciação visual baseada na responsabilidade social.
-   Função: Tornar o custo institucional pesado e o acesso civil leve.
+   CSS — PARTE 3/5
+   TERRITÓRIO DIGITAL · MATRIZ DE ESTADOS
    ========================================================== */
 
-/* 4.1 - O GRID ECONÔMICO */
-#economia-soberana {
-    background-color: #000;
+.bloco-territorial {
     padding: var(--gap-massivo) 10%;
+    border-bottom: var(--borda-soberana);
 }
 
-.grid-precos {
+.descricao-territorio {
+    max-width: 800px;
+    font-size: 1.1rem;
+    color: var(--texto-secundario);
+    margin-bottom: 60px;
+}
+
+.matriz-estados {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 40px;
-    margin: 60px 0;
 }
 
-/* 4.2 - ESTILIZAÇÃO POR NÍVEL DE RESPONSABILIDADE */
-
-/* R$ 1.000,00 — LIBERDADE MÍNIMA */
-.level-1k {
+.matriz-estados .unidade-habitacional {
+    padding: 40px;
     border: 1px solid var(--linha-divisora);
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.02);
-    transition: border 0.3s ease;
+    background: rgba(255,255,255,0.015);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.level-1k:hover {
-    border-color: var(--texto-primario);
+.matriz-estados .unidade-habitacional:hover {
+    transform: translateY(-6px);
+    border-color: var(--capital-gold);
+    background: rgba(255,223,0,0.03);
 }
 
-/* R$ 5.000,00 — ESTABILIDADE CONSCIENTE (O PILAR) */
-.level-5k {
-    border: 1px solid var(--capital-gold);
-    padding: 40px;
-    background: linear-gradient(145deg, rgba(255, 223, 0, 0.05) 0%, transparent 100%);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    transform: scale(1.02); /* Destaque de importância */
-}
-
-/* R$ 500.000,00+ — RESPONSABILIDADE HISTÓRICA (INSTITUCIONAL) */
-.level-institucional {
-    border: 1px solid #ff0000;
-    padding: 40px;
-    background: #050000;
-    filter: grayscale(0.5); /* Estética de seriedade institucional */
-}
-
-.level-institucional:hover {
-    filter: grayscale(0);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
-}
-
-/* 4.3 - TIPOGRAFIA DE VALOR */
-.valor {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin: 20px 0;
-    letter-spacing: -2px;
-}
-
-.level-5k .valor { color: var(--capital-gold); }
-.level-institucional .valor { color: #ff0000; }
-
-.tag-publico {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--texto-secundario);
-    display: block;
-    margin-bottom: 10px;
-}
-
-/* 4.4 - NOTA ECONÔMICA (TRANSPARÊNCIA) */
-.nota-economica {
-    margin-top: 60px;
-    padding: 30px;
-    border-top: 1px solid var(--linha-divisora);
+.matriz-estados h3 {
     font-size: 0.9rem;
-    color: var(--texto-secundario);
-    line-height: 1.8;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
 }
 
-.nota-economica strong {
-    color: var(--saneamento-green);
-    font-weight: 400;
+.matriz-estados .valor {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    color: var(--capital-gold);
 }
+
+.matriz-estados .perfil {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--texto-secundario);
+}
+
 /* ==========================================================
-   CAMADA 5 — DIAGNÓSTICO E FECHAMENTO (CHAVE NA MÃO)
-   Lógica: Estética da estabilidade e confirmação do DNA 2026.
-   Função: Provar visualmente que o sistema está em silêncio e limpo.
+   CSS — PARTE 4/5
+   DIAGNÓSTICO · ESTADO DO SISTEMA
    ========================================================== */
 
-/* 5.1 - O PAINEL DE CONTROLE (DIAGNÓSTICO) */
-#diagnostico-final-habitacao {
-    background-color: #050505;
-    border-top: 1px solid var(--saneamento-green);
+#diagnostico-sistema {
     padding: var(--gap-massivo) 10%;
+    background: #050505;
+    border-top: 1px solid var(--saneamento-green);
 }
 
-.quadro-diagnostico {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin: 40px 0;
+.lista-diagnostico {
+    list-style: none;
+    margin-top: 40px;
+    max-width: 700px;
 }
 
-.item-status {
-    flex: 1;
-    min-width: 250px;
-    padding: 25px;
-    background: rgba(0, 255, 65, 0.02);
-    border: 1px solid rgba(0, 255, 65, 0.1);
-    border-radius: 2px;
-}
-
-.item-status strong {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--texto-secundario);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.item-status span {
-    color: var(--saneamento-green);
+.lista-diagnostico li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--linha-divisora);
     font-family: monospace;
     font-size: 0.9rem;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: var(--saneamento-green);
 }
 
-/* 5.2 - O MANIFESTO FINAL (SANEAMENTO DE LINGUAGEM) */
-.manifesto-final {
-    margin-top: 60px;
-    border-left: 1px solid var(--capital-gold);
-    padding-left: 30px;
-    font-size: 1.1rem;
+/* ==========================================================
+   CSS — PARTE 5/5
+   ENCERRAMENTO · RODAPÉ · MOBILE
+   ========================================================== */
+
+#encerramento-manifesto {
+    padding: var(--gap-massivo) 10%;
+    background: linear-gradient(to bottom, #000, #020202);
+    font-size: 1.3rem;
     font-weight: 200;
-    max-width: 700px;
-    color: var(--texto-primario);
 }
 
-/* 5.3 - RODAPÉ SOBERANO (O SELO DO ARQUITETO) */
+#encerramento-manifesto p {
+    max-width: 700px;
+    margin-bottom: 25px;
+}
+
 .fechamento-soberano {
     padding: 60px 10%;
-    background-color: #000;
+    background: #000;
     border-top: 1px solid var(--linha-divisora);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 30px;
+    gap: 20px;
 }
 
-.assinatura-arquiteto {
-    display: block;
-    font-size: 1.2rem;
-    letter-spacing: 10px;
+.fechamento-soberano .assinatura-arquiteto {
+    font-size: 1.1rem;
+    letter-spacing: 8px;
     color: var(--capital-gold);
-    margin-bottom: 10px;
 }
 
-.timestamp-digital {
-    font-size: 0.7rem;
-    color: var(--texto-secundario);
-    letter-spacing: 4px;
-}
-
-.status-diagnostico {
-    background: var(--saneamento-green);
-    color: #000;
-    padding: 8px 25px;
+.fechamento-soberano .status-final {
+    font-family: monospace;
     font-size: 0.8rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-top: 20px;
+    letter-spacing: 3px;
+    color: var(--saneamento-green);
 }
 
-/* 5.4 - SANEAMENTO DE IMPRESSÃO (SOBERANIA NO PAPEL) */
-@media print {
-    body { background: #fff; color: #000; }
-    .fechamento-soberano { border: 1px solid #000; }
+.fechamento-soberano .localizacao {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--texto-secundario);
 }
 
-
-
-
+@media (max-width: 768px) {
+    #camada-autoridade,
+    #camada-protecao,
+    #camada-regras,
+    .bloco-territorial,
+    #diagnostico-sistema,
+    #encerramento-manifesto,
+    .fechamento-soberano {
+        padding: 8vh 6%;
+    }
+}
