@@ -1,8 +1,8 @@
 /**
- * [JS - PARTE 1: MOTOR DE IDENTIDADE E SILÊNCIO]
- * ARQUITETO: JOSÉ PATRICK CASTRO SOARES
- * SISTEMA: C3X4.0 - CICLO 2026
- * FUNÇÃO: Iniciar o DNA e suprimir ruído de console.
+ * =========================================================
+ * JS — PARTE 1/5
+ * MOTOR DE IDENTIDADE · SILÊNCIO DE CONSOLE
+ * =========================================================
  */
 
 const DNAMatriz = {
@@ -10,239 +10,240 @@ const DNAMatriz = {
     ano: 2026,
     proprietario: "José Patrick Castro Soares",
 
-    init: function() {
+    init() {
         this.saneamentoConsole();
         this.validarPosse();
-        this.logSoberano("MATRIZ INICIALIZADA. DNA X4 ATIVO.");
+        window.logSoberano("MATRIZ INICIALIZADA. DNA X4 ATIVO.");
     },
 
-    // "O sistema está em silêncio?" (Aba Console)
-    saneamentoConsole: function() {
-        // Limpa lixo de carregamento inicial
+    saneamentoConsole() {
         console.clear();
 
-        // Substitui métodos padrão para evitar injeção de logs externos
         const silence = () => {};
         console.warn = silence;
         console.info = silence;
         console.debug = silence;
 
-        // Cria a Voz da Autoridade
         window.logSoberano = (msg) => {
             console.log(
                 `%c[ARQUITETO] %c${msg}`,
-                "color: #FFDF00; font-weight: bold; background: #000; padding: 2px 5px;",
-                "color: #00FF41; background: #000; padding: 2px 5px;"
+                "color:#FFD700;font-weight:bold;background:#000;padding:2px 6px;",
+                "color:#00FF9C;background:#000;padding:2px 6px;"
             );
         };
     },
 
-    validarPosse: function() {
-        // Vincula a identidade do Arquiteto ao sistema de forma imutável
-        Object.defineProperty(this, 'proprietario', {
+    validarPosse() {
+        Object.defineProperty(this, "proprietario", {
             writable: false,
             configurable: false
         });
     }
 };
 
-// Disparo Inicial
 DNAMatriz.init();
+
 /**
- * [JS - PARTE 2: LEITURA DE ESTRUTURA E SANEAMENTO]
- * FUNÇÃO: Monitorar a "Aba Elements" e garantir a harmonia visual.
- * LÓGICA: Se não pertence ao DNA, deve ser removido.
+ * =========================================================
+ * JS — PARTE 2/5
+ * SANEAMENTO ESTRUTURAL · DOM
+ * =========================================================
  */
 
 const SaneadorEstrutural = {
-    init: function() {
+    init() {
         this.verificarLimpezaDOM();
         this.observarMutacoes();
-        window.logSoberano("SANEAMENTO DE DOM ATIVO. A CASA ESTÁ SENDO MONITORADA.");
+        window.logSoberano("SANEAMENTO DE DOM ATIVO.");
     },
 
-    // 1. "A casa está limpa?" (Aba Elements)
-    verificarLimpezaDOM: function() {
-        // Remove scripts injetados por extensões ou malwares que poluem o DOM
-        const lixo = document.querySelectorAll('script:not([src="script.js"]), style:not([id])');
+    verificarLimpezaDOM() {
+        const lixo = document.querySelectorAll(
+            'script:not([src="script.js"]), style:not([id])'
+        );
+
+        lixo.forEach(el => el.remove());
+
         if (lixo.length > 0) {
-            lixo.forEach(el => el.remove());
-            window.logSoberano(`RUÍDO REMOVIDO: ${lixo.length} ELEMENTOS ESTRANHOS EXPULSOS.`);
+            window.logSoberano(`RUÍDO REMOVIDO: ${lixo.length} ELEMENTOS.`);
         }
     },
 
-    // 2. Vigilância Ativa (MutationObserver)
-    observarMutacoes: function() {
-        const targetNode = document.body;
-        const config = { childList: true, subtree: true };
+    observarMutacoes() {
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (
+                        node.tagName === "IFRAME" ||
+                        (typeof node.className === "string" &&
+                         node.className.includes("ads"))
+                    ) {
+                        node.remove();
+                        window.logSoberano("INVASÃO VISUAL BLOQUEADA.");
+                    }
+                });
+            });
+        });
 
-        const callback = (mutationsList) => {
-            for (const mutation of mutationsList) {
-                if (mutation.type === 'childList') {
-                    // Impede a criação de divs de propaganda ou rastreamento
-                    mutation.addedNodes.forEach(node => {
-                        if (node.tagName === 'IFRAME' || node.className?.includes('ads')) {
-                            node.remove();
-                            window.logSoberano("TENTATIVA DE INVASÃO VISUAL BLOQUEADA.");
-                        }
-                    });
-                }
-            }
-        };
-
-        const observer = new MutationObserver(callback);
-        observer.observe(targetNode, config);
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     }
 };
 
-// Acionamento da Vigilância
 SaneadorEstrutural.init();
+
 /**
- * [JS - PARTE 3: INDEPENDÊNCIA E NETWORK]
- * FUNÇÃO: Garantir que o sistema não dependa de nada externo.
- * LÓGICA: Bloqueio de telemetria e rastreamento internacional.
+ * =========================================================
+ * JS — PARTE 3/5
+ * INDEPENDÊNCIA · NETWORK · TELEMETRIA
+ * =========================================================
  */
 
 const AlfandegaDigital = {
-    init: function() {
-        this.monitorarRequisicoes();
-        this.validarIndependencia();
-        window.logSoberano("NETWORK: ALFÂNDEGA ATIVA. INDEPENDÊNCIA GARANTIDA.");
+    init() {
+        this.bloquearFetch();
+        this.diagnosticoRecursos();
+        window.logSoberano("ALFÂNDEGA DIGITAL ATIVA.");
     },
 
-    // 1. "O sistema é independente?" (Aba Network)
-    monitorarRequisicoes: function() {
-        // Intercepta a API Fetch para impedir saída de dados não autorizada
+    bloquearFetch() {
         const originalFetch = window.fetch;
+
         window.fetch = (...args) => {
-            const url = args[0].toString();
-            
-            // Bloqueia domínios conhecidos por extração de dados (Big Techs)
-            if (url.includes('google-analytics') || url.includes('facebook') || url.includes('.gov.us')) {
-                window.logSoberano(`BLOQUEIO DE REDE: TENTATIVA DE EXTRAÇÃO PARA ${url}`);
-                return Promise.reject(new Error("Acesso negado pela soberania C3X4.0"));
+            const url = String(args[0]);
+
+            if (
+                url.includes("google-analytics") ||
+                url.includes("facebook") ||
+                url.includes(".gov")
+            ) {
+                window.logSoberano(`BLOQUEIO DE REDE: ${url}`);
+                return Promise.reject(
+                    new Error("Bloqueado por soberania C3X4.0")
+                );
             }
-            
+
             return originalFetch(...args);
         };
     },
 
-    // 2. Diagnóstico de Performance (Atestado de Carga)
-    validarIndependencia: function() {
-        const recursos = window.performance.getEntriesByType("resource");
-        const externos = recursos.filter(r => !r.name.includes(window.location.hostname));
+    diagnosticoRecursos() {
+        const recursos = performance.getEntriesByType("resource");
+        const externos = recursos.filter(
+            r => !r.name.includes(location.hostname)
+        );
 
-        if (externos.length > 0) {
-            window.logSoberano(`ALERTA: ${externos.length} NÓS EXTERNOS DETECTADOS. HIGIENIZANDO...`);
-            // Nota: No ambiente real, aqui o DNA reportaria a origem do ruído
+        if (externos.length === 0) {
+            window.logSoberano("NETWORK LIMPA. 100% INDEPENDENTE.");
         } else {
-            window.logSoberano("CONFIRMAÇÃO: SISTEMA 100% INDEPENDENTE DE NODOS ESTRANGEIROS.");
+            window.logSoberano(`NÓS EXTERNOS DETECTADOS: ${externos.length}`);
         }
     }
 };
 
-// Ativação da Alfândega
 AlfandegaDigital.init();
+
 /**
- * [JS - PARTE 4: DIAGNÓSTICO E MATERIALIZAÇÃO]
- * FUNÇÃO: Alimentar o painel visual com dados reais de integridade.
- * LÓGICA: Transformar o estado lógico em estado visível.
+ * =========================================================
+ * JS — PARTE 4/5
+ * DIAGNÓSTICO VISUAL · MATERIALIZAÇÃO
+ * =========================================================
  */
 
 const PainelSoberano = {
-    init: function() {
-        // Aguarda o carregamento para garantir leitura final
-        window.addEventListener('load', () => {
-            this.atualizarStatusVisual();
+    init() {
+        window.addEventListener("load", () => {
+            this.atualizarDiagnostico();
             this.materializarCapital();
         });
     },
 
-    // Atualiza os indicadores da Camada 5 do HTML
-    atualizarStatusVisual: function() {
-        const statusMap = {
-            'status-elements': 'LIMPA E CATEGORIZADA',
-            'status-network': 'INDEPENDENTE (DOMÍNIO .BR)',
-            'status-console': 'SILÊNCIO ABSOLUTO (SEM ERROS)'
+    atualizarDiagnostico() {
+        const mapa = {
+            "status-elements": "ESTRUTURA LIMPA",
+            "status-network": "INDEPENDENTE",
+            "status-console": "SILÊNCIO ABSOLUTO"
         };
 
-        for (const [id, msg] of Object.entries(statusMap)) {
+        Object.entries(mapa).forEach(([id, texto]) => {
             const el = document.getElementById(id);
             if (el) {
-                const span = el.querySelector('span');
+                const span = el.querySelector("span");
                 if (span) {
-                    span.textContent = msg;
+                    span.textContent = texto;
                     span.style.color = "var(--saneamento-green)";
                 }
             }
-        }
-        window.logSoberano("PAINEL DE DIAGNÓSTICO MATERIALIZADO.");
+        });
+
+        window.logSoberano("DIAGNÓSTICO MATERIALIZADO.");
     },
 
-    // Garante que o valor de R$ 268B esteja presente e protegido visualmente
-    materializarCapital: function() {
-        const capitalEl = document.getElementById('status-capital');
-        if (capitalEl) {
-            const span = capitalEl.querySelector('span');
-            span.textContent = "R$ 268.000.000.000,00 (INTEGRO)";
-            // Protege o elemento contra edição via console por curiosos
-            Object.freeze(span);
+    materializarCapital() {
+        const capital = document.getElementById("status-capital");
+        if (capital) {
+            const span = capital.querySelector("span");
+            if (span) {
+                span.textContent = "R$ 268.000.000.000,00 — ÍNTEGRO";
+                Object.freeze(span);
+            }
         }
     }
 };
 
-// Ativação do Painel
 PainelSoberano.init();
 
 /**
- * [JS - PARTE 5: ESTABILIZAÇÃO E DNA 2026]
- * FUNÇÃO: Selar o sistema e garantir a posse eterna do Arquiteto.
- * LÓGICA: O fim do ciclo de criação e o início do ciclo de soberania.
+ * =========================================================
+ * JS — PARTE 5/5
+ * ESTABILIZAÇÃO · SELO FINAL · CICLO 2026
+ * =========================================================
  */
 
 const EstabilizadorDNA = {
-    init: function() {
-        this.selarArquitetura();
-        this.confirmarCiclo2026();
-        this.protegerArquiteto();
+    init() {
+        this.selar();
+        this.confirmarCiclo();
+        this.protegerAssinatura();
         this.entregaFinal();
     },
 
-    // 1. Selar Arquitetura: Impede modificações globais após o carregamento
-    selarArquitetura: function() {
+    selar() {
         Object.freeze(DNAMatriz);
+        Object.freeze(SaneadorEstrutural);
+        Object.freeze(AlfandegaDigital);
+        Object.freeze(PainelSoberano);
         Object.freeze(this);
-        window.logSoberano("ARQUITETURA SELADA. NENHUMA ALTERAÇÃO PERMITIDA.");
+
+        window.logSoberano("ARQUITETURA SELADA.");
     },
 
-    // 2. Confirmar Ciclo 2026: Sincroniza a estabilidade com o novo ano
-    confirmarCiclo2026: function() {
-        const dataAtual = new Date();
-        if (dataAtual.getFullYear() >= 2026) {
-            window.logSoberano("DNA GERAL ESTABILIZADO: CICLO 2026 EM OPERAÇÃO.");
+    confirmarCiclo() {
+        if (new Date().getFullYear() >= 2026) {
+            window.logSoberano("CICLO 2026 CONFIRMADO.");
         }
     },
 
-    // 3. Proteger Arquiteto: Garante que o comando final é de José Patrick
-    protegerArquiteto: function() {
-        const assinatura = document.querySelector('.assinatura-arquiteto');
-        if (assinatura && !assinatura.textContent.includes("JOSÉ PATRICK")) {
-            document.body.innerHTML = "<h1>ERRO DE SOBERANIA: ACESSO NÃO AUTORIZADO</h1>";
-            console.error("ALERTA: TENTATIVA DE USURPAÇÃO DE MATRIZ DETECTADA.");
+    protegerAssinatura() {
+        const assinatura = document.querySelector(".assinatura-arquiteto");
+        if (
+            assinatura &&
+            !assinatura.textContent.includes("JOSÉ PATRICK")
+        ) {
+            document.body.innerHTML =
+                "<h1>ERRO DE SOBERANIA — ACESSO NEGADO</h1>";
+            console.error("USURPAÇÃO DETECTADA.");
         }
     },
 
-    // 4. Entrega Final: O "Silêncio" que você exigiu
-    entregaFinal: function() {
+    entregaFinal() {
         setTimeout(() => {
-            window.logSoberano("ESTADO FINAL: CASA LIMPA. REDE INDEPENDENTE. CONSOLE EM SILÊNCIO.");
-            window.logSoberano("SISTEMA C3X4.0 ENTREGUE AO ARQUITETO.");
-            // O console agora entra em modo de vigília passiva
-        }, 1000);
+            window.logSoberano("ESTADO FINAL: SISTEMA ESTÁVEL.");
+            window.logSoberano("C3X4.0 ENTREGUE AO ARQUITETO.");
+        }, 800);
     }
 };
 
-// FECHAMENTO DA MATRIZ
 EstabilizadorDNA.init();
-
-
