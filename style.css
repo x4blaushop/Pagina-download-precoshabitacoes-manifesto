@@ -1,1 +1,165 @@
+/* ARQUIVO: style.css | VERSÃO: 2.0 (EXPANSÃO)
+   SISTEMA: C3X4.0_Brasil_Independente
+   CONEXÃO: Raiz Imutável (Index 147 Linhas)
+   DESIGN: Glassmorphism Soberano & UI Incorruptível
+*/
+
+/* [1. DNA DE CORES E IDENTIDADE] */
+:root {
+    --bg-soberano: #020609;       /* Profundidade de núcleo de servidor */
+    --dna-green: #00f5a0;         /* Integridade Vital (Elements) */
+    --dna-blue: #00d9ff;          /* Independência de Rede (Network) */
+    --dna-white: #f8f9fa;         /* Silêncio Operacional (Console) */
+    --glass-fill: rgba(255, 255, 255, 0.03);
+    --glass-stroke: rgba(255, 255, 255, 0.08);
+    --blur-intensity: 20px;
+    --font-header: 'Inter', system-ui, -apple-system, sans-serif;
+    --shadow-glow: 0 0 30px rgba(0, 245, 160, 0.15);
+}
+
+/* [2. SANEAMENTO E FLUXO - A CASA ESTÁ LIMPA] */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: var(--bg-soberano);
+    color: var(--dna-white);
+    font-family: var(--font-header);
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+/* [3. HEADER: O COMANDO CENTRAL] */
+.soberania-header {
+    height: 90px;
+    background: rgba(2, 6, 9, 0.8);
+    backdrop-filter: blur(var(--blur-intensity));
+    border-bottom: 1px solid var(--glass-stroke);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.brand-identity {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-identity h1 {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: var(--dna-blue);
+    text-transform: uppercase;
+}
+
+/* [4. STATUS DINÂMICO - PULSAÇÃO DO DNA] */
+.system-status {
+    margin-left: auto;
+    display: flex;
+    gap: 25px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+.pulse-green { color: var(--dna-green); background: var(--dna-green); animation: pulse 1.5s infinite; }
+.pulse-blue { color: var(--dna-blue); background: var(--dna-blue); animation: pulse 1.5s infinite 0.5s; }
+.pulse-white { color: var(--dna-white); background: var(--dna-white); animation: pulse 1.5s infinite 1s; }
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.4; }
+}
+
+/* [5. SEÇÕES DE MATERIALIZAÇÃO - O CORPO DO CÓDIGO] */
+section {
+    padding: 140px 10% 80px;
+    border-bottom: 1px solid var(--glass-stroke);
+}
+
+.glass-container {
+    background: var(--glass-fill);
+    border: 1px solid var(--glass-stroke);
+    border-radius: 32px;
+    padding: 4rem;
+    box-shadow: var(--shadow-glow);
+    transition: transform 0.4s ease;
+}
+
+.glass-container:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 245, 160, 0.3);
+}
+
+/* [6. TIPOGRAFIA E CATEGORIZAÇÃO] */
+h2.reveal-text {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #fff, var(--dna-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.grid-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.spec-item {
+    padding: 30px;
+    background: rgba(255,255,255,0.01);
+    border-radius: 20px;
+    border-top: 2px solid var(--dna-blue);
+}
+
+/* [7. MARKET LAYER: A CÉLULA VIVA] */
+.cta-download {
+    display: inline-block;
+    background: var(--dna-green);
+    color: var(--bg-soberano);
+    padding: 20px 50px;
+    border-radius: 100px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.cta-download:hover {
+    background: var(--dna-white);
+    box-shadow: 0 10px 40px rgba(255,255,255,0.2);
+}
+
+/* [8. ADAPTAÇÃO POCO X6 PRO / MOBILE PLANET] */
+@media (max-width: 1080px) {
+    .grid-specs { grid-template-columns: 1fr; }
+    h2.reveal-text { font-size: 2.2rem; }
+    section { padding: 100px 5% 40px; }
+}
 
