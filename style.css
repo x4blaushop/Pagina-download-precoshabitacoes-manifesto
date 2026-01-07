@@ -1,222 +1,238 @@
-/* =========================================================
-   C3X4.0_BRASIL_INDEPENDENTE
-   CAMADA VISUAL SOBERANA — CSS ÚNICO
-   Arquitetura: Profunda · Escura · Institucional
-   ========================================================= */
+/* ==========================================================
+   C3X4.0 — BRASIL SOBERANO
+   CSS MASSIVO · ESPAÇO · PROFUNDIDADE · IDENTIDADE
+   ========================================================== */
 
-/* ---------------- RESET CONTROLADO ---------------- */
+/* =========================
+   PARTE 1 — FUNDAÇÃO GLOBAL
+   ========================= */
+
+:root {
+    --eixo-max: 1100px;
+    --gap-massivo: 12vh;
+
+    /* Identidade Brasil */
+    --azul-espaco: #050b1a;
+    --azul-profundo: #020611;
+    --lilas-futuro: rgba(140,120,255,0.08);
+    --verde-nacao: rgba(0,255,156,0.12);
+    --ouro-soberano: #ffd700;
+
+    --texto-primario: #ffffff;
+    --texto-secundario: #b0b3c2;
+
+    --linha-divisora: rgba(255,255,255,0.12);
+    --borda-flutuante: rgba(255,255,255,0.18);
+
+    --blur-vidro: blur(10px);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #E8EAF0;
-    line-height: 1.7;
-    background: radial-gradient(
-        circle at top,
-        #1a1f4a 0%,
-        #0b1026 35%,
-        #050814 70%,
-        #02030a 100%
-    );
     min-height: 100vh;
+    color: var(--texto-primario);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
     overflow-x: hidden;
-    position: relative;
+
+    /* Espaço profundo */
+    background:
+        radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
+        radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
+        linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
 }
 
-/* ---------------- FUNDO CÓSMICO (ESTRELAS) ---------------- */
+/* eixo único */
+.eixo-central {
+    max-width: var(--eixo-max);
+    margin: 0 auto;
+    padding: 0 6%;
+}
+
+/* =========================
+   PARTE 2 — ESTRELAS VIVAS
+   ========================= */
+
 body::before,
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 0;
 }
 
+/* estrelas distantes */
 body::before {
     background-image:
-        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 50% 40%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 70% 10%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.6), transparent);
-    background-size: 1200px 1200px;
-    opacity: 0.35;
+        radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 40% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 60%, #fff, transparent);
+    opacity: 0.4;
+    animation: estrelas-lentas 120s linear infinite;
 }
 
+/* estrelas próximas */
 body::after {
-    background: radial-gradient(
-        circle at center,
-        rgba(120, 90, 255, 0.08),
-        transparent 60%
-    );
+    background-image:
+        radial-gradient(2px 2px at 25% 40%, #fff, transparent),
+        radial-gradient(2px 2px at 55% 70%, #fff, transparent),
+        radial-gradient(2px 2px at 75% 20%, #fff, transparent);
+    opacity: 0.25;
+    animation: estrelas-flutuantes 90s linear infinite;
 }
 
-/* ---------------- CONTAINER GERAL ---------------- */
-main,
-.container,
+@keyframes estrelas-lentas {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+@keyframes estrelas-flutuantes {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120px); }
+}
+
+/* =========================
+   PARTE 3 — CAMADAS / SEÇÕES
+   ========================= */
+
 section {
+    padding: var(--gap-massivo) 0;
+    border-bottom: 1px solid var(--linha-divisora);
+}
+
+/* =========================
+   PARTE 4 — BLOCOS FLUTUANTES
+   ========================= */
+
+.bloco-territorial,
+#camada-autoridade,
+#camada-protecao,
+#camada-regras,
+#diagnostico-sistema,
+#encerramento-manifesto {
     position: relative;
-    z-index: 2;
 }
 
-/* ---------------- BLOCOS FLUTUANTES ---------------- */
-.bloco,
-section,
-article,
-.unidade-habitacional-monumento {
-    background: linear-gradient(
-        to bottom,
-        rgba(18, 22, 48, 0.88),
-        rgba(8, 10, 26, 0.92)
-    );
-    border-radius: 14px;
-    padding: 2.5rem 2.8rem;
-    margin: 3rem auto;
-    max-width: 980px;
-
+/* cartões / unidades */
+.unidade-habitacional {
+    position: relative;
+    padding: 42px;
+    background:
+        linear-gradient(
+            to bottom right,
+            rgba(255,255,255,0.06),
+            rgba(255,255,255,0.015)
+        );
+    backdrop-filter: var(--blur-vidro);
+    border: 1px solid var(--borda-flutuante);
     box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.55),
-        0 8px 20px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255,255,255,0.04);
-
-    backdrop-filter: blur(6px);
-    transform: translateZ(0);
+        0 30px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+    transition: transform 0.6s cubic-bezier(0.19,1,0.22,1),
+                box-shadow 0.6s;
 }
 
-/* ---------------- TÍTULOS ---------------- */
-h1, h2, h3, h4 {
-    font-weight: 600;
-    letter-spacing: 0.4px;
-    color: #FFFFFF;
+/* flutuação real */
+.unidade-habitacional {
+    animation: flutuar 12s ease-in-out infinite;
 }
 
-h1 {
-    font-size: 2.4rem;
-    margin-bottom: 1.5rem;
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
-h2 {
-    font-size: 1.9rem;
-    margin-bottom: 1.2rem;
-    color: #00ff9c;
-}
-
-h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
-    color: #ffd700;
-}
-
-/* ---------------- TEXTO ---------------- */
-p {
-    font-size: 1.05rem;
-    color: #d6d9f0;
-    margin-bottom: 1.1rem;
-}
-
-/* ---------------- VALORES (1.5K · 2.5K · 5K · 1K · 150K · 500K) ---------------- */
-.valor,
-.valor-sistema,
-.preco {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    margin: 0.5rem 0;
-    border-radius: 999px;
-    font-weight: 600;
-    letter-spacing: 0.6px;
-
-    background: linear-gradient(
-        135deg,
-        rgba(0,255,156,0.15),
-        rgba(0,255,156,0.05)
-    );
-
-    color: #00ff9c;
-    border: 1px solid rgba(0,255,156,0.35);
-}
-
-/* ALERTA JUSTO — 500K */
-.valor.justificado,
-.valor-500k {
-    background: linear-gradient(
-        135deg,
-        rgba(255,215,0,0.18),
-        rgba(255,215,0,0.06)
-    );
-    color: #ffd700;
-    border: 1px solid rgba(255,215,0,0.45);
-}
-
-/* ---------------- ESTADOS ---------------- */
-.estado {
-    border-left: 3px solid rgba(0,255,156,0.5);
-    padding-left: 1.5rem;
-    margin-top: 2rem;
-}
-
-/* ---------------- BOTÃO WHATSAPP ---------------- */
-.whatsapp,
-a.whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-
-    margin-top: 1.2rem;
-    padding: 0.8rem 1.4rem;
-
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 600;
-
-    background: linear-gradient(
-        135deg,
-        #00ff9c,
-        #00c47a
-    );
-
-    color: #02120b;
-
+.unidade-habitacional:hover {
     box-shadow:
-        0 10px 25px rgba(0,255,156,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.4);
-
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+        0 40px 120px rgba(0,0,0,0.8),
+        0 0 0 1px var(--ouro-soberano);
 }
 
-.whatsapp:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        0 16px 35px rgba(0,255,156,0.45);
+/* =========================
+   PARTE 5 — MATRIZ DE ESTADOS
+   ========================= */
+
+.matriz-estados {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 42px;
 }
 
-/* ---------------- RODAPÉ / ASSINATURA ---------------- */
-footer,
-.assinatura-arquiteto {
+.matriz-estados h3 {
+    font-size: 0.8rem;
+    letter-spacing: 6px;
+    margin-bottom: 22px;
+}
+
+.valor {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ouro-soberano);
+    margin-bottom: 20px;
+}
+
+.perfil {
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+}
+
+/* =========================
+   PARTE 6 — DIAGNÓSTICO
+   ========================= */
+
+.lista-diagnostico {
+    list-style: none;
+    margin-top: 50px;
+}
+
+.lista-diagnostico li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--linha-divisora);
+    font-family: monospace;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: var(--verde-nacao);
+}
+
+/* =========================
+   PARTE 7 — RODAPÉ SOBERANO
+   ========================= */
+
+.fechamento-soberano {
+    padding: 80px 0;
     text-align: center;
-    padding: 3rem 1rem;
-    color: #8c90c9;
-    font-size: 0.9rem;
 }
 
-/* ---------------- RESPONSIVO ---------------- */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
+.assinatura-arquiteto {
+    letter-spacing: 8px;
+    color: var(--ouro-soberano);
+}
 
-    .bloco,
-    section,
-    article {
-        padding: 2rem 1.8rem;
-        margin: 2.2rem 1rem;
+.status-final {
+    font-family: monospace;
+    letter-spacing: 4px;
+    color: var(--verde-nacao);
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+
+@media (max-width: 1024px) {
+    .matriz-estados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .matriz-estados {
+        grid-template-columns: 1fr;
     }
 }
