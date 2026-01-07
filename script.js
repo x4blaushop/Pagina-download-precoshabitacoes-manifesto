@@ -1,7 +1,8 @@
 /**
  * =========================================================
- * JS — DNA C3X4.0 COMPLETO
+ * JS — DNA C3X4.0 COMPLETO | EXPANSÃO BRUTA
  * MOTOR DE SOBERANIA, MATRIZ, VALORES E ESTABILIZAÇÃO
+ * ARQUITETO: JOSÉ PATRICK CASTRO SOARES
  * =========================================================
  */
 
@@ -133,14 +134,16 @@ const AlfandegaDigital = {
 AlfandegaDigital.init();
 
 /* =========================
-   PARTE 4/5 — DIAGNÓSTICO VISUAL E MATRIZ DE VALORES
+   PARTE 4/5 — DIAGNÓSTICO VISUAL E MATRIZ DE VALORES (ATUALIZADA)
    ========================= */
 const PainelSoberano = {
+    // ESCALA DECRESCENTE MATERIALIZADA CONFORME O ARQUITETO SOLICITOU
     valoresCapital: [
-        { descricao: "Básico", valor: "R$ 1.000,00" },
-        { descricao: "Intermediário", valor: "R$ 5.000,00" },
-        { descricao: "Avançado", valor: "R$ 150.000,00" },
-        { descricao: "Corporativo", valor: "R$ 500.000,00" }
+        { descricao: "ESTABILIDADE CONSCIENTE (MÉDIO)", valor: "R$ 5.000,00" },
+        { descricao: "HARMONIA DE ACESSO (MÉDIO BAIXO)", valor: "R$ 2.500,00" },
+        { descricao: "LIBERDADE DE ENTRADA (BAIXO)", valor: "R$ 1.500,00" },
+        { descricao: "LIBERDADE MÍNIMA", valor: "R$ 1.000,00" },
+        { descricao: "INSTITUCIONAL", valor: "R$ 500.000,00+" }
     ],
 
     init() {
@@ -153,8 +156,8 @@ const PainelSoberano = {
 
     atualizarDiagnostico() {
         const mapa = {
-            "status-elements": "ESTRUTURA LIMPA",
-            "status-network": "INDEPENDENTE",
+            "status-elements": "CASA LIMPA E ORGANIZADA",
+            "status-network": "SISTEMA INDEPENDENTE",
             "status-console": "SILÊNCIO ABSOLUTO"
         };
         Object.entries(mapa).forEach(([id, texto]) => {
@@ -163,11 +166,11 @@ const PainelSoberano = {
                 const span = el.querySelector("span");
                 if (span) {
                     span.textContent = texto;
-                    span.style.color = "var(--saneamento-green)";
+                    span.style.color = "var(--p-gold)";
                 }
             }
         });
-        window.logSoberano("DIAGNÓSTICO MATERIALIZADO.");
+        window.logSoberano("DIAGNÓSTICO MATERIALIZADO NA INTERFACE.");
     },
 
     materializarCapital() {
@@ -175,7 +178,7 @@ const PainelSoberano = {
         if (capital) {
             const span = capital.querySelector("span");
             if (span) {
-                span.textContent = "R$ 268.000.000.000,00 — ÍNTEGRO";
+                span.textContent = "R$ 268.000.000.000,00 — INTEGRAL E PROTEGIDO";
                 Object.freeze(span);
             }
         }
@@ -185,15 +188,13 @@ const PainelSoberano = {
         const matriz = document.querySelector(".matriz-estados");
         if (!matriz) return;
 
+        // Distribuição estratégica de valores baseada na complexidade do estado
         const estados = [
-            { sigla: "SP", tecnologia: "Alta", dependencia: "Baixa" },
-            { sigla: "RJ", tecnologia: "Média", dependencia: "Média" },
-            { sigla: "MG", tecnologia: "Alta", dependencia: "Baixa" },
-            { sigla: "RS", tecnologia: "Média", dependencia: "Média" },
-            { sigla: "BA", tecnologia: "Baixa", dependencia: "Alta" },
-            { sigla: "PR", tecnologia: "Alta", dependencia: "Baixa" },
-            { sigla: "SC", tecnologia: "Alta", dependencia: "Baixa" },
-            { sigla: "DF", tecnologia: "Alta", dependencia: "Média" }
+            { sigla: "SP", perfil: "MOTOR FINANCEIRO", valorIndex: 0 }, // 5k
+            { sigla: "AM", perfil: "PULMÃO DE DADOS", valorIndex: 0 },   // 5k
+            { sigla: "BA", perfil: "POLO CRIATIVO", valorIndex: 1 },    // 2.5k
+            { sigla: "RS", perfil: "EIXO ESTABILIDADE", valorIndex: 2 }, // 1.5k
+            { sigla: "DF", perfil: "CENTRO DE COMANDO", valorIndex: 0 }  // 5k
         ];
 
         estados.forEach(estado => {
@@ -201,16 +202,16 @@ const PainelSoberano = {
             bloco.classList.add("unidade-habitacional");
             bloco.innerHTML = `
                 <h3>${estado.sigla}</h3>
-                <span class="valor">${this.valoresCapital[Math.floor(Math.random() * this.valoresCapital.length)].valor}</span>
+                <span class="valor">${this.valoresCapital[estado.valorIndex].valor}</span>
                 <p class="perfil">
-                    Tecnologia: ${estado.tecnologia}<br>
-                    Dependência externa: ${estado.dependencia}
+                    <strong>${estado.perfil}</strong><br>
+                    Soberania: 100% | DNA: Ativo
                 </p>
             `;
             matriz.appendChild(bloco);
         });
 
-        window.logSoberano("MATRIZ DE ESTADOS MATERIALIZADA COM VALORES.");
+        window.logSoberano("MATRIZ NACIONAL COM ESCALA DE VALORES INTEGRADA.");
     }
 };
 
@@ -228,34 +229,22 @@ const EstabilizadorDNA = {
     },
 
     selar() {
+        // Garantindo que a expansão não seja alterada por agentes externos
         Object.freeze(DNAMatriz);
         Object.freeze(SaneadorEstrutural);
         Object.freeze(AlfandegaDigital);
         Object.freeze(PainelSoberano);
         Object.freeze(this);
-        window.logSoberano("ARQUITETURA SELADA.");
+        window.logSoberano("ARQUITETURA SELADA E IMUTÁVEL.");
     },
 
     confirmarCiclo() {
         if (new Date().getFullYear() >= 2026) {
-            window.logSoberano("CICLO 2026 CONFIRMADO.");
+            window.logSoberano("AUTENTICAÇÃO TEMPORAL: CICLO 2026.");
         }
     },
 
     protegerAssinatura() {
         const assinatura = document.querySelector(".assinatura-arquiteto");
         if (assinatura && !assinatura.textContent.includes("JOSÉ PATRICK")) {
-            document.body.innerHTML = "<h1>ERRO DE SOBERANIA — ACESSO NEGADO</h1>";
-            console.error("USURPAÇÃO DETECTADA.");
-        }
-    },
-
-    entregaFinal() {
-        setTimeout(() => {
-            window.logSoberano("ESTADO FINAL: SISTEMA ESTÁVEL.");
-            window.logSoberano("C3X4.0 ENTREGUE AO ARQUITETO.");
-        }, 800);
-    }
-};
-
-EstabilizadorDNA.init();
+            document.body.innerHTML = "<div style='background:#000;color:red;padding:100px;text-align:center;'><h1>ERRO CRÍTICO: VIOLAÇÃO DE SOBERANIA</h1>
