@@ -1,100 +1,222 @@
-:root {
-  --verde: #0a8f3c;
-  --amarelo: #f5c400;
-  --azul: #002776;
-  --preto: #0b0b0b;
-  --cinza: #cfcfcf;
+/* =========================================================
+   C3X4.0_BRASIL_INDEPENDENTE
+   CAMADA VISUAL SOBERANA — CSS ÚNICO
+   Arquitetura: Profunda · Escura · Institucional
+   ========================================================= */
+
+/* ---------------- RESET CONTROLADO ---------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  background: var(--preto);
-  color: var(--cinza);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #E8EAF0;
+    line-height: 1.7;
+    background: radial-gradient(
+        circle at top,
+        #1a1f4a 0%,
+        #0b1026 35%,
+        #050814 70%,
+        #02030a 100%
+    );
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
-.hero {
-  padding: 4rem 2rem;
-  text-align: center;
-  border-bottom: 4px solid var(--verde);
+/* ---------------- FUNDO CÓSMICO (ESTRELAS) ---------------- */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
-.hero h1 {
-  color: var(--amarelo);
-  font-size: 2.5rem;
+body::before {
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 50% 40%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 70% 10%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.6), transparent);
+    background-size: 1200px 1200px;
+    opacity: 0.35;
 }
 
-.subtitle {
-  color: var(--cinza);
-  margin-top: 1rem;
+body::after {
+    background: radial-gradient(
+        circle at center,
+        rgba(120, 90, 255, 0.08),
+        transparent 60%
+    );
 }
 
-main {
-  max-width: 1100px;
-  margin: auto;
-  padding: 2rem;
+/* ---------------- CONTAINER GERAL ---------------- */
+main,
+.container,
+section {
+    position: relative;
+    z-index: 2;
 }
 
-.bloco {
-  margin-bottom: 4rem;
+/* ---------------- BLOCOS FLUTUANTES ---------------- */
+.bloco,
+section,
+article,
+.unidade-habitacional-monumento {
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 22, 48, 0.88),
+        rgba(8, 10, 26, 0.92)
+    );
+    border-radius: 14px;
+    padding: 2.5rem 2.8rem;
+    margin: 3rem auto;
+    max-width: 980px;
+
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.55),
+        0 8px 20px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+    backdrop-filter: blur(6px);
+    transform: translateZ(0);
 }
 
-.bloco h2 {
-  color: var(--verde);
-  margin-bottom: 1rem;
-  border-left: 6px solid var(--amarelo);
-  padding-left: 1rem;
+/* ---------------- TÍTULOS ---------------- */
+h1, h2, h3, h4 {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: #FFFFFF;
 }
 
-.lista-diagnostico li {
-  margin-left: 1.5rem;
-  list-style: square;
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
 }
 
+h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1.2rem;
+    color: #00ff9c;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #ffd700;
+}
+
+/* ---------------- TEXTO ---------------- */
+p {
+    font-size: 1.05rem;
+    color: #d6d9f0;
+    margin-bottom: 1.1rem;
+}
+
+/* ---------------- VALORES (1.5K · 2.5K · 5K · 1K · 150K · 500K) ---------------- */
+.valor,
+.valor-sistema,
+.preco {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    margin: 0.5rem 0;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(0,255,156,0.15),
+        rgba(0,255,156,0.05)
+    );
+
+    color: #00ff9c;
+    border: 1px solid rgba(0,255,156,0.35);
+}
+
+/* ALERTA JUSTO — 500K */
+.valor.justificado,
+.valor-500k {
+    background: linear-gradient(
+        135deg,
+        rgba(255,215,0,0.18),
+        rgba(255,215,0,0.06)
+    );
+    color: #ffd700;
+    border: 1px solid rgba(255,215,0,0.45);
+}
+
+/* ---------------- ESTADOS ---------------- */
 .estado {
-  border: 1px solid var(--azul);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+    border-left: 3px solid rgba(0,255,156,0.5);
+    padding-left: 1.5rem;
+    margin-top: 2rem;
 }
 
-.estado h3 {
-  color: var(--amarelo);
+/* ---------------- BOTÃO WHATSAPP ---------------- */
+.whatsapp,
+a.whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    margin-top: 1.2rem;
+    padding: 0.8rem 1.4rem;
+
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+
+    background: linear-gradient(
+        135deg,
+        #00ff9c,
+        #00c47a
+    );
+
+    color: #02120b;
+
+    box-shadow:
+        0 10px 25px rgba(0,255,156,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.whatsapp {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background: var(--verde);
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
+.whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 16px 35px rgba(0,255,156,0.45);
 }
 
-.valores .valor {
-  padding: 1rem;
-  margin-bottom: 0.8rem;
-  border-left: 8px solid var(--azul);
-  background: #111;
+/* ---------------- RODAPÉ / ASSINATURA ---------------- */
+footer,
+.assinatura-arquiteto {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #8c90c9;
+    font-size: 0.9rem;
 }
 
-.v5 {
-  border-color: var(--amarelo);
-}
+/* ---------------- RESPONSIVO ---------------- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
 
-.nota {
-  margin-top: 1.5rem;
-  font-style: italic;
-}
-
-footer {
-  text-align: center;
-  padding: 2rem;
-  border-top: 2px solid var(--verde);
+    .bloco,
+    section,
+    article {
+        padding: 2rem 1.8rem;
+        margin: 2.2rem 1rem;
+    }
 }
