@@ -1,298 +1,207 @@
-/* ============================================================================
-   MEDINA_SOVEREIGN_CSS_V15.0 - ESPECIFICAÇÃO DE MATERIAIS TÉCNICOS
-   ARQUITETO PROPRIETÁRIO: JOSÉ PATRICK CASTRO SOARES
-   ESTABILIZAÇÃO GERAL DO DNA: 2026
-   ----------------------------------------------------------------------------
-   DIAGNÓSTICO:
-   1. ABA ELEMENTS: ESTRUTURA LIMPA, SEM RUÍDO VISUAL.
-   2. ABA NETWORK: INDEPENDÊNCIA DE RAIZ.
-   3. ABA CONSOLE: ESTABILIDADE ESTÉTICA ABSOLUTA.
-   ============================================================================ */
+/**
+ * SISTEMA C3X4.0 | ESTÉTICA DA SOBERANIA
+ * ARQUITETO: JOSÉ PATRICK CASTRO SOARES
+ * LÓGICA: EXPANSÃO BRUTA E HARMONIA MONUMENTAL (2026)
+ */
 
-/* --- BLOCO 01: MATRIZ DE VARIÁVEIS (DNA DO DESIGN) --- */
+/* 1. NÚCLEO DE VARIÁVEIS (DNA VISUAL) */
 :root {
-    /* PALETA DE MATERIAIS NOBRES */
-    --p-gold: #d4af37;
-    --p-gold-bright: #f1d56e;
-    --p-gold-muted: rgba(212, 175, 55, 0.4);
-    --p-gold-glow: rgba(212, 175, 55, 0.15);
-    --p-black-void: #020302;
-    --p-carbon: #0a0a0a;
-    --p-industrial-gray: #121212;
-    --p-emerald-deep: #050a08;
-    --p-white-pure: #ffffff;
-    --p-alert-red: #ff0000;
-    
-    /* FÍSICA E DINÂMICA */
-    --a-transition-slow: all 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-    --a-transition-med: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    --a-transition-fast: all 0.2s ease-out;
-    --a-blur-standard: blur(15px);
-    
-    /* GEOMETRIA ESPACIAL */
-    --s-gutter: 60px;
-    --s-radius-lg: 30px;
-    --s-radius-sm: 4px;
-    --s-border-thin: 1px solid var(--p-gold-muted);
+    --ouro-medina: #d4af37;
+    --preto-soberano: #000000;
+    --cinza-profundo: #111111;
+    --branco-puro: #ffffff;
+    --verde-acao: #25d366;
+    --gap-monumental: 300px; /* O vácuo necessário para a densidade teórica */
+    --fonte-principal: 'Montserrat', sans-serif;
+    --transicao-dna: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* --- BLOCO 02: RESET E FUNDAÇÃO ESTRUTURAL --- */
+/* 2. SANEAMENTO ESTRUTURAL (A CASA LIMPA) */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    scrollbar-width: thin;
-    scrollbar-color: var(--p-gold) var(--p-black-void);
 }
 
 body {
-    background: var(--p-black-void);
-    color: var(--p-white-pure);
-    font-family: 'Montserrat', sans-serif;
+    background-color: var(--preto-soberano);
+    color: var(--branco-puro);
+    font-family: var(--fonte-principal);
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: crosshair; 
 }
 
-/* Overlay de Grade Industrial para Profundidade */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(18, 18, 18, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(18, 18, 18, 0.3) 1px, transparent 1px);
-    background-size: 30px 30px;
-    z-index: 1000;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-/* --- BLOCO 03: MOTOR ATMOSFÉRICO (PARTÍCULAS E LUX) --- */
-#lux-engine-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.6;
-}
-
-/* --- BLOCO 04: CABEÇALHO MONUMENTAL --- */
-.header-industrial {
-    padding: var(--s-gutter);
-    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
-    position: relative;
-    z-index: 10;
-}
-
-.brand-logo {
-    font-size: 3.5rem;
-    font-weight: 900;
-    letter-spacing: 25px;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--p-gold);
-    text-transform: uppercase;
-    position: relative;
-    transition: var(--a-transition-slow);
-}
-
-.brand-logo:hover {
-    color: var(--p-gold);
-    text-shadow: 0 0 30px var(--p-gold-glow);
-}
-
-/* --- BLOCO 05: MÓDULO DE BIOMETRIA --- */
-.biometric-module {
-    display: inline-flex;
+/* 3. HEADER MASSIVO (A MOLDURA SOBERANA) */
+.bloco-massivo-limpo {
+    height: 100vh;
+    display: flex;
     align-items: center;
-    padding: 20px 40px;
-    border: var(--s-border-thin);
-    border-radius: var(--s-radius-sm);
-    background: rgba(255, 255, 255, 0.02);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: var(--a-transition-med);
+    justify-content: center;
+    text-align: center;
+    border-bottom: 2px solid var(--ouro-medina);
+    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
 }
 
-.biometric-module:hover {
-    border-color: var(--p-gold);
-    background: var(--p-gold-glow);
-}
-
-.scanner-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--p-gold);
-    box-shadow: 0 0 15px var(--p-gold);
-    animation: scan-tecnico 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes scan-tecnico {
-    0%, 100% { top: 0%; opacity: 0; }
-    50% { top: 100%; opacity: 1; }
-}
-
-/* --- BLOCO 06: TERMINAL DE MATERIALIZAÇÃO (DASHBOARD) --- */
-.terminal-section {
-    padding: var(--s-gutter);
-    max-width: 1800px;
-    margin: 0 auto;
-}
-
-.section-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 80px;
-    background: var(--p-carbon);
-    padding: 50px;
-    border-radius: var(--s-radius-lg);
-    border: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: var(--a-blur-standard);
-}
-
-.medina-input, .medina-select {
-    width: 100%;
-    padding: 20px;
-    background: #000;
-    border: 1px solid #222;
-    color: var(--p-white-pure);
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 10px;
-    transition: var(--a-transition-med);
-    border-left: 5px solid var(--p-gold-muted);
-}
-
-.medina-input:focus {
-    border-color: var(--p-gold);
-    border-left-color: var(--p-gold);
-    outline: none;
-    box-shadow: 0 0 15px var(--p-gold-glow);
-}
-
-/* --- BLOCO 07: GRÁFICOS E VALORES --- */
-.chart-container {
-    height: 400px;
-    background: rgba(0,0,0,0.3);
-    border-radius: var(--s-radius-sm);
-    padding: 20px;
-    border: 1px solid rgba(212, 175, 55, 0.05);
-}
-
-.value-card {
-    padding: 40px;
-    background: rgba(255,255,255,0.01);
-    border-bottom: 2px solid var(--p-gold-muted);
-    transition: var(--a-transition-med);
-    position: relative;
-    animation: pulse-gold 3s infinite alternate ease-in-out;
-}
-
-@keyframes pulse-gold {
-    0% { text-shadow: 0 0 5px var(--p-gold-glow); }
-    100% { text-shadow: 0 0 20px var(--p-gold); }
-}
-
-.card-value {
-    display: block;
-    font-size: 2.5rem;
+.moldura-soberana h1 {
+    font-size: 8rem;
     font-weight: 900;
-    color: var(--p-gold);
-}
-
-/* --- BLOCO 08: GALERIA DE ASSETS (REGISTROS DNA) --- */
-.asset-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.asset-item {
-    height: 500px;
-    overflow: hidden;
-    background: #000;
-    border-radius: var(--s-radius-sm);
-    position: relative;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: var(--a-transition-med);
-}
-
-.asset-item:hover {
-    border-color: var(--p-gold-muted);
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
-}
-
-.asset-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(1) brightness(0.4);
-    transition: var(--a-transition-slow);
-}
-
-.asset-item:hover img {
-    filter: grayscale(0) brightness(1);
-    transform: scale(1.05);
-}
-
-/* --- BLOCO 09: TERMINAL LOG --- */
-.terminal-log-output {
-    margin-top: 30px;
-    padding: 30px;
-    background: #050505;
-    border-left: 5px solid var(--p-gold);
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
-    color: #888;
-    white-space: pre-wrap;
-    letter-spacing: 1px;
-}
-
-/* --- BLOCO 10: BOTÕES SOBERANOS --- */
-.medina-btn {
-    width: 100%;
-    padding: 20px;
-    background: transparent;
-    border: 1px solid var(--p-gold);
-    color: var(--p-gold);
-    font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: -5px;
+    color: var(--ouro-medina);
     text-transform: uppercase;
-    cursor: pointer;
-    transition: var(--a-transition-med);
+}
+
+.subtitulo {
+    font-size: 1.5rem;
+    font-weight: 100;
+    letter-spacing: 15px;
     margin-top: 20px;
+    opacity: 0.8;
 }
 
-.medina-btn:hover {
-    background: var(--p-gold);
-    color: var(--p-black-void);
-    box-shadow: 0 0 30px var(--p-gold-glow);
+.valor-global {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: 1px solid var(--ouro-medina);
+    display: inline-block;
 }
 
-/* --- BLOCO 11: RESPONSIVIDADE CELULAR --- */
-@media (max-width: 1024px) {
-    .section-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 30px;
-    }
-    .brand-logo {
-        font-size: 2rem;
-        letter-spacing: 10px;
-    }
-    .header-industrial {
-        padding: 30px;
-    }
+/* 4. UNIDADE HABITACIONAL MONUMENTO (OS ESTADOS) */
+.unidade-habitacional-monumento {
+    padding: var(--gap-monumental) 5% 100px 5%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-alinhado {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.topo-estado {
+    border-left: 5px solid var(--ouro-medina);
+    padding-left: 30px;
+    margin-bottom: 60px;
+}
+
+.cod-dna {
+    font-size: 0.9rem;
+    color: var(--ouro-medina);
+    font-weight: 700;
+    display: block;
+}
+
+.topo-estado h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.preco-tag {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ouro-medina);
+}
+
+/* 5. CORPO TEÓRICO (DENSIDADE DA INFORMAÇÃO) */
+.corpo-teorico {
+    margin: 40px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    border-top: 1px solid #333;
+    padding-top: 40px;
+}
+
+.corpo-teorico p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #ccc;
+}
+
+.corpo-teorico strong {
+    color: var(--ouro-medina);
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.domínio-especifico {
+    grid-column: 1 / -1;
+    font-style: italic;
+    font-weight: 100;
+    color: var(--ouro-medina);
+}
+
+/* 6. AÇÃO SOBERANA (CONVERSÃO) */
+.acao-soberana {
+    margin-top: 60px;
+}
+
+.btn-wpp-soberano {
+    color: var(--verde-acao);
+    text-decoration: none;
+    transition: var(--transicao-dna);
+    display: inline-block;
+}
+
+.btn-wpp-soberano:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 15px var(--verde-acao));
+}
+
+/* 7. BLOCO DE DEFESA E MANIFESTO */
+.bloco-contexto, .bloco-defesa-ativa {
+    background-color: var(--cinza-profundo);
+    padding: 150px 10%;
+    margin: 100px 0;
+    border-top: 1px solid var(--ouro-medina);
+    border-bottom: 1px solid var(--ouro-medina);
+}
+
+.bloco-contexto h2, .bloco-defesa h2 {
+    font-size: 3rem;
+    color: var(--ouro-medina);
+    margin-bottom: 40px;
+}
+
+.alerta-seguranca {
+    background: var(--ouro-medina);
+    color: #000;
+    padding: 5px 15px;
+    font-weight: 900;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* 8. RODAPÉ (ASSINATURA DO ARQUITETO) */
+.fechamento-soberano {
+    padding: 100px 5%;
+    background: #000;
+    border-top: 1px solid #222;
+}
+
+.selo-origem {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #555;
+}
+
+.assinatura-arquiteto {
+    font-weight: 900;
+    color: var(--ouro-medina);
+}
+
+/* 9. ADAPTAÇÃO DNA (MOBILE) */
+@media (max-width: 768px) {
+    .moldura-soberana h1 { font-size: 3.5rem; }
+    .topo-estado h2 { font-size: 2.5rem; }
+    .corpo-teorico { grid-template-columns: 1fr; }
+    --gap-monumental: 150px;
 }
