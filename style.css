@@ -1,207 +1,100 @@
-/**
- * SISTEMA C3X4.0 | ESTÉTICA DA SOBERANIA
- * ARQUITETO: JOSÉ PATRICK CASTRO SOARES
- * LÓGICA: EXPANSÃO BRUTA E HARMONIA MONUMENTAL (2026)
- */
-
-/* 1. NÚCLEO DE VARIÁVEIS (DNA VISUAL) */
 :root {
-    --ouro-medina: #d4af37;
-    --preto-soberano: #000000;
-    --cinza-profundo: #111111;
-    --branco-puro: #ffffff;
-    --verde-acao: #25d366;
-    --gap-monumental: 300px; /* O vácuo necessário para a densidade teórica */
-    --fonte-principal: 'Montserrat', sans-serif;
-    --transicao-dna: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --verde: #0a8f3c;
+  --amarelo: #f5c400;
+  --azul: #002776;
+  --preto: #0b0b0b;
+  --cinza: #cfcfcf;
 }
 
-/* 2. SANEAMENTO ESTRUTURAL (A CASA LIMPA) */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--preto-soberano);
-    color: var(--branco-puro);
-    font-family: var(--fonte-principal);
-    line-height: 1.6;
-    overflow-x: hidden;
+  background: var(--preto);
+  color: var(--cinza);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
 }
 
-/* 3. HEADER MASSIVO (A MOLDURA SOBERANA) */
-.bloco-massivo-limpo {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-bottom: 2px solid var(--ouro-medina);
-    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  border-bottom: 4px solid var(--verde);
 }
 
-.moldura-soberana h1 {
-    font-size: 8rem;
-    font-weight: 900;
-    letter-spacing: -5px;
-    color: var(--ouro-medina);
-    text-transform: uppercase;
+.hero h1 {
+  color: var(--amarelo);
+  font-size: 2.5rem;
 }
 
-.subtitulo {
-    font-size: 1.5rem;
-    font-weight: 100;
-    letter-spacing: 15px;
-    margin-top: 20px;
-    opacity: 0.8;
+.subtitle {
+  color: var(--cinza);
+  margin-top: 1rem;
 }
 
-.valor-global {
-    margin-top: 40px;
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    border: 1px solid var(--ouro-medina);
-    display: inline-block;
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
 }
 
-/* 4. UNIDADE HABITACIONAL MONUMENTO (OS ESTADOS) */
-.unidade-habitacional-monumento {
-    padding: var(--gap-monumental) 5% 100px 5%;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.bloco {
+  margin-bottom: 4rem;
 }
 
-.container-alinhado {
-    max-width: 1200px;
-    width: 100%;
+.bloco h2 {
+  color: var(--verde);
+  margin-bottom: 1rem;
+  border-left: 6px solid var(--amarelo);
+  padding-left: 1rem;
 }
 
-.topo-estado {
-    border-left: 5px solid var(--ouro-medina);
-    padding-left: 30px;
-    margin-bottom: 60px;
+.lista-diagnostico li {
+  margin-left: 1.5rem;
+  list-style: square;
 }
 
-.cod-dna {
-    font-size: 0.9rem;
-    color: var(--ouro-medina);
-    font-weight: 700;
-    display: block;
+.estado {
+  border: 1px solid var(--azul);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.topo-estado h2 {
-    font-size: 5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 1;
+.estado h3 {
+  color: var(--amarelo);
 }
 
-.preco-tag {
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--ouro-medina);
+.whatsapp {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--verde);
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* 5. CORPO TEÓRICO (DENSIDADE DA INFORMAÇÃO) */
-.corpo-teorico {
-    margin: 40px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    border-top: 1px solid #333;
-    padding-top: 40px;
+.valores .valor {
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  border-left: 8px solid var(--azul);
+  background: #111;
 }
 
-.corpo-teorico p {
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: #ccc;
+.v5 {
+  border-color: var(--amarelo);
 }
 
-.corpo-teorico strong {
-    color: var(--ouro-medina);
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+.nota {
+  margin-top: 1.5rem;
+  font-style: italic;
 }
 
-.domínio-especifico {
-    grid-column: 1 / -1;
-    font-style: italic;
-    font-weight: 100;
-    color: var(--ouro-medina);
-}
-
-/* 6. AÇÃO SOBERANA (CONVERSÃO) */
-.acao-soberana {
-    margin-top: 60px;
-}
-
-.btn-wpp-soberano {
-    color: var(--verde-acao);
-    text-decoration: none;
-    transition: var(--transicao-dna);
-    display: inline-block;
-}
-
-.btn-wpp-soberano:hover {
-    transform: scale(1.2) rotate(5deg);
-    filter: drop-shadow(0 0 15px var(--verde-acao));
-}
-
-/* 7. BLOCO DE DEFESA E MANIFESTO */
-.bloco-contexto, .bloco-defesa-ativa {
-    background-color: var(--cinza-profundo);
-    padding: 150px 10%;
-    margin: 100px 0;
-    border-top: 1px solid var(--ouro-medina);
-    border-bottom: 1px solid var(--ouro-medina);
-}
-
-.bloco-contexto h2, .bloco-defesa h2 {
-    font-size: 3rem;
-    color: var(--ouro-medina);
-    margin-bottom: 40px;
-}
-
-.alerta-seguranca {
-    background: var(--ouro-medina);
-    color: #000;
-    padding: 5px 15px;
-    font-weight: 900;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-/* 8. RODAPÉ (ASSINATURA DO ARQUITETO) */
-.fechamento-soberano {
-    padding: 100px 5%;
-    background: #000;
-    border-top: 1px solid #222;
-}
-
-.selo-origem {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: #555;
-}
-
-.assinatura-arquiteto {
-    font-weight: 900;
-    color: var(--ouro-medina);
-}
-
-/* 9. ADAPTAÇÃO DNA (MOBILE) */
-@media (max-width: 768px) {
-    .moldura-soberana h1 { font-size: 3.5rem; }
-    .topo-estado h2 { font-size: 2.5rem; }
-    .corpo-teorico { grid-template-columns: 1fr; }
-    --gap-monumental: 150px;
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 2px solid var(--verde);
 }
