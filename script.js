@@ -1,112 +1,112 @@
 /* ==========================================================
    C3X4.0 — BRASIL INDEPENDENTE
-   JS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
-   Versão completa e funcional
+   JS ULTRA IMERSIVO · PARALLAX · HOVER 3D · INTERATIVO
+   Versão Fiel à Raiz Funcional
    ========================================================== */
 
 /* =========================
-   PARTE 1 — INICIALIZAÇÃO
+   PARTE 1 — ESTRELAS / ESPAÇO SIDERAL
 ========================= */
-document.addEventListener("DOMContentLoaded", () => {
+const estrelas = document.querySelectorAll('#espaco-sideral .estrela');
 
-  const blocos = document.querySelectorAll(".bloco");
-  const valores = document.querySelectorAll(".valor");
-  const estrelas = document.querySelectorAll("#espaco-sideral .estrela");
-  const hero = document.querySelector(".hero");
+function animarEstrelas() {
+    estrelas.forEach((estrela, index) => {
+        const delay = Math.random() * 2;
+        estrela.style.animationDelay = `${delay}s`;
+        const scale = 0.6 + Math.random() * 0.6;
+        estrela.style.transform = `scale(${scale})`;
+        estrela.style.opacity = 0.5 + Math.random() * 0.5;
+    });
+}
+animarEstrelas();
 
-  /* =========================
-     PARTE 2 — PARALLAX HERO
-  ========================= */
-  document.addEventListener("mousemove", e => {
-    const x = (window.innerWidth / 2 - e.clientX) / 50;
-    const y = (window.innerHeight / 2 - e.clientY) / 50;
-    if(hero) hero.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-  });
+/* =========================
+   PARTE 2 — SCROLL / PARALLAX
+========================= */
+const blocos = document.querySelectorAll('.bloco');
+const eixoCentral = document.querySelector('.eixo-central');
 
-  /* =========================
-     PARTE 3 — SCROLL ANIMADO
-  ========================= */
-  window.addEventListener("scroll", () => {
+window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
-
     blocos.forEach((bloco, index) => {
-      const offset = bloco.offsetTop - window.innerHeight / 1.2;
-      if(scrollY > offset) {
-        bloco.style.transform = "translateY(0) scale(1)";
-        bloco.style.opacity = "1";
-      } else {
-        bloco.style.transform = "translateY(30px) scale(0.98)";
-        bloco.style.opacity = "0";
-      }
+        const velocidade = 0.02 * (index + 1);
+        bloco.style.transform = `translateY(${scrollY * velocidade}px)`;
     });
+});
 
-    /* Parallax leve nas estrelas */
-    estrelas.forEach((estrela, i) => {
-      const velocidade = (i + 1) / 30;
-      estrela.style.transform = `translateY(${scrollY * velocidade}px)`;
+/* =========================
+   PARTE 3 — HOVER 3D NOS BLOCOS
+========================= */
+blocos.forEach(bloco => {
+    bloco.addEventListener('mousemove', e => {
+        const rect = bloco.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width/2;
+        const y = e.clientY - rect.top - rect.height/2;
+        bloco.style.transform = `rotateY(${x*0.02}deg) rotateX(${-y*0.02}deg) translateZ(0)`;
     });
-  });
+    bloco.addEventListener('mouseleave', () => {
+        bloco.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0)`;
+    });
+});
 
-  /* =========================
-     PARTE 4 — HOVER 3D NOS BLOCOS
-  ========================= */
-  blocos.forEach(bloco => {
-    bloco.addEventListener("mousemove", e => {
-      const rect = bloco.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) - rect.width/2) / 20;
-      const y = ((e.clientY - rect.top) - rect.height/2) / 20;
-      bloco.style.transform = `rotateX(${ -y }deg) rotateY(${ x }deg) scale(1.02)`;
+/* =========================
+   PARTE 4 — CLICK NOS VALORES COM PIX
+========================= */
+const valores = document.querySelectorAll('.valor');
+valores.forEach(valor => {
+    valor.addEventListener('click', () => {
+        const pix = valor.dataset.pix;
+        navigator.clipboard.writeText(pix).then(() => {
+            alert(`PIX copiado: ${pix}`);
+        });
     });
-    bloco.addEventListener("mouseleave", () => {
-      bloco.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-    });
-  });
+});
 
-  /* =========================
-     PARTE 5 — VALORES COPIÁVEIS
-  ========================= */
-  valores.forEach(valor => {
-    valor.style.cursor = "pointer";
-    valor.addEventListener("click", () => {
-      const pix = valor.dataset.pix;
-      navigator.clipboard.writeText(pix).then(() => {
-        valor.textContent += " ✅ Copiado!";
-        setTimeout(() => {
-          valor.textContent = valor.textContent.replace(" ✅ Copiado!", "");
-        }, 1500);
-      });
+/* =========================
+   PARTE 5 — BOTÕES WHATSAPP
+========================= */
+const whatsLinks = document.querySelectorAll('a.whatsapp');
+whatsLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        link.style.transform = 'scale(1.05)';
+        link.style.boxShadow = `0 0 12px var(--verde-nacao), 0 0 24px var(--verde-nacao)`;
     });
-  });
+    link.addEventListener('mouseleave', () => {
+        link.style.transform = 'scale(1)';
+        link.style.boxShadow = 'none';
+    });
+});
 
-  /* =========================
-     PARTE 6 — ANIMAÇÃO DE FLUTUAÇÃO
-  ========================= */
-  const flutuar = () => {
-    blocos.forEach(bloco => {
-      const deslocamento = Math.sin(Date.now() / 1000) * 4;
-      bloco.style.transform += ` translateY(${deslocamento}px)`;
+/* =========================
+   PARTE 6 — DOWNLOAD CÉLULAS
+========================= */
+const downloadCelula = document.querySelector('.download-celula');
+if(downloadCelula) {
+    downloadCelula.addEventListener('mouseenter', () => {
+        downloadCelula.style.background = 'rgba(140,120,255,0.1)';
+        downloadCelula.style.boxShadow = '0 0 12px #8c78ff, 0 0 24px #8c78ff';
     });
-    requestAnimationFrame(flutuar);
-  };
-  flutuar();
+    downloadCelula.addEventListener('mouseleave', () => {
+        downloadCelula.style.background = 'rgba(140,120,255,0)';
+        downloadCelula.style.boxShadow = 'none';
+    });
+}
 
-  /* =========================
-     PARTE 7 — DOWNLOAD DE CÉLULAS
-  ========================= */
-  const downloads = document.querySelectorAll(".download-celula");
-  downloads.forEach(link => {
-    link.addEventListener("mouseenter", () => {
-      link.style.transform = "scale(1.05)";
-      link.style.boxShadow = "0 10px 30px rgba(255, 215, 0, 0.7)";
-    });
-    link.addEventListener("mouseleave", () => {
-      link.style.transform = "scale(1)";
-      link.style.boxShadow = "0 5px 15px rgba(255, 215, 0, 0.4)";
-    });
-  });
+/* =========================
+   PARTE 7 — INICIALIZAÇÃO
+========================= */
+function initC3X4() {
+    animarEstrelas();
+}
+window.addEventListener('load', initC3X4);
 
-  /* =========================
-     PARTE 8 — OTIMIZAÇÃO
-  ========================= */
-  window.dispatchEvent(new Event('scroll')); // ativa animação inicial
+/* =========================
+   PARTE 8 — ANIMAÇÃO SUAVE DO SCROLL
+========================= */
+let lastScrollTop = 0;
+window.addEventListener('scroll', () => {
+    const st = window.scrollY;
+    const delta = (st - lastScrollTop) * 0.1;
+    eixoCentral.style.transform = `translateY(${delta}px)`;
+    lastScrollTop = st;
 });
