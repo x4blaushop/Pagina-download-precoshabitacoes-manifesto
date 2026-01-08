@@ -1,83 +1,197 @@
 /* ==========================================================
    C3X4.0 — BRASIL INDEPENDENTE
-   JS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
-========================================================== */
+   CSS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
+   Versão modernizada, categorizada e animada
+   ========================================================== */
 
-(() => {
-  // =========================
-  // VARIÁVEIS
-  // =========================
-  const sections = document.querySelectorAll("section[data-speed]");
-  const blocks = document.querySelectorAll(".bloco, .estado, .valor");
-  const stars = document.querySelectorAll("#espaco-sideral .estrela");
-  let scrollY = window.scrollY;
+/* =========================
+   PARTE 1 — VARIÁVEIS GLOBAIS
+========================= */
+:root {
+    --eixo-max: 1100px;
+    --gap-massivo: 12vh;
 
-  // =========================
-  // FUNÇÃO DE PARALLAX
-  // =========================
-  const parallaxScroll = () => {
-    scrollY = window.scrollY;
+    /* Cores principais */
+    --azul-espaco: #050b1a;
+    --azul-profundo: #020611;
+    --lilas-futuro: rgba(140,120,255,0.08);
+    --verde-nacao: rgba(0,255,156,0.12);
+    --ouro-soberano: #ffd700;
 
-    // Seções
-    sections.forEach(section => {
-      const speed = parseFloat(section.dataset.speed);
-      section.style.transform = `translateY(${scrollY * speed * -0.3}px)`;
-    });
+    /* Texto */
+    --texto-primario: #ffffff;
+    --texto-secundario: #b0b3c2;
 
-    // Blocos flutuantes (hover já tratado via CSS)
-    blocks.forEach(block => {
-      const speed = parseFloat(block.dataset.speed || 0.1);
-      block.style.transform = `translateY(${scrollY * speed * -0.2}px)`;
-    });
+    /* Bordas e blur */
+    --linha-divisora: rgba(255,255,255,0.12);
+    --borda-flutuante: rgba(255,255,255,0.18);
+    --blur-vidro: blur(12px);
 
-    // Estrelas — efeito de profundidade leve
-    stars.forEach((star, index) => {
-      const depthFactor = 0.05 + (index / stars.length) * 0.1;
-      star.style.transform = `translateY(${scrollY * depthFactor}px)`;
-    });
+    /* Glow / Neon */
+    --glow-titulo: 0 0 12px #ffd700, 0 0 24px #ffd700;
+    --glow-valor: 0 0 8px #00ff9c, 0 0 16px #00ff9c;
 
-    requestAnimationFrame(parallaxScroll);
-  };
+    /* Parallax / profundidade */
+    --perspective-global: 1200px;
 
-  // =========================
-  // HOVER 3D DINÂMICO PARA BLOCO
-  // =========================
-  blocks.forEach(block => {
-    block.addEventListener("mousemove", e => {
-      const rect = block.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * 5; // ajusta intensidade
-      const rotateY = ((x - centerX) / centerX) * 5;
-      block.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
-    });
+    /* Botões */
+    --btn-bg: rgba(255,255,255,0.08);
+    --btn-hover: rgba(255,255,255,0.15);
+}
 
-    block.addEventListener("mouseleave", () => {
-      block.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)";
-    });
-  });
+/* Reset global */
+* { margin:0; padding:0; box-sizing:border-box; }
 
-  // =========================
-  // CLICK RÁPIDO NOS VALORES
-  // =========================
-  const valores = document.querySelectorAll(".valor[data-pix]");
-  valores.forEach(valor => {
-    valor.addEventListener("click", () => {
-      const pix = valor.dataset.pix;
-      navigator.clipboard.writeText(pix).then(() => {
-        valor.textContent = `📋 Copiado! — ${valor.textContent}`;
-        setTimeout(() => {
-          valor.textContent = valor.textContent.replace("📋 Copiado! — ", "");
-        }, 1500);
-      });
-    });
-  });
+/* =========================
+   PARTE 2 — FUNDO GALÁCTICO + ESTRELAS
+========================= */
+body {
+    min-height:100vh;
+    font-family:system-ui,sans-serif;
+    line-height:1.7;
+    color: var(--texto-primario);
+    overflow-x:hidden;
 
-  // =========================
-  // INÍCIO
-  // =========================
-  requestAnimationFrame(parallaxScroll);
+    background:
+      radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
+      radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
+      linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
+    perspective: var(--perspective-global);
+    transform-style: preserve-3d;
+}
 
-})();
+#espaco-sideral {
+    position: fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.estrela {
+    position: absolute;
+    border-radius:50%;
+    background: var(--ouro-soberano);
+    box-shadow:0 0 8px var(--ouro-soberano),0 0 16px var(--ouro-soberano);
+    animation: brilho 2s infinite alternate;
+}
+
+@keyframes brilho {
+    from { transform: scale(0.6); opacity:0.5; }
+    to { transform: scale(1.2); opacity:1; }
+}
+
+/* =========================
+   PARTE 3 — EIXO CENTRAL
+========================= */
+.eixo-central { 
+    max-width: var(--eixo-max); 
+    margin:0 auto; 
+    padding:0 6%; 
+    transform-style: preserve-3d;
+}
+
+/* =========================
+   PARTE 4 — SEÇÕES / BLOCOS
+========================= */
+section {
+    padding: var(--gap-massivo) 0;
+    border-bottom:1px solid var(--linha-divisora);
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    opacity:0;
+    transform: translateY(20px);
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.bloco, .estado, .valor {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.bloco:hover {
+    transform: translateY(-6px) scale(1.01);
+}
+
+/* Unidade habitacional — flutuação + hover 3D */
+.unidade-habitacional {
+    padding:42px;
+    background:linear-gradient(to bottom right, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+    backdrop-filter: var(--blur-vidro);
+    border:1px solid var(--borda-flutuante);
+    box-shadow:0 30px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
+    transition: transform 0.6s cubic-bezier(0.19,1,0.22,1), box-shadow 0.6s;
+    animation: flutuar 12s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-14px) rotateX(1deg) rotateY(1deg); }
+}
+
+.unidade-habitacional:hover {
+    box-shadow:0 50px 150px rgba(0,0,0,0.85),0 0 0 1px var(--ouro-soberano);
+    transform: translateY(-8px) rotateX(3deg) rotateY(3deg) scale(1.03);
+}
+
+/* =========================
+   PARTE 5 — MATRIZ DE ESTADOS
+========================= */
+.matriz-estados {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:42px;
+}
+
+.matriz-estados h3 {
+    font-size:0.85rem;
+    letter-spacing:6px;
+    margin-bottom:22px;
+    text-shadow: var(--glow-titulo);
+}
+
+/* =========================
+   PARTE 6 — VALORES COM GLOW
+========================= */
+.valor {
+    display:block;
+    font-size:1.6rem;
+    font-weight:700;
+    color: var(--ouro-soberano);
+    margin-bottom:20px;
+    text-shadow: var(--glow-valor);
+    cursor:pointer;
+    transition: transform 0.2s ease;
+}
+
+.valor:hover { transform: scale(1.05); }
+
+/* =========================
+   PARTE 7 — BOTÕES / DOWNLOAD
+========================= */
+a.download-celula,
+a.btn-whatsapp {
+    display:inline-block;
+    padding:10px 22px;
+    margin-top:12px;
+    border-radius:8px;
+    text-decoration:none;
+    background: var(--btn-bg);
+    color: var(--texto-primario);
+    border:1px solid var(--borda-flutuante);
+    box-shadow:0 6px 20px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    font-weight:600;
+}
+
+a.download-celula:hover,
+a.btn-whatsapp:hover {
+    background: var(--btn-hover);
+    transform: scale(1.05);
+}
+
+/* =========================
+   PARTE 8 — RESPONSIVO
+========================= */
+@media(max-width:1024px){.matriz-estados{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.matriz-estados{grid-template-columns:1fr;}}
