@@ -29,7 +29,7 @@ const eixoCentral = document.querySelector('.eixo-central');
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     blocos.forEach((bloco, index) => {
-        const velocidade = 0.02 * (index + 1);
+        const velocidade = 0.01 * (index + 1);
         bloco.style.transform = `translateY(${scrollY * velocidade}px)`;
     });
 });
