@@ -1,6 +1,6 @@
 /* ==========================================================
    C3X4.0 — BRASIL INDEPENDENTE
-   JS ULTRA IMERSIVO · PARALLAX · HOVER 3D · INTERATIVO
+   JS ULTRA IMERSIVO · PARALLAX SUAVE · HOVER 3D · INTERATIVO
    Versão Fiel à Raiz Funcional
    ========================================================== */
 
@@ -21,7 +21,7 @@ function animarEstrelas() {
 animarEstrelas();
 
 /* =========================
-   PARTE 2 — SCROLL / PARALLAX
+   PARTE 2 — SCROLL / PARALLAX SUAVE
 ========================= */
 const blocos = document.querySelectorAll('.bloco');
 const eixoCentral = document.querySelector('.eixo-central');
@@ -29,7 +29,7 @@ const eixoCentral = document.querySelector('.eixo-central');
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     blocos.forEach((bloco, index) => {
-        const velocidade = 0.01 * (index + 1);
+        const velocidade = 0.005 * (index + 1); // reduzido de 0.02 para 0.005
         bloco.style.transform = `translateY(${scrollY * velocidade}px)`;
     });
 });
@@ -101,12 +101,12 @@ function initC3X4() {
 window.addEventListener('load', initC3X4);
 
 /* =========================
-   PARTE 8 — ANIMAÇÃO SUAVE DO SCROLL
+   PARTE 8 — ANIMAÇÃO SUAVE DO EIXO CENTRAL
 ========================= */
 let lastScrollTop = 0;
 window.addEventListener('scroll', () => {
     const st = window.scrollY;
-    const delta = (st - lastScrollTop) * 0.1;
+    const delta = (st - lastScrollTop) * 0.03; // reduzido de 0.1 para 0.03
     eixoCentral.style.transform = `translateY(${delta}px)`;
     lastScrollTop = st;
 });
