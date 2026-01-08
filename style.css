@@ -1,6 +1,7 @@
 /* ==========================================================
    C3X4.0 — BRASIL INDEPENDENTE
    CSS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
+   Versão modernizada, categorizada e animada
    ========================================================== */
 
 /* =========================
@@ -23,9 +24,16 @@
     --borda-flutuante: rgba(255,255,255,0.18);
 
     --blur-vidro: blur(12px);
+
+    /* Glow e neon */
+    --glow-titulo: 0 0 12px #ffd700, 0 0 24px #ffd700;
+    --glow-valor: 0 0 8px #00ff9c, 0 0 16px #00ff9c;
+
+    /* Parallax / profundidade */
+    --perspective-global: 1200px;
 }
 
-/* Reset básico */
+/* Reset global */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 /* =========================
@@ -33,72 +41,72 @@
 ========================= */
 body {
     min-height:100vh;
-    color:var(--texto-primario);
-    font-family:system-ui,sans-serif;
-    line-height:1.7;
-    overflow-x:hidden;
+    color: var(--texto-primario);
+    font-family: system-ui, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
 
-    /* Fundo galáctico com gradientes e profundidade */
+    /* Fundo galáctico com gradientes profundos */
     background:
-      radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
-      radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
-      linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
-    perspective: 1200px;
+        radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
+        radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
+        linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
+    perspective: var(--perspective-global);
     transform-style: preserve-3d;
 }
 
-/* Espaço sideral das estrelas */
+/* Espaço sideral fixo com 28 estrelas */
 #espaco-sideral {
     position: fixed;
     inset: 0;
+    z-index: -1;
     pointer-events: none;
-    z-index: 0;
 }
 
-.star {
+.estrela {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background: var(--ouro-soberano);
-    animation: estrela-pulsar 4s infinite ease-in-out alternate;
-    box-shadow: 0 0 8px var(--ouro-soberano);
+    box-shadow: 0 0 8px var(--ouro-soberano), 0 0 16px var(--ouro-soberano);
+    animation: brilho 2s infinite alternate;
 }
 
-@keyframes estrela-pulsar {
-    0%,100% { transform: scale(1); opacity:0.8; }
-    50% { transform: scale(1.4); opacity:1; }
+@keyframes brilho {
+    from { transform: scale(0.6); opacity:0.5; }
+    to { transform: scale(1.2); opacity:1; }
 }
 
-/* Exemplo de 28 estrelas já posicionadas */
-#espaco-sideral .star:nth-child(1){top:5%; left:10%;}
-#espaco-sideral .star:nth-child(2){top:15%; left:20%;}
-#espaco-sideral .star:nth-child(3){top:25%; left:35%;}
-#espaco-sideral .star:nth-child(4){top:35%; left:50%;}
-#espaco-sideral .star:nth-child(5){top:10%; left:65%;}
-#espaco-sideral .star:nth-child(6){top:20%; left:75%;}
-#espaco-sideral .star:nth-child(7){top:30%; left:80%;}
-#espaco-sideral .star:nth-child(8){top:40%; left:90%;}
-#espaco-sideral .star:nth-child(9){top:50%; left:15%;}
-#espaco-sideral .star:nth-child(10){top:60%; left:25%;}
-#espaco-sideral .star:nth-child(11){top:70%; left:35%;}
-#espaco-sideral .star:nth-child(12){top:80%; left:45%;}
-#espaco-sideral .star:nth-child(13){top:50%; left:55%;}
-#espaco-sideral .star:nth-child(14){top:60%; left:65%;}
-#espaco-sideral .star:nth-child(15){top:70%; left:75%;}
-#espaco-sideral .star:nth-child(16){top:80%; left:85%;}
-#espaco-sideral .star:nth-child(17){top:15%; left:5%;}
-#espaco-sideral .star:nth-child(18){top:25%; left:15%;}
-#espaco-sideral .star:nth-child(19){top:35%; left:25%;}
-#espaco-sideral .star:nth-child(20){top:45%; left:35%;}
-#espaco-sideral .star:nth-child(21){top:55%; left:45%;}
-#espaco-sideral .star:nth-child(22){top:65%; left:55%;}
-#espaco-sideral .star:nth-child(23){top:75%; left:65%;}
-#espaco-sideral .star:nth-child(24){top:85%; left:75%;}
-#espaco-sideral .star:nth-child(25){top:30%; left:60%;}
-#espaco-sideral .star:nth-child(26){top:40%; left:70%;}
-#espaco-sideral .star:nth-child(27){top:50%; left:80%;}
-#espaco-sideral .star:nth-child(28){top:60%; left:90%;}
+/* Posicionamento das 28 estrelas representando os estados */
+#espaco-sideral .estrela:nth-child(1){top:5%; left:10%;}
+#espaco-sideral .estrela:nth-child(2){top:15%; left:20%;}
+#espaco-sideral .estrela:nth-child(3){top:25%; left:35%;}
+#espaco-sideral .estrela:nth-child(4){top:35%; left:50%;}
+#espaco-sideral .estrela:nth-child(5){top:10%; left:65%;}
+#espaco-sideral .estrela:nth-child(6){top:20%; left:75%;}
+#espaco-sideral .estrela:nth-child(7){top:30%; left:80%;}
+#espaco-sideral .estrela:nth-child(8){top:40%; left:90%;}
+#espaco-sideral .estrela:nth-child(9){top:50%; left:15%;}
+#espaco-sideral .estrela:nth-child(10){top:60%; left:25%;}
+#espaco-sideral .estrela:nth-child(11){top:70%; left:35%;}
+#espaco-sideral .estrela:nth-child(12){top:80%; left:45%;}
+#espaco-sideral .estrela:nth-child(13){top:50%; left:55%;}
+#espaco-sideral .estrela:nth-child(14){top:60%; left:65%;}
+#espaco-sideral .estrela:nth-child(15){top:70%; left:75%;}
+#espaco-sideral .estrela:nth-child(16){top:80%; left:85%;}
+#espaco-sideral .estrela:nth-child(17){top:15%; left:5%;}
+#espaco-sideral .estrela:nth-child(18){top:25%; left:15%;}
+#espaco-sideral .estrela:nth-child(19){top:35%; left:25%;}
+#espaco-sideral .estrela:nth-child(20){top:45%; left:35%;}
+#espaco-sideral .estrela:nth-child(21){top:55%; left:45%;}
+#espaco-sideral .estrela:nth-child(22){top:65%; left:55%;}
+#espaco-sideral .estrela:nth-child(23){top:75%; left:65%;}
+#espaco-sideral .estrela:nth-child(24){top:85%; left:75%;}
+#espaco-sideral .estrela:nth-child(25){top:30%; left:60%;}
+#espaco-sideral .estrela:nth-child(26){top:40%; left:70%;}
+#espaco-sideral .estrela:nth-child(27){top:50%; left:80%;}
+#espaco-sideral .estrela:nth-child(28){top:60%; left:90%;}
 
 /* =========================
    PARTE 3 — EIXO CENTRAL
@@ -120,17 +128,18 @@ section {
     transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
+/* Blocos e elementos */
 .bloco, .estado, .valor {
     position: relative;
     transform-style: preserve-3d;
 }
 
-/* Blocos flutuantes com hover 3D */
+/* Unidade habitacional — flutuação + hover 3D */
 .unidade-habitacional {
-    padding:42px;
+    padding: 42px;
     background: linear-gradient(to bottom right, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
     backdrop-filter: var(--blur-vidro);
-    border:1px solid var(--borda-flutuante);
+    border: 1px solid var(--borda-flutuante);
     box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
     transition: transform 0.6s cubic-bezier(0.19,1,0.22,1), box-shadow 0.6s;
     animation: flutuar 12s ease-in-out infinite;
@@ -142,204 +151,90 @@ section {
 }
 
 .unidade-habitacional:hover {
-    box-shadow: 0 50px 120px rgba(0,0,0,0.9), 0 0 0 1px var(--ouro-soberano);
-    transform: translateY(-8px) rotateX(3deg) rotateY(3deg) scale(1.02);
+    box-shadow: 0 50px 150px rgba(0,0,0,0.85), 0 0 0 1px var(--ouro-soberano);
+    transform: translateY(-8px) rotateX(3deg) rotateY(3deg) scale(1.03);
 }
 
 /* =========================
    PARTE 5 — MATRIZ DE ESTADOS
 ========================= */
 .matriz-estados {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:42px;
-    transform-style: preserve-3d;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 42px;
 }
 
-.matriz-estados h3 { 
-    font-size:0.8rem; 
-    letter-spacing:6px; 
-    margin-bottom:22px; 
-    transform: translateZ(10px);
-}
-
-.valor {
-    display:block;
-    font-size:1.6rem;
-    font-weight:700;
-    color:var(--ouro-soberano);
-    margin-bottom:20px;
-    transform: translateZ(5px);
-}
-
-.perfil { font-size:0.85rem; color:var(--texto-secundario); }
-
-/* Diagnóstico */
-.lista-diagnostico {
-    list-style:none;
-    margin-top:50px;
-}
-
-.lista-diagnostico li {
-    padding:14px 0;
-    border-bottom:1px solid var(--linha-divisora);
-    font-family:monospace;
-    font-size:0.85rem;
-    letter-spacing:3px;
-    color:var(--verde-nacao);
-    transform: translateZ(3px);
-}
-
-/* Fechamento */
-.fechamento-soberano {
-    padding:80px 0;
-    text-align:center;
-}
-
-.assinatura-arquiteto { letter-spacing:8px; color:var(--ouro-soberano); }
-.status-final { font-family:monospace; letter-spacing:4px; color:var(--verde-nacao); }
-
-/* =========================
-   PARTE 6 — RESPONSIVO
-========================= */
-@media(max-width:1024px){.matriz-estados{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:640px){.matriz-estados{grid-template-columns:1fr;}}
-:root {
-    --eixo-max: 1100px;
-    --gap-massivo: 12vh;
-
-    /* Cores primárias */
-    --azul-espaco: #050b1a;
-    --azul-profundo: #020611;
-    --lilas-futuro: rgba(140,120,255,0.08);
-    --verde-nacao: rgba(0,255,156,0.12);
-    --ouro-soberano: #ffd700;
-
-    --texto-primario: #ffffff;
-    --texto-secundario: #b0b3c2;
-
-    --linha-divisora: rgba(255,255,255,0.12);
-    --borda-flutuante: rgba(255,255,255,0.18);
-    --blur-vidro: blur(10px);
-
-    /* Glow e neon */
-    --glow-titulo: 0 0 12px #ffd700, 0 0 24px #ffd700;
-    --glow-valor: 0 0 8px #00ff9c, 0 0 16px #00ff9c;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-    min-height:100vh;
-    color:var(--texto-primario);
-    font-family:system-ui, sans-serif;
-    line-height:1.7;
-    overflow-x:hidden;
-
-    /* Fundo galáctico dinâmico */
-    background:
-      radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
-      radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
-      linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
-    position:relative;
-}
-
-/* Eixo central */
-.eixo-central { max-width: var(--eixo-max); margin:0 auto; padding:0 6%; }
-
-/* Seções */
-section { padding: var(--gap-massivo) 0; border-bottom:1px solid var(--linha-divisora); }
-
-/* Blocos e elementos básicos */
-.bloco, .estado, .valor {
-    position: relative;
-    perspective: 1200px; /* Parallax hover 3D */
-}
-
-/* Unidade habitacional com flutuação e hover 3D */
-.unidade-habitacional {
-    padding:42px;
-    background:linear-gradient(to bottom right, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
-    backdrop-filter:var(--blur-vidro);
-    border:1px solid var(--borda-flutuante);
-    box-shadow:0 30px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
-    transition: transform 0.6s cubic-bezier(0.19,1,0.22,1), box-shadow 0.6s;
-    animation: flutuar 12s ease-in-out infinite;
-}
-@keyframes flutuar { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
-.unidade-habitacional:hover {
-    transform: rotateY(8deg) rotateX(4deg) scale(1.05);
-    box-shadow:0 50px 150px rgba(0,0,0,0.85),0 0 0 1px var(--ouro-soberano);
-}
-
-/* Matriz de estados */
-.matriz-estados {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:42px;
-}
 .matriz-estados h3 {
-    font-size:0.8rem;
+    font-size:0.85rem;
     letter-spacing:6px;
     margin-bottom:22px;
     text-shadow: var(--glow-titulo);
 }
 
-/* Valores com glow neon */
+/* =========================
+   PARTE 6 — VALORES COM GLOW
+========================= */
 .valor {
     display:block;
     font-size:1.6rem;
     font-weight:700;
-    color:var(--ouro-soberano);
+    color: var(--ouro-soberano);
     margin-bottom:20px;
     text-shadow: var(--glow-valor);
 }
 
-/* Diagnóstico */
+/* =========================
+   PARTE 7 — DIAGNÓSTICO
+========================= */
 .lista-diagnostico {
     list-style:none;
     margin-top:50px;
 }
+
 .lista-diagnostico li {
     padding:14px 0;
     border-bottom:1px solid var(--linha-divisora);
-    font-family:monospace;
+    font-family: monospace;
     font-size:0.85rem;
     letter-spacing:3px;
-    color:var(--verde-nacao);
+    color: var(--verde-nacao);
+    transform: translateZ(3px);
 }
 
-/* Fechamento */
+/* =========================
+   PARTE 8 — FECHAMENTO
+========================= */
 .fechamento-soberano {
     padding:80px 0;
     text-align:center;
 }
-.assinatura-arquiteto { letter-spacing:8px; color:var(--ouro-soberano); }
-.status-final { font-family:monospace; letter-spacing:4px; color:var(--verde-nacao); }
 
-/* Responsivo */
+.assinatura-arquiteto { 
+    letter-spacing:8px; 
+    color: var(--ouro-soberano); 
+}
+
+.status-final { 
+    font-family: monospace; 
+    letter-spacing:4px; 
+    color: var(--verde-nacao); 
+}
+
+/* =========================
+   PARTE 9 — RESPONSIVO
+========================= */
 @media(max-width:1024px){.matriz-estados{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.matriz-estados{grid-template-columns:1fr;}}
 
-/* ======================================================
-   Estrelas dos 28 Estados
-====================================================== */
-#espaco-sideral {
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
+/* =========================
+   PARTE 10 — SCROLL / EFEITOS VISUAIS AO ROLAR
+========================= */
+section {
+    will-change: transform, opacity;
 }
-.estrela {
-    position:absolute;
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:0 0 8px #fff,0 0 16px #fff;
-    animation: brilho 2s infinite alternate;
+.bloco {
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
 }
-@keyframes brilho {
-    from { transform: scale(0.6); opacity:0.5; }
-    to { transform: scale(1.2); opacity:1; }
+.bloco:hover {
+    transform: translateY(-6px) scale(1.01);
 }
