@@ -1,8 +1,15 @@
+/* ==========================================================
+   C3X4.0 — BRASIL INDEPENDENTE
+   CSS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
+   ========================================================== */
+
+/* =========================
+   PARTE 1 — VARIÁVEIS GLOBAIS
+========================= */
 :root {
     --eixo-max: 1100px;
     --gap-massivo: 12vh;
 
-    /* Identidade Brasil / Espaço profundo */
     --azul-espaco: #050b1a;
     --azul-profundo: #020611;
     --lilas-futuro: rgba(140,120,255,0.08);
@@ -15,183 +22,185 @@
     --linha-divisora: rgba(255,255,255,0.12);
     --borda-flutuante: rgba(255,255,255,0.18);
 
-    --blur-vidro: blur(10px);
+    --blur-vidro: blur(12px);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset básico */
+* { margin:0; padding:0; box-sizing:border-box; }
 
+/* =========================
+   PARTE 2 — FUNDO GALÁCTICO
+========================= */
 body {
-    min-height: 100vh;
-    color: var(--texto-primario);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.7;
-    overflow-x: hidden;
-    perspective: 1500px;
+    min-height:100vh;
+    color:var(--texto-primario);
+    font-family:system-ui,sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+
+    /* Fundo galáctico com gradientes e profundidade */
     background:
-        radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
-        radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
-        linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
-    background-attachment: fixed;
+      radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
+      radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
+      linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
+    perspective: 1200px;
+    transform-style: preserve-3d;
 }
 
-/* Eixo central */
-.eixo-central {
-    max-width: var(--eixo-max);
-    margin: 0 auto;
-    padding: 0 6%;
-}
-
-/* Espaço sideral com 28 estrelas */
+/* Espaço sideral das estrelas */
 #espaco-sideral {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: -1;
-    background: transparent;
+    z-index: 0;
 }
 
-#espaco-sideral::before,
-#espaco-sideral::after {
-    content: '';
+.star {
     position: absolute;
-    width: 2px;
-    height: 2px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--ouro-soberano);
+    animation: estrela-pulsar 4s infinite ease-in-out alternate;
+    box-shadow: 0 0 8px var(--ouro-soberano);
 }
 
-@for $i from 1 through 28 {
-    #espaco-sideral::before:nth-child(#{$i}) {
-        top: random(100)%;
-        left: random(100)%;
-        width: random(3)+1px;
-        height: random(3)+1px;
-    }
+@keyframes estrela-pulsar {
+    0%,100% { transform: scale(1); opacity:0.8; }
+    50% { transform: scale(1.4); opacity:1; }
 }
 
-/* Seções e blocos */
+/* Exemplo de 28 estrelas já posicionadas */
+#espaco-sideral .star:nth-child(1){top:5%; left:10%;}
+#espaco-sideral .star:nth-child(2){top:15%; left:20%;}
+#espaco-sideral .star:nth-child(3){top:25%; left:35%;}
+#espaco-sideral .star:nth-child(4){top:35%; left:50%;}
+#espaco-sideral .star:nth-child(5){top:10%; left:65%;}
+#espaco-sideral .star:nth-child(6){top:20%; left:75%;}
+#espaco-sideral .star:nth-child(7){top:30%; left:80%;}
+#espaco-sideral .star:nth-child(8){top:40%; left:90%;}
+#espaco-sideral .star:nth-child(9){top:50%; left:15%;}
+#espaco-sideral .star:nth-child(10){top:60%; left:25%;}
+#espaco-sideral .star:nth-child(11){top:70%; left:35%;}
+#espaco-sideral .star:nth-child(12){top:80%; left:45%;}
+#espaco-sideral .star:nth-child(13){top:50%; left:55%;}
+#espaco-sideral .star:nth-child(14){top:60%; left:65%;}
+#espaco-sideral .star:nth-child(15){top:70%; left:75%;}
+#espaco-sideral .star:nth-child(16){top:80%; left:85%;}
+#espaco-sideral .star:nth-child(17){top:15%; left:5%;}
+#espaco-sideral .star:nth-child(18){top:25%; left:15%;}
+#espaco-sideral .star:nth-child(19){top:35%; left:25%;}
+#espaco-sideral .star:nth-child(20){top:45%; left:35%;}
+#espaco-sideral .star:nth-child(21){top:55%; left:45%;}
+#espaco-sideral .star:nth-child(22){top:65%; left:55%;}
+#espaco-sideral .star:nth-child(23){top:75%; left:65%;}
+#espaco-sideral .star:nth-child(24){top:85%; left:75%;}
+#espaco-sideral .star:nth-child(25){top:30%; left:60%;}
+#espaco-sideral .star:nth-child(26){top:40%; left:70%;}
+#espaco-sideral .star:nth-child(27){top:50%; left:80%;}
+#espaco-sideral .star:nth-child(28){top:60%; left:90%;}
+
+/* =========================
+   PARTE 3 — EIXO CENTRAL
+========================= */
+.eixo-central { 
+    max-width: var(--eixo-max); 
+    margin:0 auto; 
+    padding:0 6%; 
+    transform-style: preserve-3d;
+}
+
+/* =========================
+   PARTE 4 — SEÇÕES / BLOCOS
+========================= */
 section {
     padding: var(--gap-massivo) 0;
-    border-bottom: 1px solid var(--linha-divisora);
+    border-bottom:1px solid var(--linha-divisora);
     transform-style: preserve-3d;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
 .bloco, .estado, .valor {
     position: relative;
-    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    transform-style: preserve-3d;
 }
 
-/* Unidades habitacionais com flutuação e hover 3D */
+/* Blocos flutuantes com hover 3D */
 .unidade-habitacional {
-    padding: 42px;
+    padding:42px;
     background: linear-gradient(to bottom right, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
     backdrop-filter: var(--blur-vidro);
-    border: 1px solid var(--borda-flutuante);
+    border:1px solid var(--borda-flutuante);
     box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
     transition: transform 0.6s cubic-bezier(0.19,1,0.22,1), box-shadow 0.6s;
     animation: flutuar 12s ease-in-out infinite;
 }
 
 @keyframes flutuar {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-14px) rotateX(1deg) rotateY(1deg); }
 }
 
 .unidade-habitacional:hover {
-    transform: rotateX(5deg) rotateY(5deg) translateZ(10px);
-    box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px var(--ouro-soberano);
+    box-shadow: 0 50px 120px rgba(0,0,0,0.9), 0 0 0 1px var(--ouro-soberano);
+    transform: translateY(-8px) rotateX(3deg) rotateY(3deg) scale(1.02);
 }
 
-/* Matriz de estados */
+/* =========================
+   PARTE 5 — MATRIZ DE ESTADOS
+========================= */
 .matriz-estados {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 42px;
-}
-
-.matriz-estados h3 {
-    font-size: 0.8rem;
-    letter-spacing: 6px;
-    margin-bottom: 22px;
-}
-
-/* Valores / Escalas */
-.valor {
-    display: block;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--ouro-soberano);
-    margin-bottom: 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:42px;
     transform-style: preserve-3d;
-    transition: transform 0.4s ease, color 0.4s ease;
 }
 
-.valor:hover {
-    transform: translateZ(10px) scale(1.05);
-    color: #fff;
+.matriz-estados h3 { 
+    font-size:0.8rem; 
+    letter-spacing:6px; 
+    margin-bottom:22px; 
+    transform: translateZ(10px);
 }
 
-/* Perfis secundários */
-.perfil {
-    font-size: 0.85rem;
-    color: var(--texto-secundario);
+.valor {
+    display:block;
+    font-size:1.6rem;
+    font-weight:700;
+    color:var(--ouro-soberano);
+    margin-bottom:20px;
+    transform: translateZ(5px);
 }
+
+.perfil { font-size:0.85rem; color:var(--texto-secundario); }
 
 /* Diagnóstico */
 .lista-diagnostico {
-    list-style: none;
-    margin-top: 50px;
+    list-style:none;
+    margin-top:50px;
 }
 
 .lista-diagnostico li {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--linha-divisora);
-    font-family: monospace;
-    font-size: 0.85rem;
-    letter-spacing: 3px;
-    color: var(--verde-nacao);
+    padding:14px 0;
+    border-bottom:1px solid var(--linha-divisora);
+    font-family:monospace;
+    font-size:0.85rem;
+    letter-spacing:3px;
+    color:var(--verde-nacao);
+    transform: translateZ(3px);
 }
 
 /* Fechamento */
 .fechamento-soberano {
-    padding: 80px 0;
-    text-align: center;
+    padding:80px 0;
+    text-align:center;
 }
 
-.assinatura-arquiteto {
-    letter-spacing: 8px;
-    color: var(--ouro-soberano);
-}
-
-.status-final {
-    font-family: monospace;
-    letter-spacing: 4px;
-    color: var(--verde-nacao);
-}
+.assinatura-arquiteto { letter-spacing:8px; color:var(--ouro-soberano); }
+.status-final { font-family:monospace; letter-spacing:4px; color:var(--verde-nacao); }
 
 /* =========================
-   EFEITOS PARALLAX LEVE
-========================= */
-section.bloco {
-    transform: translateZ(0);
-}
-
-.bloco:before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: inherit;
-    transform: translateZ(-30px) scale(1.03);
-    z-index: -1;
-}
-
-/* =========================
-   RESPONSIVO
+   PARTE 6 — RESPONSIVO
 ========================= */
 @media(max-width:1024px){.matriz-estados{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.matriz-estados{grid-template-columns:1fr;}}
