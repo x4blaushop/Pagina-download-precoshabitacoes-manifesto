@@ -1,110 +1,112 @@
 /* ==========================================================
    C3X4.0 — BRASIL INDEPENDENTE
    JS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
-   Versão modernizada, categorizada e animada
+   Versão completa e funcional
    ========================================================== */
 
 /* =========================
-   PARTE 1 — CONFIGURAÇÃO GLOBAL
+   PARTE 1 — INICIALIZAÇÃO
 ========================= */
-const starsCount = 28;
-const espacoSideral = document.getElementById('espaco-sideral');
-const blocos = document.querySelectorAll('.bloco');
-const valores = document.querySelectorAll('.valor');
+document.addEventListener("DOMContentLoaded", () => {
 
-/* =========================
-   PARTE 2 — CRIAÇÃO DINÂMICA DE ESTRELAS
-========================= */
-function criarEstrelas() {
-  for(let i = 0; i < starsCount; i++) {
-    const star = document.createElement('div');
-    star.classList.add('estrela');
-    star.style.top = `${Math.random()*100}%`;
-    star.style.left = `${Math.random()*100}%`;
-    star.style.width = `${2 + Math.random()*4}px`;
-    star.style.height = star.style.width;
-    espacoSideral.appendChild(star);
-  }
-}
-criarEstrelas();
+  const blocos = document.querySelectorAll(".bloco");
+  const valores = document.querySelectorAll(".valor");
+  const estrelas = document.querySelectorAll("#espaco-sideral .estrela");
+  const hero = document.querySelector(".hero");
 
-/* =========================
-   PARTE 3 — PARALLAX HOVER 3D
-========================= */
-blocos.forEach(bloco => {
-  bloco.addEventListener('mousemove', e => {
-    const rect = bloco.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width/2;
-    const cy = rect.height/2;
-    const dx = (x - cx) / cx;
-    const dy = (y - cy) / cy;
-    bloco.style.transform = `rotateY(${dx*6}deg) rotateX(${-dy*6}deg) translateZ(0)`;
+  /* =========================
+     PARTE 2 — PARALLAX HERO
+  ========================= */
+  document.addEventListener("mousemove", e => {
+    const x = (window.innerWidth / 2 - e.clientX) / 50;
+    const y = (window.innerHeight / 2 - e.clientY) / 50;
+    if(hero) hero.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   });
-  bloco.addEventListener('mouseleave', () => {
-    bloco.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0)`;
-  });
-});
 
-/* =========================
-   PARTE 4 — SCROLL ANIMATION
-========================= */
-function checkScroll() {
-  const triggerBottom = window.innerHeight * 0.85;
+  /* =========================
+     PARTE 3 — SCROLL ANIMADO
+  ========================= */
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+
+    blocos.forEach((bloco, index) => {
+      const offset = bloco.offsetTop - window.innerHeight / 1.2;
+      if(scrollY > offset) {
+        bloco.style.transform = "translateY(0) scale(1)";
+        bloco.style.opacity = "1";
+      } else {
+        bloco.style.transform = "translateY(30px) scale(0.98)";
+        bloco.style.opacity = "0";
+      }
+    });
+
+    /* Parallax leve nas estrelas */
+    estrelas.forEach((estrela, i) => {
+      const velocidade = (i + 1) / 30;
+      estrela.style.transform = `translateY(${scrollY * velocidade}px)`;
+    });
+  });
+
+  /* =========================
+     PARTE 4 — HOVER 3D NOS BLOCOS
+  ========================= */
   blocos.forEach(bloco => {
-    const blocoTop = bloco.getBoundingClientRect().top;
-    if(blocoTop < triggerBottom){
-      bloco.style.opacity = '1';
-      bloco.style.transform += ' translateY(0px)';
-    } else {
-      bloco.style.opacity = '0';
-      bloco.style.transform += ' translateY(20px)';
-    }
+    bloco.addEventListener("mousemove", e => {
+      const rect = bloco.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) - rect.width/2) / 20;
+      const y = ((e.clientY - rect.top) - rect.height/2) / 20;
+      bloco.style.transform = `rotateX(${ -y }deg) rotateY(${ x }deg) scale(1.02)`;
+    });
+    bloco.addEventListener("mouseleave", () => {
+      bloco.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+    });
   });
-}
-window.addEventListener('scroll', checkScroll);
-window.addEventListener('load', checkScroll);
 
-/* =========================
-   PARTE 5 — VALORES CLICK (COPIAR PIX)
-========================= */
-valores.forEach(v => {
-  v.addEventListener('click', () => {
-    const pix = v.dataset.pix;
-    navigator.clipboard.writeText(pix)
-      .then(() => alert(`PIX copiado: ${pix}`))
-      .catch(() => alert('Erro ao copiar o PIX'));
+  /* =========================
+     PARTE 5 — VALORES COPIÁVEIS
+  ========================= */
+  valores.forEach(valor => {
+    valor.style.cursor = "pointer";
+    valor.addEventListener("click", () => {
+      const pix = valor.dataset.pix;
+      navigator.clipboard.writeText(pix).then(() => {
+        valor.textContent += " ✅ Copiado!";
+        setTimeout(() => {
+          valor.textContent = valor.textContent.replace(" ✅ Copiado!", "");
+        }, 1500);
+      });
+    });
   });
+
+  /* =========================
+     PARTE 6 — ANIMAÇÃO DE FLUTUAÇÃO
+  ========================= */
+  const flutuar = () => {
+    blocos.forEach(bloco => {
+      const deslocamento = Math.sin(Date.now() / 1000) * 4;
+      bloco.style.transform += ` translateY(${deslocamento}px)`;
+    });
+    requestAnimationFrame(flutuar);
+  };
+  flutuar();
+
+  /* =========================
+     PARTE 7 — DOWNLOAD DE CÉLULAS
+  ========================= */
+  const downloads = document.querySelectorAll(".download-celula");
+  downloads.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+      link.style.transform = "scale(1.05)";
+      link.style.boxShadow = "0 10px 30px rgba(255, 215, 0, 0.7)";
+    });
+    link.addEventListener("mouseleave", () => {
+      link.style.transform = "scale(1)";
+      link.style.boxShadow = "0 5px 15px rgba(255, 215, 0, 0.4)";
+    });
+  });
+
+  /* =========================
+     PARTE 8 — OTIMIZAÇÃO
+  ========================= */
+  window.dispatchEvent(new Event('scroll')); // ativa animação inicial
 });
-
-/* =========================
-   PARTE 6 — BOTÕES WHATSAPP
-========================= */
-const btnsWhatsapp = document.querySelectorAll('.btn-whatsapp');
-btnsWhatsapp.forEach(btn => {
-  btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.08)');
-  btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
-});
-
-/* =========================
-   PARTE 7 — DOWNLOAD CÉLULAS
-========================= */
-const downloadCelula = document.querySelector('.download-celula');
-if(downloadCelula){
-  downloadCelula.addEventListener('mouseenter', () => downloadCelula.style.transform = 'scale(1.05)');
-  downloadCelula.addEventListener('mouseleave', () => downloadCelula.style.transform = 'scale(1)');
-}
-
-/* =========================
-   PARTE 8 — LOOP DE ANIMAÇÃO LEVE (PARALLAX ESTRELAS)
-========================= */
-function animateStars(){
-  const estrelas = document.querySelectorAll('.estrela');
-  estrelas.forEach((s, i) => {
-    const offset = Math.sin(Date.now()/2000 + i)*2;
-    s.style.transform = `translateY(${offset}px)`;
-  });
-  requestAnimationFrame(animateStars);
-}
-animateStars();
