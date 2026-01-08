@@ -1,31 +1,110 @@
-(function(Soberano){
-  'use strict';
-  const DNA_CONFIG={
-    sistema:'C3X4.0_BRASIL_INDEPENDENTE',
-    versao:'4.0.27',
-    arquiteto:'José Patrick Castro Soares',
-    camadas:['Visível','Estrutural','Soberana'],
-    logs:false,
-    dominiosPermitidos:[window.location.hostname,'fonts.googleapis.com','fonts.gstatic.com']
-  };
+/* ==========================================================
+   C3X4.0 — BRASIL INDEPENDENTE
+   JS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
+   Versão modernizada, categorizada e animada
+   ========================================================== */
 
-  class NucleoC3X4{
-    constructor(){this.inicializarIdentidade();this.protegerEstrutura();this.organizarValores();this.iniciarObservadores();}
-    inicializarIdentidade(){document.documentElement.setAttribute('data-sistema',DNA_CONFIG.sistema);document.documentElement.setAttribute('data-arquiteto',DNA_CONFIG.arquiteto);if(!DNA_CONFIG.logs)this.silenciarConsole();}
-    silenciarConsole(){try{const noop=()=>{};['log','info','warn','error','debug'].forEach(m=>{console[m]=noop;});}catch(_){}
-    }
-    protegerEstrutura(){const observer=new MutationObserver(mutations=>{mutations.forEach(mutation=>{mutation.addedNodes.forEach(node=>{if(node.tagName==='SCRIPT'&&node.src&&!this.scriptPermitido(node.src)){node.remove();this.registrarEvento('SCRIPT EXTERNO BLOQUEADO');}});});});observer.observe(document.documentElement,{childList:true,subtree:true});}
-    scriptPermitido(src){return DNA_CONFIG.dominiosPermitidos.some(dom=>src.includes(dom));}
-    registrarEvento(evento){const historico=JSON.parse(localStorage.getItem('C3X4_AUDITORIA')||'[]');historico.push({evento,data:new Date().toISOString()});localStorage.setItem('C3X4_AUDITORIA',JSON.stringify(historico.slice(-12)));}
-    organizarValores(){const valores=document.querySelectorAll('[data-valor]');valores.forEach(el=>{const valor=el.getAttribute('data-valor');el.setAttribute('aria-label',`Escala de valor ${valor}`);});}
-    iniciarObservadores(){this.revelarBlocos();this.protegerInteracaoBasica();}
-    revelarBlocos(){const blocos=document.querySelectorAll('.bloco,.estado,.valor');const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('ativo');}});},{threshold:0.15});blocos.forEach(bloco=>observer.observe(bloco));}
-    protegerInteracaoBasica(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',e=>{if(e.ctrlKey&&['u','s','i'].includes(e.key.toLowerCase()))e.preventDefault();});}
+/* =========================
+   PARTE 1 — CONFIGURAÇÃO GLOBAL
+========================= */
+const starsCount = 28;
+const espacoSideral = document.getElementById('espaco-sideral');
+const blocos = document.querySelectorAll('.bloco');
+const valores = document.querySelectorAll('.valor');
+
+/* =========================
+   PARTE 2 — CRIAÇÃO DINÂMICA DE ESTRELAS
+========================= */
+function criarEstrelas() {
+  for(let i = 0; i < starsCount; i++) {
+    const star = document.createElement('div');
+    star.classList.add('estrela');
+    star.style.top = `${Math.random()*100}%`;
+    star.style.left = `${Math.random()*100}%`;
+    star.style.width = `${2 + Math.random()*4}px`;
+    star.style.height = star.style.width;
+    espacoSideral.appendChild(star);
   }
+}
+criarEstrelas();
 
-  const InterfaceHumana={
-    destacarEstado(){document.querySelectorAll('.estado').forEach(estado=>{estado.addEventListener('mouseenter',()=>{estado.classList.add('hover');});estado.addEventListener('mouseleave',()=>{estado.classList.remove('hover');});});}
-  };
+/* =========================
+   PARTE 3 — PARALLAX HOVER 3D
+========================= */
+blocos.forEach(bloco => {
+  bloco.addEventListener('mousemove', e => {
+    const rect = bloco.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width/2;
+    const cy = rect.height/2;
+    const dx = (x - cx) / cx;
+    const dy = (y - cy) / cy;
+    bloco.style.transform = `rotateY(${dx*6}deg) rotateX(${-dy*6}deg) translateZ(0)`;
+  });
+  bloco.addEventListener('mouseleave', () => {
+    bloco.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0)`;
+  });
+});
 
-  window.addEventListener('load',()=>{new NucleoC3X4();InterfaceHumana.destacarEstado();document.body.classList.add('c3x4-estabilizado');});
-})(window.JosePatrickCastroSoares||{});
+/* =========================
+   PARTE 4 — SCROLL ANIMATION
+========================= */
+function checkScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+  blocos.forEach(bloco => {
+    const blocoTop = bloco.getBoundingClientRect().top;
+    if(blocoTop < triggerBottom){
+      bloco.style.opacity = '1';
+      bloco.style.transform += ' translateY(0px)';
+    } else {
+      bloco.style.opacity = '0';
+      bloco.style.transform += ' translateY(20px)';
+    }
+  });
+}
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+
+/* =========================
+   PARTE 5 — VALORES CLICK (COPIAR PIX)
+========================= */
+valores.forEach(v => {
+  v.addEventListener('click', () => {
+    const pix = v.dataset.pix;
+    navigator.clipboard.writeText(pix)
+      .then(() => alert(`PIX copiado: ${pix}`))
+      .catch(() => alert('Erro ao copiar o PIX'));
+  });
+});
+
+/* =========================
+   PARTE 6 — BOTÕES WHATSAPP
+========================= */
+const btnsWhatsapp = document.querySelectorAll('.btn-whatsapp');
+btnsWhatsapp.forEach(btn => {
+  btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.08)');
+  btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+});
+
+/* =========================
+   PARTE 7 — DOWNLOAD CÉLULAS
+========================= */
+const downloadCelula = document.querySelector('.download-celula');
+if(downloadCelula){
+  downloadCelula.addEventListener('mouseenter', () => downloadCelula.style.transform = 'scale(1.05)');
+  downloadCelula.addEventListener('mouseleave', () => downloadCelula.style.transform = 'scale(1)');
+}
+
+/* =========================
+   PARTE 8 — LOOP DE ANIMAÇÃO LEVE (PARALLAX ESTRELAS)
+========================= */
+function animateStars(){
+  const estrelas = document.querySelectorAll('.estrela');
+  estrelas.forEach((s, i) => {
+    const offset = Math.sin(Date.now()/2000 + i)*2;
+    s.style.transform = `translateY(${offset}px)`;
+  });
+  requestAnimationFrame(animateStars);
+}
+animateStars();
