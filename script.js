@@ -1,7 +1,7 @@
 /* ==========================================================
    C3X4.0 — BRASIL INDEPENDENTE
-   JS ULTRA IMERSIVO · PARALLAX SUAVE · HOVER 3D · INTERATIVO
-   Versão Fiel à Raiz Funcional
+   JS ULTRA IMERSIVO · PARALLAX · HOVER 3D · INTERATIVO
+   Versão Fiel à Raiz Funcional — Scroll Suave
    ========================================================== */
 
 /* =========================
@@ -10,7 +10,7 @@
 const estrelas = document.querySelectorAll('#espaco-sideral .estrela');
 
 function animarEstrelas() {
-    estrelas.forEach((estrela, index) => {
+    estrelas.forEach((estrela) => {
         const delay = Math.random() * 2;
         estrela.style.animationDelay = `${delay}s`;
         const scale = 0.6 + Math.random() * 0.6;
@@ -25,13 +25,21 @@ animarEstrelas();
 ========================= */
 const blocos = document.querySelectorAll('.bloco');
 const eixoCentral = document.querySelector('.eixo-central');
+let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
+
+    // Parallax suave para cada bloco
     blocos.forEach((bloco, index) => {
-        const velocidade = 0.005 * (index + 1); // reduzido de 0.02 para 0.005
+        const velocidade = 0.002 * (index + 1); // movendo muito mais devagar
         bloco.style.transform = `translateY(${scrollY * velocidade}px)`;
     });
+
+    // Movimentação suave do eixo central
+    const delta = (scrollY - lastScrollTop) * 0.01; // bem suave
+    eixoCentral.style.transform = `translateY(${delta}px)`;
+    lastScrollTop = scrollY;
 });
 
 /* =========================
@@ -40,8 +48,8 @@ window.addEventListener('scroll', () => {
 blocos.forEach(bloco => {
     bloco.addEventListener('mousemove', e => {
         const rect = bloco.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width/2;
-        const y = e.clientY - rect.top - rect.height/2;
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
         bloco.style.transform = `rotateY(${x*0.02}deg) rotateX(${-y*0.02}deg) translateZ(0)`;
     });
     bloco.addEventListener('mouseleave', () => {
@@ -99,14 +107,3 @@ function initC3X4() {
     animarEstrelas();
 }
 window.addEventListener('load', initC3X4);
-
-/* =========================
-   PARTE 8 — ANIMAÇÃO SUAVE DO EIXO CENTRAL
-========================= */
-let lastScrollTop = 0;
-window.addEventListener('scroll', () => {
-    const st = window.scrollY;
-    const delta = (st - lastScrollTop) * 0.03; // reduzido de 0.1 para 0.03
-    eixoCentral.style.transform = `translateY(${delta}px)`;
-    lastScrollTop = st;
-});
