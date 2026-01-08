@@ -204,3 +204,142 @@ section {
 ========================= */
 @media(max-width:1024px){.matriz-estados{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.matriz-estados{grid-template-columns:1fr;}}
+:root {
+    --eixo-max: 1100px;
+    --gap-massivo: 12vh;
+
+    /* Cores primárias */
+    --azul-espaco: #050b1a;
+    --azul-profundo: #020611;
+    --lilas-futuro: rgba(140,120,255,0.08);
+    --verde-nacao: rgba(0,255,156,0.12);
+    --ouro-soberano: #ffd700;
+
+    --texto-primario: #ffffff;
+    --texto-secundario: #b0b3c2;
+
+    --linha-divisora: rgba(255,255,255,0.12);
+    --borda-flutuante: rgba(255,255,255,0.18);
+    --blur-vidro: blur(10px);
+
+    /* Glow e neon */
+    --glow-titulo: 0 0 12px #ffd700, 0 0 24px #ffd700;
+    --glow-valor: 0 0 8px #00ff9c, 0 0 16px #00ff9c;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    min-height:100vh;
+    color:var(--texto-primario);
+    font-family:system-ui, sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+
+    /* Fundo galáctico dinâmico */
+    background:
+      radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
+      radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
+      linear-gradient(to bottom, var(--azul-espaco), var(--azul-profundo));
+    position:relative;
+}
+
+/* Eixo central */
+.eixo-central { max-width: var(--eixo-max); margin:0 auto; padding:0 6%; }
+
+/* Seções */
+section { padding: var(--gap-massivo) 0; border-bottom:1px solid var(--linha-divisora); }
+
+/* Blocos e elementos básicos */
+.bloco, .estado, .valor {
+    position: relative;
+    perspective: 1200px; /* Parallax hover 3D */
+}
+
+/* Unidade habitacional com flutuação e hover 3D */
+.unidade-habitacional {
+    padding:42px;
+    background:linear-gradient(to bottom right, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+    backdrop-filter:var(--blur-vidro);
+    border:1px solid var(--borda-flutuante);
+    box-shadow:0 30px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
+    transition: transform 0.6s cubic-bezier(0.19,1,0.22,1), box-shadow 0.6s;
+    animation: flutuar 12s ease-in-out infinite;
+}
+@keyframes flutuar { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+.unidade-habitacional:hover {
+    transform: rotateY(8deg) rotateX(4deg) scale(1.05);
+    box-shadow:0 50px 150px rgba(0,0,0,0.85),0 0 0 1px var(--ouro-soberano);
+}
+
+/* Matriz de estados */
+.matriz-estados {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:42px;
+}
+.matriz-estados h3 {
+    font-size:0.8rem;
+    letter-spacing:6px;
+    margin-bottom:22px;
+    text-shadow: var(--glow-titulo);
+}
+
+/* Valores com glow neon */
+.valor {
+    display:block;
+    font-size:1.6rem;
+    font-weight:700;
+    color:var(--ouro-soberano);
+    margin-bottom:20px;
+    text-shadow: var(--glow-valor);
+}
+
+/* Diagnóstico */
+.lista-diagnostico {
+    list-style:none;
+    margin-top:50px;
+}
+.lista-diagnostico li {
+    padding:14px 0;
+    border-bottom:1px solid var(--linha-divisora);
+    font-family:monospace;
+    font-size:0.85rem;
+    letter-spacing:3px;
+    color:var(--verde-nacao);
+}
+
+/* Fechamento */
+.fechamento-soberano {
+    padding:80px 0;
+    text-align:center;
+}
+.assinatura-arquiteto { letter-spacing:8px; color:var(--ouro-soberano); }
+.status-final { font-family:monospace; letter-spacing:4px; color:var(--verde-nacao); }
+
+/* Responsivo */
+@media(max-width:1024px){.matriz-estados{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.matriz-estados{grid-template-columns:1fr;}}
+
+/* ======================================================
+   Estrelas dos 28 Estados
+====================================================== */
+#espaco-sideral {
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+}
+.estrela {
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 8px #fff,0 0 16px #fff;
+    animation: brilho 2s infinite alternate;
+}
+@keyframes brilho {
+    from { transform: scale(0.6); opacity:0.5; }
+    to { transform: scale(1.2); opacity:1; }
+}
