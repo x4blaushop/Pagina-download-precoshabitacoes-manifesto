@@ -1,7 +1,7 @@
 /* ==========================================================
    C3X4.0 — BRASIL INDEPENDENTE
-   CSS ULTRA IMERSIVO · PROFUNDIDADE · PARALLAX · HOVER 3D
-   Versão Fiel à Raiz Funcional
+   CSS ULTRA IMERSIVO · PARALLAX · HOVER 3D
+   Versão fiel à raiz funcional
    ========================================================== */
 
 /* =========================
@@ -22,13 +22,14 @@
 
     --linha-divisora: rgba(255,255,255,0.12);
     --borda-flutuante: rgba(255,255,255,0.18);
+
     --blur-vidro: blur(12px);
 
     /* Glow e neon */
     --glow-titulo: 0 0 12px #ffd700, 0 0 24px #ffd700;
     --glow-valor: 0 0 8px #00ff9c, 0 0 16px #00ff9c;
 
-    /* Perspectiva global para hover 3D */
+    /* Parallax / profundidade */
     --perspective-global: 1200px;
 }
 
@@ -45,7 +46,6 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
 
-    /* Fundo galáctico com gradientes profundos */
     background:
         radial-gradient(circle at 20% 30%, var(--lilas-futuro), transparent 60%),
         radial-gradient(circle at 80% 70%, var(--verde-nacao), transparent 65%),
@@ -54,14 +54,13 @@ body {
     transform-style: preserve-3d;
 }
 
-/* Espaço sideral fixo com 28 estrelas */
+/* Espaço sideral fixo */
 #espaco-sideral {
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
 }
-
 .estrela {
     position: absolute;
     width: 4px;
@@ -71,41 +70,10 @@ body {
     box-shadow: 0 0 8px var(--ouro-soberano), 0 0 16px var(--ouro-soberano);
     animation: brilho 2s infinite alternate;
 }
-
 @keyframes brilho {
     from { transform: scale(0.6); opacity:0.5; }
     to { transform: scale(1.2); opacity:1; }
 }
-
-/* Posicionamento das 28 estrelas representando os estados */
-#espaco-sideral .estrela:nth-child(1){top:5%; left:10%;}
-#espaco-sideral .estrela:nth-child(2){top:15%; left:20%;}
-#espaco-sideral .estrela:nth-child(3){top:25%; left:35%;}
-#espaco-sideral .estrela:nth-child(4){top:35%; left:50%;}
-#espaco-sideral .estrela:nth-child(5){top:10%; left:65%;}
-#espaco-sideral .estrela:nth-child(6){top:20%; left:75%;}
-#espaco-sideral .estrela:nth-child(7){top:30%; left:80%;}
-#espaco-sideral .estrela:nth-child(8){top:40%; left:90%;}
-#espaco-sideral .estrela:nth-child(9){top:50%; left:15%;}
-#espaco-sideral .estrela:nth-child(10){top:60%; left:25%;}
-#espaco-sideral .estrela:nth-child(11){top:70%; left:35%;}
-#espaco-sideral .estrela:nth-child(12){top:80%; left:45%;}
-#espaco-sideral .estrela:nth-child(13){top:50%; left:55%;}
-#espaco-sideral .estrela:nth-child(14){top:60%; left:65%;}
-#espaco-sideral .estrela:nth-child(15){top:70%; left:75%;}
-#espaco-sideral .estrela:nth-child(16){top:80%; left:85%;}
-#espaco-sideral .estrela:nth-child(17){top:15%; left:5%;}
-#espaco-sideral .estrela:nth-child(18){top:25%; left:15%;}
-#espaco-sideral .estrela:nth-child(19){top:35%; left:25%;}
-#espaco-sideral .estrela:nth-child(20){top:45%; left:35%;}
-#espaco-sideral .estrela:nth-child(21){top:55%; left:45%;}
-#espaco-sideral .estrela:nth-child(22){top:65%; left:55%;}
-#espaco-sideral .estrela:nth-child(23){top:75%; left:65%;}
-#espaco-sideral .estrela:nth-child(24){top:85%; left:75%;}
-#espaco-sideral .estrela:nth-child(25){top:30%; left:60%;}
-#espaco-sideral .estrela:nth-child(26){top:40%; left:70%;}
-#espaco-sideral .estrela:nth-child(27){top:50%; left:80%;}
-#espaco-sideral .estrela:nth-child(28){top:60%; left:90%;}
 
 /* =========================
    PARTE 3 — EIXO CENTRAL
@@ -124,7 +92,7 @@ section {
     padding: var(--gap-massivo) 0;
     border-bottom:1px solid var(--linha-divisora);
     transform-style: preserve-3d;
-    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Blocos e elementos */
@@ -143,12 +111,10 @@ section {
     transition: transform 0.6s cubic-bezier(0.19,1,0.22,1), box-shadow 0.6s;
     animation: flutuar 12s ease-in-out infinite;
 }
-
 @keyframes flutuar {
     0%,100% { transform: translateY(0); }
     50% { transform: translateY(-14px) rotateX(1deg) rotateY(1deg); }
 }
-
 .unidade-habitacional:hover {
     box-shadow: 0 50px 150px rgba(0,0,0,0.85), 0 0 0 1px var(--ouro-soberano);
     transform: translateY(-8px) rotateX(3deg) rotateY(3deg) scale(1.03);
@@ -162,7 +128,6 @@ section {
     grid-template-columns: repeat(3,1fr);
     gap: 42px;
 }
-
 .matriz-estados h3 {
     font-size:0.85rem;
     letter-spacing:6px;
@@ -180,6 +145,7 @@ section {
     color: var(--ouro-soberano);
     margin-bottom:20px;
     text-shadow: var(--glow-valor);
+    cursor:pointer;
 }
 
 /* =========================
@@ -189,7 +155,6 @@ section {
     list-style:none;
     margin-top:50px;
 }
-
 .lista-diagnostico li {
     padding:14px 0;
     border-bottom:1px solid var(--linha-divisora);
@@ -197,7 +162,6 @@ section {
     font-size:0.85rem;
     letter-spacing:3px;
     color: var(--verde-nacao);
-    transform: translateZ(3px);
 }
 
 /* =========================
@@ -207,12 +171,10 @@ section {
     padding:80px 0;
     text-align:center;
 }
-
 .assinatura-arquiteto { 
     letter-spacing:8px; 
     color: var(--ouro-soberano); 
 }
-
 .status-final { 
     font-family: monospace; 
     letter-spacing:4px; 
@@ -226,36 +188,37 @@ section {
 @media(max-width:640px){.matriz-estados{grid-template-columns:1fr;}}
 
 /* =========================
-   PARTE 10 — SCROLL / EFEITOS VISUAIS AO ROLAR
+   PARTE 10 — EFEITOS DE INTERAÇÃO
 ========================= */
-section {
-    will-change: transform, opacity;
-}
-.bloco {
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-}
-.bloco:hover {
-    transform: translateY(-6px) scale(1.01);
-}
+section { will-change: transform, opacity; }
+.bloco { transition: transform 0.4s ease-out, opacity 0.4s ease-out; }
+.bloco:hover { transform: translateY(-3px) scale(1.005); }
 
-/* =========================
-   PARTE 11 — BOTÕES / LINKS ESTILIZADOS
-========================= */
+/* Botões WhatsApp */
 a.whatsapp {
     display:inline-block;
-    padding:12px 22px;
-    margin-top:12px;
+    padding:10px 20px;
     background: rgba(0,255,156,0.1);
-    border: 1px solid var(--verde-nacao);
-    border-radius: 8px;
+    border:1px solid var(--verde-nacao);
+    border-radius:8px;
     color: var(--verde-nacao);
-    font-weight:600;
     text-decoration:none;
-    transition: all 0.4s ease;
+    transition:0.3s;
 }
-a.whatsapp:hover {
-    background: var(--verde-nacao);
-    color:#020611;
-    box-shadow: 0 0 12px var(--verde-nacao), 0 0 24px var(--verde-nacao);
-    transform: scale(1.05);
+a.whatsapp:hover { transform:scale(1.05); box-shadow:0 0 12px var(--verde-nacao),0 0 24px var(--verde-nacao); }
+
+/* Download célula */
+.download-celula {
+    display:inline-block;
+    padding:14px 28px;
+    background: rgba(140,120,255,0.05);
+    border-radius:10px;
+    border:1px solid #8c78ff;
+    color:#8c78ff;
+    text-decoration:none;
+    transition:0.3s;
+}
+.download-celula:hover {
+    background: rgba(140,120,255,0.1);
+    box-shadow: 0 0 12px #8c78ff, 0 0 24px #8c78ff;
 }
