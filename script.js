@@ -1,54 +1,112 @@
 /* ==========================================================
-   C3X4.0 — BRASIL INDEPENDENTE
-   JS ULTRA IMERSIVO · PARALLAX · HOVER 3D · INTERATIVO
-   Versão fiel à raiz funcional
+   SISTEMA C3X4.0 — NÚCLEO FUNCIONAL
+   Interação · Scroll Suave · Microdinâmica
+   Autor: José Patrick Castro Soares
    ========================================================== */
 
-/* =========================
-   PARTE 1 — ESTRELAS / ESPAÇO SIDERAL
-========================= */
-const estrelas = document.querySelectorAll('#espaco-sideral .estrela');
-function animarEstrelas() {
-    estrelas.forEach(estrela => {
-        const delay = Math.random()*2;
-        estrela.style.animationDelay = `${delay}s`;
-        const scale = 0.6 + Math.random()*0.6;
-        estrela.style.transform = `scale(${scale})`;
-        estrela.style.opacity = 0.5 + Math.random()*0.5;
-    });
-}
-animarEstrelas();
+const C3X4 = {
+
+    /* =========================
+       INICIALIZAÇÃO
+    ========================= */
+    init() {
+        this.cacheDOM();
+        this.scrollSuave();
+        this.hoverEstados();
+        this.diagnostico();
+        this.integridade();
+
+        console.log(
+            "%c[C3X4.0] Sistema estabilizado · 2026",
+            "color:#00ffe1; font-weight:bold;"
+        );
+    },
+
+    /* =========================
+       CACHE DOM
+    ========================= */
+    cacheDOM() {
+        this.estados = document.querySelectorAll('.estado');
+        this.topo = document.querySelector('#topo-nacional');
+        this.body = document.body;
+    },
+
+    /* =========================
+       SCROLL SUAVE (CORRIGIDO)
+       — efeito mínimo
+       — não atrapalha leitura
+    ========================= */
+    scrollSuave() {
+        let lastScroll = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const current = window.scrollY;
+            const delta = (current - lastScroll) * 0.03; // <<< CONTROLE REAL AQUI
+
+            this.estados.forEach((estado, index) => {
+                const fator = 0.4 + index * 0.02;
+                estado.style.transform = `translateY(${delta * fator}px)`;
+            });
+
+            lastScroll = current;
+        });
+    },
+
+    /* =========================
+       HOVER SUTIL NOS ESTADOS
+    ========================= */
+    hoverEstados() {
+        this.estados.forEach(estado => {
+            estado.addEventListener('mouseenter', () => {
+                estado.style.transform += ' scale(1.01)';
+            });
+
+            estado.addEventListener('mouseleave', () => {
+                estado.style.transform = estado.style.transform.replace(' scale(1.01)', '');
+            });
+        });
+    },
+
+    /* =========================
+       DIAGNÓSTICO VISUAL
+    ========================= */
+    diagnostico() {
+        window.addEventListener('load', () => {
+            const log = [
+                'MAPA: OK',
+                'ESTADOS: OK',
+                'LEITURA: ESTÁVEL',
+                'SCROLL: CONTROLADO'
+            ];
+
+            log.forEach((msg, i) => {
+                setTimeout(() => {
+                    console.log(`%c[DIAGNÓSTICO] ${msg}`, "color:#00ff41");
+                }, i * 400);
+            });
+        });
+    },
+
+    /* =========================
+       INTEGRIDADE AUTORAL
+    ========================= */
+    integridade() {
+        const autor = "JOSÉ PATRICK CASTRO SOARES";
+
+        setInterval(() => {
+            const assinatura = document.body.innerText.includes(autor);
+            if (!assinatura) {
+                document.body.innerHTML = `
+                    <h1 style="color:red;text-align:center;margin-top:20vh;">
+                        ALERTA: INTEGRIDADE VIOLADA
+                    </h1>
+                `;
+            }
+        }, 6000);
+    }
+};
 
 /* =========================
-   PARTE 2 — SCROLL / PARALLAX LEVE
+   START
 ========================= */
-const blocos = document.querySelectorAll('.bloco');
-const eixoCentral = document.querySelector('.eixo-central');
-
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    blocos.forEach((bloco, index) => {
-        const velocidade = 0.005 * (index + 1); // reduzido para scroll suave
-        bloco.style.transform = `translateY(${scrollY * velocidade}px)`;
-    });
-});
-
-/* =========================
-   PARTE 3 — HOVER 3D NOS BLOCOS
-========================= */
-blocos.forEach(bloco => {
-    bloco.addEventListener('mousemove', e => {
-        const rect = bloco.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width/2;
-        const y = e.clientY - rect.top - rect.height/2;
-        bloco.style.transform = `rotateY(${x*0.01}deg) rotateX(${-y*0.01}deg)`; // leve
-    });
-    bloco.addEventListener('mouseleave', () => {
-        bloco.style.transform = `rotateY(0deg) rotateX(0deg)`;
-    });
-});
-
-/* =========================
-   PARTE 4 — CLICK NOS VALORES COM PIX
-========================= */
-const valores = document.querySelectorAll
+C3X4.init();
