@@ -1,163 +1,88 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planeta Brasil - Ciclo 2026</title>
-    <style>
-        /* --- DNA BASE: Limpeza e Estrutura --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+/* CAMADA 1: DEFINIÇÃO DE DNA (VARIÁVEIS) */
+:root {
+    --cyan-glow: #00ffcc;
+    --gold-glow: #ffdf00;
+    --bg-deep: #000000;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border-dna: rgba(0, 255, 204, 0.2);
+    --font-main: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
 
-        body {
-            background-color: #050505; /* Fundo profundo para destacar o sistema */
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            padding: 40px 20px;
-            overflow-x: hidden;
-        }
+/* CAMADA 2: RESET E ESTRUTURA CRIPTOGRAFADA */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+body { 
+    background: var(--bg-deep); 
+    color: #fff; 
+    font-family: var(--font-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
 
-        /* --- SEÇÃO PRINCIPAL: Planeta Brasil --- */
-        .header-system {
-            text-align: center;
-            max-width: 800px;
-            margin-bottom: 60px;
-        }
+/* CAMADA 3: TIPOGRAFIA SOBERANA (CONFORME AS FOTOS) */
+.glow-text-cyan {
+    color: var(--cyan-glow);
+    text-shadow: 0 0 20px rgba(0, 255, 204, 0.4), 0 0 40px rgba(0, 255, 204, 0.1);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
 
-        .header-system h1 {
-            font-size: 2.5rem;
-            color: #00ffcc; /* Tom Ciano das imagens */
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
-        }
+.glow-text-gold {
+    color: var(--gold-glow);
+    text-shadow: 0 0 20px rgba(255, 223, 0, 0.4);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
 
-        .sub-header {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+/* CAMADA 4: CARDS DE HABITAÇÃO (A LÓGICA DA BELEZA) */
+.unidade-habitacional {
+    width: 90%;
+    max-width: 600px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-dna);
+    padding: 40px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: var(--transition-smooth);
+}
 
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+.unidade-habitacional::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--cyan-glow);
+    box-shadow: 0 0 15px var(--cyan-glow);
+}
 
-        /* --- SEÇÃO MANIFESTO: Alinhamento e Destaque --- */
-        .manifesto-section {
-            text-align: center;
-            margin-bottom: 50px;
-            width: 100%;
-        }
+.unidade-habitacional:hover {
+    background: rgba(0, 255, 204, 0.05);
+    transform: scale(1.02);
+    border-color: var(--cyan-glow);
+}
 
-        .manifesto-section h2 {
-            font-size: 2.2rem;
-            color: #ffcc00; /* Amarelo vibrante das imagens */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
-        }
+/* CAMADA 5: SCANNER E BIOMETRIA (ANIMAÇÃO) */
+.dna-biometrics-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1.5s ease;
+}
 
-        /* --- CARDS DE ESTADO: Independência Estrutural --- */
-        .card-container {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+.scanner-orbital {
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--cyan-glow);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: rotate 2s linear infinite;
+}
 
-        .card-estado {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 255, 204, 0.2);
-            border-radius: 15px;
-            padding: 35px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .card-estado:hover {
-            transform: translateY(-5px);
-            border-color: #00ffcc;
-        }
-
-        .card-estado h3 {
-            color: #00ffcc;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-
-        .card-estado p {
-            color: #ddd;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
-
-        /* --- BOTÃO / LINK: Harmonia e Ação --- */
-        .btn-whatsapp {
-            display: inline-block;
-            color: #00ffcc;
-            text-decoration: none;
-            font-weight: bold;
-            border: 1px solid #00ffcc;
-            padding: 10px 25px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-whatsapp:hover {
-            background: #00ffcc;
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-        }
-    </style>
-</head>
-<body>
-
-    <header class="header-system">
-        <h1>PLANETA BRASIL</h1>
-        <div class="sub-header">
-            Realidade Tecnológica &bull; Diagnóstico Nacional &bull; Ciclo 2026
-        </div>
-        <p class="description">
-            Esta página apresenta o diagnóstico real da situação tecnológica de cada estado brasileiro, considerando autonomia digital, dependência estrutural e potencial de soberania tecnológica.
-        </p>
-    </header>
-
-    <section class="manifesto-section">
-        <h2>MANIFESTO<br>DIGITAL</h2>
-        <p class="description">
-            O Brasil não é carente de tecnologia — é dependente de estruturas externas. Este projeto documenta, organiza e expõe a realidade de cada estado.
-        </p>
-    </section>
-
-    <main class="card-container">
-        <div class="card-estado">
-            <h3>São Paulo</h3>
-            <p>
-                Maior polo tecnológico do país. Alta produção digital e econômica, porém fortemente dependente de nuvens estrangeiras e plataformas globais. Potencial elevado para estruturas independentes.
-            </p>
-            <a href="#" class="btn-whatsapp">Conversar via WhatsApp</a>
-        </div>
-    </main>
-
-    </body>
-</html>
+@keyframes rotate { to { transform: rotate(360deg); } }
