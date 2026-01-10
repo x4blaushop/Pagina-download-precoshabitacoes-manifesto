@@ -1,88 +1,259 @@
-/* CAMADA 1: DEFINIÇÃO DE DNA (VARIÁVEIS) */
-:root {
-    --cyan-glow: #00ffcc;
-    --gold-glow: #ffdf00;
-    --bg-deep: #000000;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --border-dna: rgba(0, 255, 204, 0.2);
-    --font-main: 'Inter', 'Segoe UI', system-ui, sans-serif;
-    --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+/* =========================================================
+   SISTEMA C3X4.0 — CSS SOBERANO ORIGINAL
+   OBJETIVO: MANTER ESTRUTURA + VISUAL BRASIL + IMPACTO
+   COMPATÍVEL: MOBILE / GITHUB PAGES
+========================================================= */
+
+/* =========================
+   1. RESET ABSOLUTO
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* CAMADA 2: RESET E ESTRUTURA CRIPTOGRAFADA */
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-body { 
-    background: var(--bg-deep); 
-    color: #fff; 
-    font-family: var(--font-main);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+html, body {
+    width: 100%;
     overflow-x: hidden;
 }
 
-/* CAMADA 3: TIPOGRAFIA SOBERANA (CONFORME AS FOTOS) */
-.glow-text-cyan {
-    color: var(--cyan-glow);
-    text-shadow: 0 0 20px rgba(0, 255, 204, 0.4), 0 0 40px rgba(0, 255, 204, 0.1);
-    letter-spacing: 5px;
-    text-transform: uppercase;
+/* =========================
+   2. VARIÁVEIS VISUAIS
+========================= */
+:root {
+    --preto: #000000;
+    --branco: #ffffff;
+    --cinza: rgba(255,255,255,0.45);
+    --linha: rgba(255,255,255,0.12);
+
+    --verde-brasil: #00ff5a;
+    --amarelo-brasil: #ffdf00;
+    --azul-brasil: #009bff;
+
+    --glow-verde: 0 0 25px rgba(0,255,90,0.35);
+    --glow-amarelo: 0 0 35px rgba(255,223,0,0.4);
+
+    --fonte: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.glow-text-gold {
-    color: var(--gold-glow);
-    text-shadow: 0 0 20px rgba(255, 223, 0, 0.4);
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+/* =========================
+   3. BASE DO PLANETA
+========================= */
+body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: var(--fonte);
+    line-height: 1.6;
+}
+
+/* =========================
+   4. HEADER NACIONAL
+========================= */
+.bloco-massivo-limpo {
+    min-height: 100vh;
+    padding: 10vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
+    border-bottom: 1px solid var(--linha);
 }
 
-/* CAMADA 4: CARDS DE HABITAÇÃO (A LÓGICA DA BELEZA) */
-.unidade-habitacional {
-    width: 90%;
-    max-width: 600px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-dna);
-    padding: 40px;
-    margin: 20px 0;
-    backdrop-filter: blur(10px);
+.bloco-massivo-limpo h1 {
+    font-size: clamp(2.2rem, 8vw, 5.5rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: var(--glow-amarelo);
+}
+
+.subtitulo {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--cinza);
+}
+
+.valor-global {
+    margin-top: 50px;
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+    padding: 18px 40px;
+    border: 1px solid var(--amarelo-brasil);
+    border-radius: 60px;
+    color: var(--amarelo-brasil);
+    box-shadow: var(--glow-amarelo);
+}
+
+/* =========================
+   5. MANIFESTOS / BLOCOS
+========================= */
+.bloco-vazio,
+.bloco-autoridade,
+.bloco-estabilidade,
+.bloco-defesa,
+.bloco-valor-unico,
+#diagnostico-final {
+    padding: 12vh 8vw;
+    border-bottom: 1px solid var(--linha);
+}
+
+.bloco-autoridade {
+    background: linear-gradient(180deg, #050505, #000);
+}
+
+.bloco-defesa {
+    background: radial-gradient(circle at center, #050505, #000);
+}
+
+/* =========================
+   6. ESTADOS DO BRASIL
+========================= */
+.unidade-habitacional,
+.centro-financeiro {
+    min-height: 85vh;
+    padding: 12vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--linha);
     position: relative;
-    transition: var(--transition-smooth);
-}
-
-.unidade-habitacional::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 4px; height: 100%;
-    background: var(--cyan-glow);
-    box-shadow: 0 0 15px var(--cyan-glow);
+    transition: background 0.6s ease;
 }
 
 .unidade-habitacional:hover {
-    background: rgba(0, 255, 204, 0.05);
-    transform: scale(1.02);
-    border-color: var(--cyan-glow);
+    background: rgba(255,255,255,0.02);
 }
 
-/* CAMADA 5: SCANNER E BIOMETRIA (ANIMAÇÃO) */
-.dna-biometrics-layer {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1.5s ease;
+.unidade-habitacional h2,
+.centro-financeiro h2 {
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--cinza);
 }
 
-.scanner-orbital {
-    width: 300px;
-    height: 300px;
-    border: 2px solid var(--cyan-glow);
-    border-radius: 50%;
-    border-top-color: transparent;
-    animation: rotate 2s linear infinite;
+.preco-soberano {
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    font-weight: 900;
+    letter-spacing: -4px;
+    color: var(--branco);
+    text-shadow: var(--glow-verde);
+    margin: 20px 0;
 }
 
-@keyframes rotate { to { transform: rotate(360deg); } }
+.unidade-habitacional p,
+.centro-financeiro p {
+    max-width: 700px;
+    margin-top: 18px;
+    font-size: 1.1rem;
+    color: var(--cinza);
+}
+
+/* =========================
+   7. MATRIZ SOBERANA
+========================= */
+.bloco-arquiteto {
+    padding: 12vh 8vw;
+    border: 2px solid var(--amarelo-brasil);
+    margin: 12vh auto;
+    text-align: center;
+    max-width: 1000px;
+    box-shadow: var(--glow-amarelo);
+}
+
+.bloco-arquiteto h2 {
+    color: var(--amarelo-brasil);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   8. TABELA DE VALORES
+========================= */
+.grid-precos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin: 60px 0;
+}
+
+.item-preco {
+    border: 1px solid var(--linha);
+    padding: 35px;
+    font-size: 1rem;
+}
+
+.item-preco span {
+    display: block;
+    margin-top: 12px;
+    font-size: 2rem;
+    color: var(--amarelo-brasil);
+}
+
+/* =========================
+   9. DIAGNÓSTICO
+========================= */
+.lista-diagnostico {
+    list-style: none;
+    margin-top: 40px;
+}
+
+.lista-diagnostico li {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--verde-brasil);
+}
+
+/* =========================
+   10. FOOTER
+========================= */
+footer {
+    padding: 10vh 8vw;
+    text-align: center;
+    border-top: 1px solid var(--linha);
+}
+
+.status-diagnostico {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: 1px solid var(--verde-brasil);
+    display: inline-block;
+    color: var(--verde-brasil);
+    box-shadow: var(--glow-verde);
+}
+
+/* =========================
+   11. ANIMAÇÃO SUAVE
+========================= */
+section,
+header,
+footer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.ativo,
+header.ativo,
+footer.ativo {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   12. MOBILE
+========================= */
+@media (max-width: 768px) {
+    .preco-soberano {
+        letter-spacing: -2px;
+    }
+
+    section,
+    header,
+    footer {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+}
