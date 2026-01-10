@@ -1,217 +1,240 @@
-/* ARQUITETO JOSÉ PATRICK - DNA X4 SOBERANO */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;900&display=swap');
+/* =========================================================
+   SISTEMA X4 — CSS SOBERANO
+   FUNÇÃO: IDENTIDADE + IMPACTO + LEGIBILIDADE
+   PRINCÍPIO: NÃO ALTERA HTML / NÃO ALTERA JS
+   AMBIENTE: MOBILE FIRST / GITHUB PAGES
+========================================================= */
 
-:root {
-    --OURO-CAPITAL: #FFDF00;
-    --PRETO-MATRIZ: #000000;
-    --VERDE-DIAGNOSTICO: #00FF41;
-    --BRANCO-SANEADO: #FFFFFF;
-    --CINZA-RUÍDO: rgba(255, 255, 255, 0.1);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-
-body {
-    background-color: var(--PRETO-MATRIZ);
-    color: var(--BRANCO-SANEADO);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    line-height: 1;
-}
-
-/* HEADER MASSIVO */
-.bloco-massivo-limpo {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 10%;
-    border-bottom: 2px solid var(--OURO-CAPITAL);
-}
-
-.identificacao-soberana {
-    font-size: 0.7rem;
-    letter-spacing: 10px;
-    color: var(--OURO-CAPITAL);
-    margin-bottom: 30px;
-}
-
-h1 { font-size: 8vw; font-weight: 900; letter-spacing: -5px; }
-
-.valor-global {
-    font-size: 5vw;
-    color: var(--OURO-CAPITAL);
-    margin-top: 50px;
-    font-weight: 100;
-}
-
-/* UNIDADES HABITACIONAIS */
-.unidade-habitacional {
-    padding: 10vw;
-    border-bottom: 1px solid var(--CINZA-RUÍDO);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.unidade-habitacional:hover {
-    background: rgba(255, 223, 0, 0.02);
-    padding-left: 12vw;
-}
-
-.preco-soberano {
-    font-size: 10vw;
-    font-weight: 900;
-    color: var(--BRANCO-SANEADO);
-    letter-spacing: -10px;
-}
-
-.unidade-habitacional:hover .preco-soberano {
-    color: var(--OURO-CAPITAL);
-}
-
-/* BLOCO ARQUITETO (MATRIZ) */
-.bloco-arquiteto {
-    background: var(--OURO-CAPITAL);
-    color: var(--PRETO-MATRIZ);
-    padding: 15vw 10%;
-    text-align: center;
-}
-
-.bloco-arquiteto h2 { font-size: 5vw; letter-spacing: -2px; }
-
-/* SANEAMENTO DE SCROLLBAR */
-::-webkit-scrollbar { width: 2px; }
-::-webkit-scrollbar-thumb { background: var(--OURO-CAPITAL); }
-/* ARQUITETO: JOSÉ PATRICK CASTRO SOARES
-   SISTEMA: C3X4.0 | SOBERANIA NACIONAL
-   CATEGORIZAÇÃO: LUXO TÉCNICO E HARMONIA DE DADOS
-   FOCO: ESTABILIZAÇÃO 2026
-*/
-
-/* CAMADA 0: SANEAMENTO DE RUÍDO (LIMPEZA TOTAL) */
-* {
+/* =========================================================
+   1. RESET ABSOLUTO E CONTROLE DE FLUXO
+========================================================= */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    list-style: none;
-    -webkit-font-smoothing: antialiased;
-    cursor: crosshair; /* O olhar do arquiteto sobre o sistema */
 }
 
-:root {
-    --OURO-Soberano: #FFDF00;  /* O capital de R$ 268B */
-    --Preto-Matriz: #000000;   /* Silêncio absoluto */
-    --Verde-DNA: #00FF41;      /* A casa limpa */
-    --Branco-Puro: #FFFFFF;
-    --Transparencia-X4: rgba(255, 255, 255, 0.05);
-    --Transicao-Lenta: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+html {
+    scroll-behavior: smooth;
 }
 
-/* CAMADA 1: ESTRUTURA DO PLANETA (BODY) */
 body {
-    background-color: var(--Preto-Matriz);
-    color: var(--Branco-Puro);
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
-    line-height: 1.1;
+    background: #000;
+    color: #fff;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* CAMADA 2: O MANIFESTO MASSIVO (HEADER) */
-.bloco-massivo-limpo {
-    height: 100vh;
-    padding: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid var(--Transparencia-X4);
+/* =========================================================
+   2. VARIÁVEIS NACIONAIS (BRASIL)
+========================================================= */
+:root {
+    --preto: #000000;
+    --branco: #ffffff;
+
+    --verde: #00ff5a;
+    --amarelo: #ffdf00;
+    --azul: #009bff;
+
+    --cinza-fraco: rgba(255,255,255,0.45);
+    --linha: rgba(255,255,255,0.12);
+
+    --glow-verde: 0 0 18px rgba(0,255,90,0.35);
+    --glow-amarelo: 0 0 22px rgba(255,223,0,0.45);
+    --glow-azul: 0 0 22px rgba(0,155,255,0.35);
 }
 
-h1 {
-    font-size: clamp(3rem, 12vw, 8rem);
-    font-weight: 900;
-    letter-spacing: -5px;
-    text-transform: uppercase;
-    color: var(--Branco-Puro);
-}
-
-.subtitulo {
-    font-size: 0.8rem;
-    letter-spacing: 12px;
-    color: var(--Verde-DNA);
-    margin-bottom: 20px;
-}
-
-.valor-global {
-    font-size: 4vw;
-    color: var(--OURO-Soberano);
-    font-weight: 100;
-    margin-top: 40px;
-    border-left: 2px solid var(--OURO-Soberano);
-    padding-left: 30px;
-}
-
-/* CAMADA 3: UNIDADES HABITACIONAIS (DENSIDADE) */
-.unidade-habitacional {
-    min-height: 60vh;
-    padding: 100px 10%;
-    border-bottom: 1px solid var(--Transparencia-X4);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    transition: var(--Transicao-Lenta);
-}
-
-.unidade-habitacional:hover {
-    background: rgba(255, 223, 0, 0.02);
-}
-
-.unidade-habitacional h2 {
-    font-size: 0.7rem;
-    letter-spacing: 5px;
-    color: var(--Verde-DNA);
-}
-
-.preco-soberano {
-    font-size: 10vw;
-    font-weight: 900;
-    color: var(--Branco-Puro);
-    letter-spacing: -8px;
-    transition: var(--Transicao-Lenta);
-}
-
-.unidade-habitacional:hover .preco-soberano {
-    color: var(--OURO-Soberano);
-    transform: translateX(20px);
-}
-
-/* CAMADA 4: O ESCUDO E O ARQUITETO */
-.bloco-defesa {
-    padding: 15vh 10%;
-    background: linear-gradient(to bottom, #000, #050505);
-}
-
-.bloco-arquiteto {
-    margin: 100px 10%;
-    padding: 80px;
-    border: 1px solid var(--OURO-Soberano);
-    text-align: center;
+/* =========================================================
+   3. ESTRUTURA GLOBAL
+========================================================= */
+header,
+section,
+footer {
+    width: 100%;
     position: relative;
 }
 
-.bloco-arquiteto h2 {
-    color: var(--OURO-Soberano);
-    font-size: 2rem;
-    margin-bottom: 20px;
+section {
+    padding: 12vh 8vw;
+    border-bottom: 1px solid var(--linha);
 }
 
-/* CAMADA 5: SANEAMENTO DE INTERFACE (UI) */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--Preto-Matriz); }
-::-webkit-scrollbar-thumb { background: var(--OURO-Soberano); }
+/* =========================================================
+   4. BLOCO PRINCIPAL / MANIFESTO
+========================================================= */
+header {
+    min-height: 100vh;
+    padding: 10vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
 
+header h1 {
+    font-size: clamp(2.4rem, 8vw, 5.6rem);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--amarelo);
+    text-shadow: var(--glow-amarelo);
+}
+
+header p {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    color: var(--cinza-fraco);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================================
+   5. SEÇÕES CONCEITUAIS
+========================================================= */
+.bloco-conceito h2,
+.bloco-manifesto h2,
+.bloco-sistema h2 {
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--cinza-fraco);
+    margin-bottom: 25px;
+}
+
+.bloco-conceito p,
+.bloco-manifesto p,
+.bloco-sistema p {
+    max-width: 900px;
+    font-size: 1.15rem;
+    color: var(--cinza-fraco);
+}
+
+/* =========================================================
+   6. ESTADOS DO BRASIL (BLOCOS)
+========================================================= */
+.estado {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.estado h3 {
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--cinza-fraco);
+}
+
+.estado .nome-estado {
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    font-weight: 800;
+    margin: 15px 0;
+    color: var(--branco);
+    text-shadow: var(--glow-azul);
+}
+
+.estado p {
+    max-width: 850px;
+    font-size: 1.1rem;
+    color: var(--cinza-fraco);
+}
+
+/* =========================================================
+   7. VALOR / LIBERDADE DIGITAL
+========================================================= */
+.valor-soberano {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 16px 38px;
+    border-radius: 60px;
+    border: 1px solid var(--verde);
+    color: var(--verde);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    box-shadow: var(--glow-verde);
+}
+
+/* =========================================================
+   8. BOTÕES / AÇÕES
+========================================================= */
+a.botao {
+    margin-top: 35px;
+    display: inline-block;
+    padding: 14px 34px;
+    border-radius: 40px;
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    box-shadow: var(--glow-amarelo);
+    transition: all 0.3s ease;
+}
+
+a.botao:hover {
+    background: rgba(255,223,0,0.08);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   9. EFEITOS DE ENTRADA (CONTROLADOS)
+========================================================= */
+header,
+section,
+footer {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+header.ativo,
+section.ativo,
+footer.ativo {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   10. FOOTER
+========================================================= */
+footer {
+    padding: 10vh 8vw;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: var(--cinza-fraco);
+}
+
+/* =========================================================
+   11. MOBILE AJUSTES
+========================================================= */
 @media (max-width: 768px) {
-    .unidade-habitacional { grid-template-columns: 1fr; padding: 60px 5%; }
-    .preco-soberano { font-size: 18vw; }
+    section {
+        padding: 10vh 6vw;
+    }
+
+    header h1 {
+        letter-spacing: 2px;
+    }
+
+    .estado .nome-estado {
+        letter-spacing: 1px;
+    }
 }
+
+/* =========================================================
+   FIM DO CSS — SISTEMA X4
+   IDENTIDADE PRESERVADA
+   VISUAL MODERNO
+   SEM QUEBRA ESTRUTURAL
+========================================================= */
