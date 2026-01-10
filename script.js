@@ -1,127 +1,91 @@
 /**
- * ==========================================================
- * SISTEMA C3X4.0 — NÚCLEO FUNCIONAL
- * JS PURO · MOBILE FIRST · COMPATÍVEL
- * SEM BLOQUEIOS · SEM INTEGRIDADE VIOLADA
- * ==========================================================
+ * SISTEMA C3X4.0 — ARQUITETURA SOBERANA
+ * ARQUITETO: JOSÉ PATRICK CASTRO SOARES
+ * CICLO 2026 — MATERIALIZAÇÃO TOTAL
  */
 
-(function () {
-  "use strict";
+const NucleoSoberano = (function() {
+    "use strict";
 
-  /* ==========================================================
-     CAMADA 1 — UTILIDADES
-  ========================================================== */
-  const $ = (el) => document.querySelector(el);
-  const $$ = (el) => document.querySelectorAll(el);
+    // CAMADA 1: CONFIGURAÇÃO DE DNA
+    const CONFIG = {
+        arquiteto: "José Patrick Castro Soares",
+        versao: "4.0.2026",
+        status: "Sovereign",
+        estatisticas: { capital: 268000000000 }
+    };
 
-  /* ==========================================================
-     CAMADA 2 — ESTADO DO SISTEMA
-  ========================================================== */
-  const Sistema = {
-    scrollY: 0,
-    ticking: false,
-    isMobile: false,
-  };
+    // CAMADA 2: BANCO DE DADOS NACIONAL (CATEGORIZAÇÃO)
+    const ESTADOS = [
+        { id: "25", nome: "SÃO PAULO", status: "ATIVO", desc: "Maior polo tecnológico. Dependência de nuvens externas.", valor: "R$ 5.000,00" },
+        { id: "19", nome: "RIO DE JANEIRO", status: "OBSERVAÇÃO", desc: "Forte produção cultural. Baixa autonomia estrutural.", valor: "R$ 5.000,00" },
+        { id: "13", nome: "MINAS GERAIS", status: "EMERGENTE", desc: "Crescimento descentralizado. Alto potencial local.", valor: "R$ 5.000,00" },
+        { id: "05", nome: "BAHIA", status: "LATENTE", desc: "Polo criativo estratégico. Infraestrutura externa.", valor: "R$ 5.000,00" },
+        { id: "04", nome: "AMAZONAS", status: "PROTEGIDO", desc: "Pulmão de dados e reserva estratégica.", valor: "R$ 5.000,00" }
+    ];
 
-  /* ==========================================================
-     CAMADA 3 — DETECÇÃO MOBILE REAL
-  ========================================================== */
-  function detectarMobile() {
-    Sistema.isMobile =
-      /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(
-        navigator.userAgent
-      ) || window.innerWidth < 900;
-  }
+    // CAMADA 3: MOTOR DE MATERIALIZAÇÃO (INOVAÇÃO)
+    const Materializar = {
+        init() {
+            this.authSequence();
+            this.buildUnits();
+            this.securityShield();
+            this.tickerAnimation();
+        },
 
-  /* ==========================================================
-     CAMADA 4 — PARALLAX SUAVE (LEITURA PRESERVADA)
-     Apenas deslocamento leve, sem quebrar texto
-  ========================================================== */
-  function aplicarParallax() {
-    const blocos = $$(".unidade-habitacional");
+        // Sequência Biométrica do Arquiteto
+        authSequence() {
+            const overlay = document.getElementById('camada-seguranca-maxima');
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 1500);
+                console.log(`%c[AUTENTICAÇÃO] Bem-vindo, Arquiteto ${CONFIG.arquiteto}`, "color: #00ffcc; font-weight: bold; font-size: 14px;");
+            }, 4000);
+        },
 
-    blocos.forEach((bloco, index) => {
-      const fator = Sistema.isMobile ? 0.01 : 0.02;
-      const deslocamento = Sistema.scrollY * fator * (index + 1);
+        // Construção dos Blocos de Habitação Digital
+        buildUnits() {
+            const main = document.getElementById('organismo-vivo');
+            main.innerHTML = ''; // Limpeza da casa
 
-      bloco.style.transform = `translateY(${deslocamento}px)`;
-    });
-  }
+            ESTADOS.forEach((estado, index) => {
+                const card = document.createElement('section');
+                card.className = 'unidade-habitacional';
+                card.id = `dna-node-${estado.id}`;
+                card.style.animationDelay = `${index * 0.2}s`;
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2 class="glow-text-cyan">${estado.id} · ${estado.nome}</h2>
+                        <span class="badge-status">${estado.status}</span>
+                    </div>
+                    <div class="preco-soberano">${estado.valor}</div>
+                    <div class="desc-content">
+                        <p>${estado.desc}</p>
+                    </div>
+                    <div class="node-footer">DNA X4 IDENTIFIED</div>
+                `;
+                main.appendChild(card);
+            });
+        },
 
-  /* ==========================================================
-     CAMADA 5 — GLOW DINÂMICO SUAVE (TÍTULOS)
-  ========================================================== */
-  function glowTitulos() {
-    const titulos = $$("h1, h2");
+        // Camada de Escudo e Independência
+        securityShield() {
+            window.addEventListener('keydown', (e) => {
+                if(e.ctrlKey && (e.key === 'u' || e.key === 's')) e.preventDefault();
+            });
+            document.addEventListener('contextmenu', e => e.preventDefault());
+        },
 
-    titulos.forEach((titulo) => {
-      titulo.style.textShadow =
-        "0 0 6px rgba(255,223,0,0.35), 0 0 14px rgba(255,223,0,0.15)";
-    });
-  }
+        // Animação do Capital Materializado
+        tickerAnimation() {
+            const ticker = document.getElementById('capital-ticker');
+            // Lógica de expansão de valores aqui
+        }
+    };
 
-  /* ==========================================================
-     CAMADA 6 — DESTAQUE DE BLOCO AO TOQUE / HOVER
-     Compatível com toque (mobile) e mouse
-  ========================================================== */
-  function interacaoBlocos() {
-    const blocos = $$(".unidade-habitacional");
-
-    blocos.forEach((bloco) => {
-      bloco.addEventListener("mouseenter", () => {
-        bloco.style.boxShadow =
-          "0 0 30px rgba(255,255,255,0.08)";
-      });
-
-      bloco.addEventListener("mouseleave", () => {
-        bloco.style.boxShadow = "none";
-      });
-
-      bloco.addEventListener("touchstart", () => {
-        bloco.style.boxShadow =
-          "0 0 30px rgba(255,255,255,0.12)";
-      });
-
-      bloco.addEventListener("touchend", () => {
-        setTimeout(() => {
-          bloco.style.boxShadow = "none";
-        }, 300);
-      });
-    });
-  }
-
-  /* ==========================================================
-     CAMADA 7 — LOOP DE SCROLL OTIMIZADO
-  ========================================================== */
-  function onScroll() {
-    Sistema.scrollY = window.scrollY;
-
-    if (!Sistema.ticking) {
-      window.requestAnimationFrame(() => {
-        aplicarParallax();
-        Sistema.ticking = false;
-      });
-      Sistema.ticking = true;
-    }
-  }
-
-  /* ==========================================================
-     CAMADA 8 — INICIALIZAÇÃO
-  ========================================================== */
-  function init() {
-    detectarMobile();
-    glowTitulos();
-    interacaoBlocos();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", detectarMobile);
-
-    console.log(
-      "%c[SISTEMA C3X4.0] Núcleo carregado · Mobile compatível",
-      "color:#FFDF00;font-weight:bold;"
-    );
-  }
-
-  document.addEventListener("DOMContentLoaded", init);
+    return { iniciar: () => Materializar.init() };
 })();
+
+// DISPARO DO NÚCLEO
+document.addEventListener('DOMContentLoaded', () => NucleoSoberano.iniciar());
