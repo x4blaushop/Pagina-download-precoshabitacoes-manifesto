@@ -81,3 +81,137 @@ h1 { font-size: 8vw; font-weight: 900; letter-spacing: -5px; }
 /* SANEAMENTO DE SCROLLBAR */
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-thumb { background: var(--OURO-CAPITAL); }
+/* ARQUITETO: JOSÉ PATRICK CASTRO SOARES
+   SISTEMA: C3X4.0 | SOBERANIA NACIONAL
+   CATEGORIZAÇÃO: LUXO TÉCNICO E HARMONIA DE DADOS
+   FOCO: ESTABILIZAÇÃO 2026
+*/
+
+/* CAMADA 0: SANEAMENTO DE RUÍDO (LIMPEZA TOTAL) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    list-style: none;
+    -webkit-font-smoothing: antialiased;
+    cursor: crosshair; /* O olhar do arquiteto sobre o sistema */
+}
+
+:root {
+    --OURO-Soberano: #FFDF00;  /* O capital de R$ 268B */
+    --Preto-Matriz: #000000;   /* Silêncio absoluto */
+    --Verde-DNA: #00FF41;      /* A casa limpa */
+    --Branco-Puro: #FFFFFF;
+    --Transparencia-X4: rgba(255, 255, 255, 0.05);
+    --Transicao-Lenta: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* CAMADA 1: ESTRUTURA DO PLANETA (BODY) */
+body {
+    background-color: var(--Preto-Matriz);
+    color: var(--Branco-Puro);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.1;
+}
+
+/* CAMADA 2: O MANIFESTO MASSIVO (HEADER) */
+.bloco-massivo-limpo {
+    height: 100vh;
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--Transparencia-X4);
+}
+
+h1 {
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -5px;
+    text-transform: uppercase;
+    color: var(--Branco-Puro);
+}
+
+.subtitulo {
+    font-size: 0.8rem;
+    letter-spacing: 12px;
+    color: var(--Verde-DNA);
+    margin-bottom: 20px;
+}
+
+.valor-global {
+    font-size: 4vw;
+    color: var(--OURO-Soberano);
+    font-weight: 100;
+    margin-top: 40px;
+    border-left: 2px solid var(--OURO-Soberano);
+    padding-left: 30px;
+}
+
+/* CAMADA 3: UNIDADES HABITACIONAIS (DENSIDADE) */
+.unidade-habitacional {
+    min-height: 60vh;
+    padding: 100px 10%;
+    border-bottom: 1px solid var(--Transparencia-X4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    transition: var(--Transicao-Lenta);
+}
+
+.unidade-habitacional:hover {
+    background: rgba(255, 223, 0, 0.02);
+}
+
+.unidade-habitacional h2 {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: var(--Verde-DNA);
+}
+
+.preco-soberano {
+    font-size: 10vw;
+    font-weight: 900;
+    color: var(--Branco-Puro);
+    letter-spacing: -8px;
+    transition: var(--Transicao-Lenta);
+}
+
+.unidade-habitacional:hover .preco-soberano {
+    color: var(--OURO-Soberano);
+    transform: translateX(20px);
+}
+
+/* CAMADA 4: O ESCUDO E O ARQUITETO */
+.bloco-defesa {
+    padding: 15vh 10%;
+    background: linear-gradient(to bottom, #000, #050505);
+}
+
+.bloco-arquiteto {
+    margin: 100px 10%;
+    padding: 80px;
+    border: 1px solid var(--OURO-Soberano);
+    text-align: center;
+    position: relative;
+}
+
+.bloco-arquiteto h2 {
+    color: var(--OURO-Soberano);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* CAMADA 5: SANEAMENTO DE INTERFACE (UI) */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--Preto-Matriz); }
+::-webkit-scrollbar-thumb { background: var(--OURO-Soberano); }
+
+@media (max-width: 768px) {
+    .unidade-habitacional { grid-template-columns: 1fr; padding: 60px 5%; }
+    .preco-soberano { font-size: 18vw; }
+}
