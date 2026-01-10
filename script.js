@@ -1,112 +1,58 @@
-/**
- * ==========================================================
- * SISTEMA C3X4.0 — NÚCLEO ESTÁVEL
- * Compatível com MOBILE · GitHub Pages · Android
- * Sem falso positivo · Sem apagar DOM
- * ==========================================================
- */
+document.addEventListener("DOMContentLoaded", () => {
 
-const SistemaC3X4 = {
+  /* =========================
+     SEGURANÇA DE INTEGRIDADE
+     ========================= */
 
-    init() {
-        document.addEventListener("DOMContentLoaded", () => {
-            this.consoleControl();
-            this.diagnosticoVisual();
-            this.integridadeBasica();
-            this.microInteracoes();
-            console.log("%c[SISTEMA C3X4.0] ONLINE · MOBILE SAFE", "color:#00ffd5;font-weight:bold;");
-        });
-    },
+  const elementosObrigatorios = [
+    "main",
+    "section",
+    "footer"
+  ];
 
-    /* ==========================================================
-       CAMADA 1 — CONTROLE DE CONSOLE (SEM AGRESSÃO)
-    ========================================================== */
-    consoleControl() {
-        try {
-            console.clear();
-        } catch(e){}
-    },
+  let integridadeOk = true;
 
-    /* ==========================================================
-       CAMADA 2 — DIAGNÓSTICO VISUAL (RODAPÉ)
-    ========================================================== */
-    diagnosticoVisual() {
-        const elElements = document.querySelector('#status-elements span');
-        const elNetwork  = document.querySelector('#status-network span');
-        const elConsole  = document.querySelector('#status-console span');
-
-        if(elElements) elElements.textContent = "OK";
-        if(elNetwork)  elNetwork.textContent  = "ESTÁVEL";
-        if(elConsole)  elConsole.textContent  = "OPERACIONAL";
-    },
-
-    /* ==========================================================
-       CAMADA 3 — INTEGRIDADE (VERSÃO CORRETA)
-       ✔ NÃO usa innerText do body
-       ✔ NÃO apaga a página
-       ✔ MOBILE SAFE
-    ========================================================== */
-    integridadeBasica() {
-        const assinatura = document.querySelector('.assinatura-arquiteto');
-
-        if (!assinatura) {
-            this.sinalizarAlerta("ASSINATURA AUSENTE");
-            return;
-        }
-
-        const nomeEsperado = "JOSÉ PATRICK CASTRO SOARES";
-        const textoAtual   = assinatura.textContent.trim();
-
-        if (textoAtual !== nomeEsperado) {
-            this.sinalizarAlerta("ASSINATURA ALTERADA");
-        }
-    },
-
-    /* ==========================================================
-       CAMADA 4 — ALERTA VISUAL NÃO-DESTRUTIVO
-    ========================================================== */
-    sinalizarAlerta(motivo) {
-        const alerta = document.createElement('div');
-        alerta.textContent = `ALERTA DE INTEGRIDADE: ${motivo}`;
-        alerta.style.position = "fixed";
-        alerta.style.bottom = "20px";
-        alerta.style.left = "50%";
-        alerta.style.transform = "translateX(-50%)";
-        alerta.style.padding = "12px 20px";
-        alerta.style.background = "#ff0033";
-        alerta.style.color = "#fff";
-        alerta.style.fontFamily = "monospace";
-        alerta.style.fontSize = "0.8rem";
-        alerta.style.letterSpacing = "2px";
-        alerta.style.zIndex = "9999";
-        alerta.style.boxShadow = "0 0 20px rgba(255,0,51,0.6)";
-        alerta.style.borderRadius = "6px";
-
-        document.body.appendChild(alerta);
-
-        setTimeout(() => alerta.remove(), 6000);
-    },
-
-    /* ==========================================================
-       CAMADA 5 — MICROINTERAÇÕES LEVES (MOBILE FRIENDLY)
-    ========================================================== */
-    microInteracoes() {
-        const blocos = document.querySelectorAll('.unidade-habitacional');
-
-        blocos.forEach(bloco => {
-            bloco.addEventListener('touchstart', () => {
-                bloco.style.transform = "scale(0.98)";
-            });
-
-            bloco.addEventListener('touchend', () => {
-                bloco.style.transform = "scale(1)";
-            });
-        });
+  elementosObrigatorios.forEach(tag => {
+    if (!document.querySelector(tag)) {
+      integridadeOk = false;
     }
+  });
 
-};
+  if (!integridadeOk) {
+    console.warn("Integridade estrutural incompleta, mas execução mantida.");
+  }
 
-/* ==========================================================
-   INICIALIZAÇÃO
-========================================================== */
-SistemaC3X4.init();
+  /* =========================
+     SCROLL SUAVE (CONTROLADO)
+     ========================= */
+
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const scrollAtual = window.scrollY;
+    const deslocamento = (scrollAtual - lastScroll) * 0.15;
+    lastScroll = scrollAtual;
+
+    document.querySelectorAll(".bloco").forEach(bloco => {
+      bloco.style.transform = `translateY(${deslocamento}px)`;
+    });
+  }, { passive: true });
+
+  /* =========================
+     ATIVAÇÃO VISUAL POR VIEWPORT
+     ========================= */
+
+  const observer = new IntersectionObserver(
+    entradas => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("ativo");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll(".bloco").forEach(el => observer.observe(el));
+
+});
