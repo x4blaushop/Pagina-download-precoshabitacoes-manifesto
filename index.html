@@ -2,68 +2,127 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brasil_Independente | Soberania Digital</title>
 
 <style>
+:root {
+    --bg: #0b0b0b;
+    --fg: #eaeaea;
+    --accent: #00ffb2;
+    --muted: #9a9a9a;
+    --border: #1f1f1f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0b0b0b;
-    color: #eaeaea;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
 }
 
 header {
-    padding: 40px 20px;
+    padding: 32px 16px;
     text-align: center;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--border);
 }
 
 header h1 {
-    font-size: 2.6rem;
     margin: 0;
-    color: #00ffb2;
+    font-size: 2.2rem;
+    color: var(--accent);
 }
 
 header p {
+    margin-top: 16px;
+    font-size: 1rem;
+    color: var(--muted);
     max-width: 900px;
-    margin: 20px auto 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main {
+    padding: 24px 16px;
+    max-width: 1100px;
+    margin: auto;
 }
 
 section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
+    margin-bottom: 48px;
 }
 
 h2 {
-    color: #00ffb2;
-    border-bottom: 1px solid #222;
-    padding-bottom: 10px;
+    color: var(--accent);
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+p {
+    font-size: 1rem;
+    color: var(--fg);
+}
+
+ul {
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 6px;
 }
 
 .estado {
-    margin-top: 30px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #111;
 }
 
 .estado h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
     color: #ffffff;
-    margin-bottom: 8px;
 }
 
 .estado p {
-    line-height: 1.6;
-    font-size: 1rem;
+    margin: 0;
+    font-size: 0.95rem;
     color: #d0d0d0;
 }
 
 footer {
-    padding: 40px 20px;
+    padding: 32px 16px;
     text-align: center;
-    border-top: 1px solid #222;
-    font-size: 0.9rem;
-    color: #777;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* Desktop refinamento */
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 2.8rem;
+    }
+
+    header p {
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .estado {
+        padding: 20px;
+    }
 }
 </style>
 </head>
@@ -71,133 +130,107 @@ footer {
 <body>
 
 <header>
-    <h1>Brasil_Independente</h1>
-    <p>
-        Esta página descreve como a tecnologia influencia diretamente a vida das pessoas
-        em cada estado brasileiro e por que o Sistema C3X4.0 nasce no Brasil.
-        Não é um produto. Não é marketing.  
-        É soberania digital aplicada.
-    </p>
+<h1>Brasil_Independente</h1>
+<p>
+Manifesto de soberania digital.  
+O Brasil como ponto de ruptura da dependência tecnológica global.
+</p>
 </header>
 
+<main>
+
 <section>
+<h2>DNA Único</h2>
+<p>
+Existe apenas um DNA: <strong>c3x4.0_mae</strong>.  
+Tudo nasce dele. Nada existe fora dele.
+</p>
+<p>
+Quem tem mais sustenta o sistema.  
+Quem tem menos conquista liberdade e se torna porta-voz.
+</p>
+<p>
+Não existe marketing.  
+A voz do sistema é humana.
+</p>
+</section>
 
-<h2>O Princípio</h2>
+<section>
+<h2>Arquitetura do Ecossistema</h2>
 <p>
-Existe apenas um DNA no ecossistema: <strong>c3x4.0_mae</strong>.  
-Todas as células, sistemas, planetas e camadas derivam dele.
+Os planetas não são casas, nem produtos.
 </p>
 <p>
-Quem tem mais, sustenta o sistema.  
-Quem tem menos, adquire liberdade e se torna porta-voz.
-</p>
-<p>
-Quando houver habitantes, o sistema não precisará de marketing.
-O porta-voz será o próprio mercado — sem custo, sem manipulação.
-</p>
-
-<h2>Por que começar pelo Brasil</h2>
-<p>
-O Brasil é dependente de tecnologias estrangeiras que controlam dados,
-fluxos financeiros, comunicação e percepção social.
-</p>
-<p>
-Se um sistema soberano funciona aqui — com desigualdade, escala continental
-e diversidade cultural — ele funciona em qualquer lugar do mundo.
-</p>
-<p>
-A soberania digital brasileira rompe a dependência de potências externas
-que concentram poder econômico, tecnológico e simbólico.
-</p>
-
-<h2>Arquitetura Viva do Sistema</h2>
-<p>
-Os planetas não são produtos.  
-São mansões computacionais.
-</p>
-<p>
-Cada planeta possui:
+São mansões computacionais com:
 </p>
 <ul>
-    <li>Servidor com identidade própria</li>
-    <li>Linguagem nativa</li>
-    <li>Função clara dentro do ecossistema</li>
+<li>Servidor com identidade própria</li>
+<li>Linguagem nativa</li>
+<li>Função definida no ecossistema</li>
 </ul>
+</section>
 
+<section>
 <h2>Pit SYSTEM</h2>
 <p>
-O Pit SYSTEM é o sistema imunológico do ecossistema.
-</p>
-<p>
-Ele isola:
+Sistema imunológico do ecossistema.
 </p>
 <ul>
-    <li>Falhas humanas</li>
-    <li>Falhas técnicas</li>
-    <li>Falhas lógicas</li>
-    <li>Comportamentos que geram corrupção sistêmica</li>
+<li>Isola falhas humanas</li>
+<li>Isola falhas técnicas</li>
+<li>Isola falhas lógicas</li>
+<li>Evita corrupção sistêmica</li>
 </ul>
+</section>
 
+<section>
 <h2>Umbral</h2>
 <p>
-O Umbral é a prisão.
+Prisão absoluta.
 </p>
 <p>
-Prisão de IP.  
-Prisão de vírus.  
-Prisão de falhas.  
-Prisão de tudo que ameaça a integridade do ecossistema.
+IP, vírus, falhas, comportamentos nocivos.
 </p>
 <p>
 Nada é apagado.  
 Tudo é contido.
 </p>
+</section>
 
-<h2>Brasil por Estados</h2>
+<section>
+<h2>Brasil — Estado por Estado</h2>
 
-<div class="estado">
-<h3>São Paulo</h3>
-<p>
-Centro financeiro e tecnológico do país, ainda dependente de big techs.
-O Sistema C3X4.0 devolve soberania sobre dados, fluxos e decisões.
-</p>
-</div>
-
-<div class="estado">
-<h3>Rio de Janeiro</h3>
-<p>
-Alta conectividade e alta instabilidade.
-O sistema cria isolamento de falhas sociais e técnicas,
-sem colapsar a rede inteira.
-</p>
-</div>
-
-<div class="estado">
-<h3>Minas Gerais</h3>
-<p>
-Estado de base estrutural.
-O sistema transforma tecnologia em infraestrutura silenciosa,
-não em espetáculo.
-</p>
-</div>
-
-<div class="estado">
-<h3>Nordeste</h3>
-<p>
-Onde tecnologia significa sobrevivência e comunicação.
-O sistema cria autonomia sem exploração de dados.
-</p>
-</div>
-
-<div class="estado">
-<h3>Norte</h3>
-<p>
-Tecnologia como ponte geográfica.
-O sistema opera localmente, mesmo em ambientes instáveis.
-</p>
-</div>
+<div class="estado"><h3>Acre</h3><p>Autonomia digital em regiões isoladas, reduzindo dependência externa.</p></div>
+<div class="estado"><h3>Alagoas</h3><p>Transformação da conectividade básica em soberania real.</p></div>
+<div class="estado"><h3>Amapá</h3><p>Infraestrutura local sem submissão a plataformas globais.</p></div>
+<div class="estado"><h3>Amazonas</h3><p>Operação local em ambientes geograficamente extremos.</p></div>
+<div class="estado"><h3>Bahia</h3><p>Cultura digital convertida em linguagem soberana.</p></div>
+<div class="estado"><h3>Ceará</h3><p>Inclusão tecnológica sem exploração de dados.</p></div>
+<div class="estado"><h3>Distrito Federal</h3><p>Governança digital independente do poder institucional.</p></div>
+<div class="estado"><h3>Espírito Santo</h3><p>Infraestrutura silenciosa e estável.</p></div>
+<div class="estado"><h3>Goiás</h3><p>Base logística digital autônoma.</p></div>
+<div class="estado"><h3>Maranhão</h3><p>Conectividade como ferramenta de libertação.</p></div>
+<div class="estado"><h3>Mato Grosso</h3><p>Escala territorial com controle local.</p></div>
+<div class="estado"><h3>Mato Grosso do Sul</h3><p>Estabilidade sistêmica em áreas de fronteira.</p></div>
+<div class="estado"><h3>Minas Gerais</h3><p>Estrutura sólida e discreta.</p></div>
+<div class="estado"><h3>Pará</h3><p>Soberania informacional em territórios amplos.</p></div>
+<div class="estado"><h3>Paraíba</h3><p>Autonomia sem dependência corporativa.</p></div>
+<div class="estado"><h3>Paraná</h3><p>Eficiência técnica com independência lógica.</p></div>
+<div class="estado"><h3>Pernambuco</h3><p>Inovação sem submissão a capital externo.</p></div>
+<div class="estado"><h3>Piauí</h3><p>Inclusão tecnológica soberana.</p></div>
+<div class="estado"><h3>Rio de Janeiro</h3><p>Isolamento de falhas sociais e técnicas.</p></div>
+<div class="estado"><h3>Rio Grande do Norte</h3><p>Conectividade como infraestrutura vital.</p></div>
+<div class="estado"><h3>Rio Grande do Sul</h3><p>Robustez sistêmica e autonomia.</p></div>
+<div class="estado"><h3>Rondônia</h3><p>Operação independente em regiões remotas.</p></div>
+<div class="estado"><h3>Roraima</h3><p>Autossuficiência digital.</p></div>
+<div class="estado"><h3>Santa Catarina</h3><p>Desenvolvimento tecnológico soberano.</p></div>
+<div class="estado"><h3>São Paulo</h3><p>Ruptura da dependência das big techs.</p></div>
+<div class="estado"><h3>Sergipe</h3><p>Governança digital local.</p></div>
+<div class="estado"><h3>Tocantins</h3><p>Base estrutural para expansão soberana.</p></div>
 
 </section>
+
+</main>
 
 <footer>
 Brasil_Independente — Sistema C3X4.0  
