@@ -1,242 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brasil_Independente | Soberania Digital</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BRASIL_INDEPENDENTE</title>
 
-<style>
-:root {
-    --bg: #0b0b0b;
-    --fg: #eaeaea;
-    --accent: #00ffb2;
-    --muted: #9a9a9a;
-    --border: #1f1f1f;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.6;
-}
-
-header {
-    padding: 32px 16px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.2rem;
-    color: var(--accent);
-}
-
-header p {
-    margin-top: 16px;
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-main {
-    padding: 24px 16px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-section {
-    margin-bottom: 48px;
-}
-
-h2 {
-    color: var(--accent);
-    font-size: 1.6rem;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-}
-
-p {
-    font-size: 1rem;
-    color: var(--fg);
-}
-
-ul {
-    padding-left: 18px;
-}
-
-li {
-    margin-bottom: 6px;
-}
-
-.estado {
-    padding: 16px;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: #111;
-}
-
-.estado h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.1rem;
-    color: #ffffff;
-}
-
-.estado p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #d0d0d0;
-}
-
-footer {
-    padding: 32px 16px;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--muted);
-}
-
-/* Desktop refinamento */
-@media (min-width: 768px) {
-    header h1 {
-        font-size: 2.8rem;
+  <!-- IDENTIDADE VISUAL BASE (não remove efeitos existentes) -->
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at bottom, #001a00 0%, #000 100%);
+      color: #e5ffe5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
     }
 
-    header p {
-        font-size: 1.1rem;
+    #universo {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
     }
 
-    h2 {
-        font-size: 1.8rem;
+    .estrela {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+
+    main {
+      padding: 24px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #00ff66;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    section {
+      margin-bottom: 64px;
+    }
+
+    .destaque {
+      color: #ffd700;
+      font-weight: 600;
     }
 
     .estado {
-        padding: 20px;
+      border-left: 3px solid #00ff66;
+      padding-left: 12px;
+      margin: 16px 0;
     }
-}
-</style>
+
+    .vendas {
+      border: 1px solid #00ff66;
+      padding: 24px;
+      background: rgba(0, 50, 0, 0.35);
+    }
+
+    .vendas button {
+      background: #00ff66;
+      color: #000;
+      border: none;
+      padding: 12px 24px;
+      margin-top: 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.7rem; }
+      main { padding: 16px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<h1>Brasil_Independente</h1>
-<p>
-Manifesto de soberania digital.  
-O Brasil como ponto de ruptura da dependência tecnológica global.
-</p>
-</header>
+<!-- FUNDO / ESPAÇO INFINITO -->
+<div id="universo"></div>
 
 <main>
 
-<section>
-<h2>DNA Único</h2>
-<p>
-Existe apenas um DNA: <strong>c3x4.0_mae</strong>.  
-Tudo nasce dele. Nada existe fora dele.
-</p>
-<p>
-Quem tem mais sustenta o sistema.  
-Quem tem menos conquista liberdade e se torna porta-voz.
-</p>
-<p>
-Não existe marketing.  
-A voz do sistema é humana.
-</p>
-</section>
+  <section>
+    <h1>🇧🇷 BRASIL_INDEPENDENTE</h1>
+    <p class="destaque">Onde a soberania digital começa</p>
 
-<section>
-<h2>Arquitetura do Ecossistema</h2>
-<p>
-Os planetas não são casas, nem produtos.
-</p>
-<p>
-São mansões computacionais com:
-</p>
-<ul>
-<li>Servidor com identidade própria</li>
-<li>Linguagem nativa</li>
-<li>Função definida no ecossistema</li>
-</ul>
-</section>
+    <p>
+      O Brasil não é um “mercado”.<br/>
+      É um organismo continental, diverso, fragmentado, desigual — e exatamente por isso
+      é o território ideal para o nascimento de um sistema soberano.
+    </p>
 
-<section>
-<h2>Pit SYSTEM</h2>
-<p>
-Sistema imunológico do ecossistema.
-</p>
-<ul>
-<li>Isola falhas humanas</li>
-<li>Isola falhas técnicas</li>
-<li>Isola falhas lógicas</li>
-<li>Evita corrupção sistêmica</li>
-</ul>
-</section>
+    <p>
+      O c3x4.0 não cria leis.<br/>
+      Ele acopla o que já existe, isola falhas e permite que cada região opere com autonomia real,
+      sem submissão estrutural a terceiros.
+    </p>
+  </section>
 
-<section>
-<h2>Umbral</h2>
-<p>
-Prisão absoluta.
-</p>
-<p>
-IP, vírus, falhas, comportamentos nocivos.
-</p>
-<p>
-Nada é apagado.  
-Tudo é contido.
-</p>
-</section>
+  <section>
+    <h2>🧬 Fundamento Único</h2>
+    <p><strong>1 DNA:</strong> X4DNAv2026</p>
+    <p>Todas as células herdam o mesmo princípio</p>
+    <p>Nenhum estado é produto</p>
+    <p>Cada estado do Brasil é uma célula funcional</p>
+  </section>
 
-<section>
-<h2>Brasil — Estado por Estado</h2>
+  <section>
+    <h2>🧭 Lógica Social do Sistema</h2>
+    <p>Quem tem mais, sustenta</p>
+    <p>Quem tem menos, ganha liberdade e voz</p>
+    <p>O porta-voz não é pago — ele existe porque o sistema funciona</p>
+    <p>Marketing é substituído por vivência</p>
+  </section>
 
-<div class="estado"><h3>Acre</h3><p>Autonomia digital em regiões isoladas, reduzindo dependência externa.</p></div>
-<div class="estado"><h3>Alagoas</h3><p>Transformação da conectividade básica em soberania real.</p></div>
-<div class="estado"><h3>Amapá</h3><p>Infraestrutura local sem submissão a plataformas globais.</p></div>
-<div class="estado"><h3>Amazonas</h3><p>Operação local em ambientes geograficamente extremos.</p></div>
-<div class="estado"><h3>Bahia</h3><p>Cultura digital convertida em linguagem soberana.</p></div>
-<div class="estado"><h3>Ceará</h3><p>Inclusão tecnológica sem exploração de dados.</p></div>
-<div class="estado"><h3>Distrito Federal</h3><p>Governança digital independente do poder institucional.</p></div>
-<div class="estado"><h3>Espírito Santo</h3><p>Infraestrutura silenciosa e estável.</p></div>
-<div class="estado"><h3>Goiás</h3><p>Base logística digital autônoma.</p></div>
-<div class="estado"><h3>Maranhão</h3><p>Conectividade como ferramenta de libertação.</p></div>
-<div class="estado"><h3>Mato Grosso</h3><p>Escala territorial com controle local.</p></div>
-<div class="estado"><h3>Mato Grosso do Sul</h3><p>Estabilidade sistêmica em áreas de fronteira.</p></div>
-<div class="estado"><h3>Minas Gerais</h3><p>Estrutura sólida e discreta.</p></div>
-<div class="estado"><h3>Pará</h3><p>Soberania informacional em territórios amplos.</p></div>
-<div class="estado"><h3>Paraíba</h3><p>Autonomia sem dependência corporativa.</p></div>
-<div class="estado"><h3>Paraná</h3><p>Eficiência técnica com independência lógica.</p></div>
-<div class="estado"><h3>Pernambuco</h3><p>Inovação sem submissão a capital externo.</p></div>
-<div class="estado"><h3>Piauí</h3><p>Inclusão tecnológica soberana.</p></div>
-<div class="estado"><h3>Rio de Janeiro</h3><p>Isolamento de falhas sociais e técnicas.</p></div>
-<div class="estado"><h3>Rio Grande do Norte</h3><p>Conectividade como infraestrutura vital.</p></div>
-<div class="estado"><h3>Rio Grande do Sul</h3><p>Robustez sistêmica e autonomia.</p></div>
-<div class="estado"><h3>Rondônia</h3><p>Operação independente em regiões remotas.</p></div>
-<div class="estado"><h3>Roraima</h3><p>Autossuficiência digital.</p></div>
-<div class="estado"><h3>Santa Catarina</h3><p>Desenvolvimento tecnológico soberano.</p></div>
-<div class="estado"><h3>São Paulo</h3><p>Ruptura da dependência das big techs.</p></div>
-<div class="estado"><h3>Sergipe</h3><p>Governança digital local.</p></div>
-<div class="estado"><h3>Tocantins</h3><p>Base estrutural para expansão soberana.</p></div>
+  <section>
+    <h2>🗺️ Brasil como Ecossistema Vivo</h2>
 
-</section>
+    <h3>Norte</h3>
+    <div class="estado">Amazonas (AM) — autonomia regional e servidores locais</div>
+    <div class="estado">Pará (PA) — governança local de dados</div>
+    <div class="estado">AC, AP, RR, RO, TO — liberdade sem Big Tech</div>
+
+    <h3>Nordeste</h3>
+    <div class="estado">Bahia (BA) — planetas culturais soberanos</div>
+    <div class="estado">Pernambuco (PE) — tecnologia sem capital externo</div>
+    <div class="estado">Ceará (CE) — PIT SYSTEM isolando dependência</div>
+    <div class="estado">MA, PI, PB, RN, AL, SE — usuário vira habitante</div>
+
+    <h3>Centro-Oeste</h3>
+    <div class="estado">Distrito Federal (DF) — sistema não vigia</div>
+    <div class="estado">GO, MT, MS — soberania de dados no agro</div>
+
+    <h3>Sudeste</h3>
+    <div class="estado">São Paulo (SP) — ruptura soberana</div>
+    <div class="estado">Rio de Janeiro (RJ) — ruído isolado</div>
+    <div class="estado">Minas Gerais (MG) — autonomia silenciosa</div>
+    <div class="estado">Espírito Santo (ES) — planeta logístico</div>
+
+    <h3>Sul</h3>
+    <div class="estado">Paraná (PR) — células nativas</div>
+    <div class="estado">Santa Catarina (SC) — startups livres</div>
+    <div class="estado">Rio Grande do Sul (RS) — Umbral ativo</div>
+  </section>
+
+  <section>
+    <h2>🧠 PIT SYSTEM</h2>
+    <p>Sistema imunológico do ecossistema</p>
+    <p>Isola falhas humanas, técnicas, vírus e corrupção</p>
+    <p>Sem escândalo. Sem ruído.</p>
+  </section>
+
+  <section>
+    <h2>⛓️ UMBRAL</h2>
+    <p>Prisão silenciosa de IPs, erros, explorações e códigos contaminados</p>
+    <p>Nada retorna. Nada contamina.</p>
+  </section>
+
+  <section>
+    <h2>🌍 Por que começar pelo Brasil</h2>
+    <p>Se funciona aqui, funciona em qualquer sistema dependente.</p>
+    <p>É desacoplamento silencioso.</p>
+  </section>
+
+  <section>
+    <h2>🕊️ Soberania Digital</h2>
+    <p>O Brasil não pede permissão.</p>
+    <p>Ele simplesmente existe.</p>
+  </section>
+
+  <section class="vendas">
+    <h2>C3X4.0 — Materialização</h2>
+    <p>Portal de adesão e sustentação do sistema.</p>
+    <p>Quem entra percebe: está quase pronto. O caminho está definido.</p>
+    <button>Adquirir Acesso</button>
+  </section>
 
 </main>
 
-<footer>
-Brasil_Independente — Sistema C3X4.0  
-<br>
-Soberania não se pede. Se constrói.
-</footer>
+<!-- GERADOR DE 28 ESTRELAS (27 + Constelação X4) -->
+<script>
+  const universo = document.getElementById('universo');
+  for (let i = 0; i < 28; i++) {
+    const estrela = document.createElement('div');
+    estrela.className = 'estrela';
+    estrela.style.top = Math.random() * 100 + '%';
+    estrela.style.left = Math.random() * 100 + '%';
+    estrela.style.opacity = Math.random();
+    universo.appendChild(estrela);
+  }
+</script>
 
 </body>
 </html>
