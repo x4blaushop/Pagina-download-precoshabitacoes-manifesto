@@ -1,71 +1,85 @@
-/* =========================================================
-   EXTENSÃO SOBERANA — BRASIL_INDEPENDENTE
-   Função: Completar estados · Mobile-first
-   DNA: c3x4.0_mae
-   OBS: BLOCO ADITIVO — NÃO REMOVE NADA EXISTENTE
-========================================================= */
+/* ===============================
+   C3X4.0_JS — EXPANSÃO (APPEND)
+   Não remove nada
+   Não reduz nada
+   Só cresce
+================================ */
 
-(function () {
-    "use strict";
+/* ATIVAÇÃO GERAL APÓS HTML PRONTO */
+document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       MAPA OFICIAL DOS 27 ESTADOS + DF
-    ===================================================== */
+  /* ===============================
+     EFEITO DE REALCE EM TÍTULOS
+     =============================== */
+  const titulos = document.querySelectorAll("h1, h2, h3");
 
-    const ESTADOS_BRASIL = [
-        "ac","al","ap","am","ba","ce","df","es","go",
-        "ma","mt","ms","mg","pa","pb","pr","pe","pi",
-        "rj","rn","rs","ro","rr","sc","sp","se","to"
-    ];
+  titulos.forEach(titulo => {
+    titulo.addEventListener("mouseenter", () => {
+      titulo.style.textShadow = "0 0 8px #00ff66, 0 0 16px #00ff66";
+      titulo.style.transition = "text-shadow 0.3s ease";
+    });
 
-    /* =====================================================
-       REGISTRO GARANTIDO DE TODOS OS ESTADOS
-       (Mesmo que o HTML esteja incompleto)
-    ===================================================== */
+    titulo.addEventListener("mouseleave", () => {
+      titulo.style.textShadow = "none";
+    });
+  });
 
-    function garantirEstados() {
-        ESTADOS_BRASIL.forEach(sigla => {
-            const el = document.getElementById(sigla);
+  /* ===============================
+     EXPANSÃO DE ESTADOS (CLICK)
+     =============================== */
+  const estados = document.querySelectorAll(".estado");
 
-            if (!el) return;
+  estados.forEach(estado => {
+    estado.dataset.aberto = "false";
 
-            el.dataset.estado = sigla;
-            el.dataset.celula = "ativa";
-            el.dataset.dna = "c3x4.0_mae";
-        });
-    }
+    estado.addEventListener("click", () => {
+      if (estado.dataset.aberto === "false") {
+        estado.style.maxHeight = "1000px";
+        estado.style.opacity = "1";
+        estado.style.transition = "all 0.4s ease";
+        estado.dataset.aberto = "true";
+      } else {
+        estado.style.maxHeight = "";
+        estado.style.opacity = "";
+        estado.dataset.aberto = "false";
+      }
+    });
+  });
 
-    /* =====================================================
-       MOBILE: CORREÇÃO DE VIEWPORT E ATIVAÇÃO
-    ===================================================== */
+  /* ===============================
+     MICRO PULSAÇÃO NAS ESTRELAS
+     =============================== */
+  const estrelas = document.querySelectorAll(".estrela");
 
-    function ajusteMobileEstados() {
-        if (window.innerWidth > 768) return;
+  estrelas.forEach((estrela, i) => {
+    estrela.animate(
+      [
+        { opacity: 0.2 },
+        { opacity: 1 },
+        { opacity: 0.2 }
+      ],
+      {
+        duration: 3000 + (i * 120),
+        iterations: Infinity
+      }
+    );
+  });
 
-        document.querySelectorAll(".estado").forEach(el => {
-            el.style.minHeight = "auto";
-            el.style.scrollMarginTop = "15vh";
-        });
-    }
+  /* ===============================
+     CTA — FEEDBACK DE AÇÃO
+     =============================== */
+  const botoes = document.querySelectorAll("button");
 
-    /* =====================================================
-       INTEGRAÇÃO COM O SISTEMA EXISTENTE
-       (SEM TOCAR NO QUE JÁ FUNCIONA)
-    ===================================================== */
+  botoes.forEach(btn => {
+    btn.addEventListener("mousedown", () => {
+      btn.style.transform = "scale(0.95)";
+    });
+    btn.addEventListener("mouseup", () => {
+      btn.style.transform = "scale(1)";
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "scale(1)";
+    });
+  });
 
-    function integrarBrasilIndependente() {
-        garantirEstados();
-        ajusteMobileEstados();
-    }
-
-    /* =====================================================
-       DISPARO SILENCIOSO
-    ===================================================== */
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", integrarBrasilIndependente);
-    } else {
-        integrarBrasilIndependente();
-    }
-
-})();
+});
